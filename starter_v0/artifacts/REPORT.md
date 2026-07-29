@@ -20,8 +20,12 @@ Research agent: tìm tin theo chủ đề hoặc theo tài khoản X/Twitter, đ
 
 **Link dùng thử (truy cập được trong showdown):**
 
-> URL: `http://localhost:8501` (chạy `streamlit run app.py` trong `starter_v0/`)
-> _Public link qua Cloudflare Tunnel: điền trước showdown._
+> **Public URL: https://perhaps-enzyme-zshops-saves.trycloudflare.com**
+>
+> Local: `http://localhost:8501` (chạy `streamlit run app.py` trong `starter_v0/`).
+> Link public đi qua Cloudflare Tunnel và **chỉ sống trong phiên tunnel đang mở** — nếu
+> tắt máy hoặc đóng tunnel thì phải mở lại và link sẽ đổi. Kiểm tra lại link ngay trước
+> showdown; nếu đã chết, chạy `cloudflared tunnel --url http://localhost:8501` để lấy link mới.
 
 ## A2. Tool agent có
 

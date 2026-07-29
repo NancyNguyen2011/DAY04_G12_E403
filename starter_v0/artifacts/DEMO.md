@@ -3,7 +3,13 @@
 > Mục tiêu buổi demo: **kể câu chuyện agent bằng evidence**, không trình bày source code.
 > Mọi số trong file này lấy từ `runs/*.json` và `artifacts/version_log.csv`, mở được tại chỗ nếu bị hỏi.
 
-**Setup:** provider `nvidia` · model `openai/gpt-oss-120b` · 14 tool declarations · UI `streamlit run app.py` → http://localhost:8501
+**Setup:** provider `nvidia` · model `openai/gpt-oss-120b` · 14 tool declarations
+
+**UI:** local http://localhost:8501 · public **https://perhaps-enzyme-zshops-saves.trycloudflare.com**
+
+> Link public sống theo phiên tunnel. Tắt tunnel hoặc tắt máy là link chết và đổi khi mở lại.
+> Kiểm tra ngay trước khi lên; nếu chết: `cloudflared tunnel --url http://localhost:8501`.
+> Đây là link tạm và ai có link đều vào được — **đừng nhập dữ liệu nhạy cảm vào UI**, và tắt tunnel sau khi demo xong.
 
 ---
 
