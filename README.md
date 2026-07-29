@@ -323,5 +323,7 @@ Dự án được hoàn thành nhờ sự phối hợp của các thành viên n
 - **Nguyễn Thị Thu Trang**  
   **Vai trò:** Documentation & Report Lead  
   **Công việc:** Tổng hợp kết quả thực nghiệm, xây dựng kịch bản demo và hoàn thiện báo cáo kỹ thuật `REPORT.md`.
-
+- **Trần Lương Hoàng Anh**  
+  **Vai trò:** Team Lead & Agent Optimization  
+  **Công việc:** Điều phối tiến độ chung, thiết kế và tối ưu `system_prompt.md` qua các phiên bản.
 ---
