@@ -326,4 +326,7 @@ Dự án được hoàn thành nhờ sự phối hợp của các thành viên n
 - **Trần Lương Hoàng Anh**  
   **Vai trò:** Team Lead & Agent Optimization  
   **Công việc:** Điều phối tiến độ chung, thiết kế và tối ưu `system_prompt.md` qua các phiên bản.
+- **Nguyễn Trung Đức**  
+  **Vai trò:** Group Test Suite Designer  
+  **Công việc:** Thiết kế và kiểm thử 10 bộ Eval Cases của nhóm (`data/eval_group.json` gồm 5 single-turn và 5 multi-turn).
 ---
