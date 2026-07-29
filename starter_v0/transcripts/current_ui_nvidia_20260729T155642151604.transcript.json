@@ -1,0 +1,101 @@
+{
+  "transcript_id": "current_ui_nvidia_20260729T155642151604",
+  "version": "current",
+  "artifact_version": "current+pd749a31bc1bd+t6576e6fd32a0",
+  "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+  "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+  "surface": "streamlit_ui",
+  "provider": "nvidia",
+  "model": null,
+  "created_at": "2026-07-29T15:56:42",
+  "turns": [
+    {
+      "turn_index": 1,
+      "user": "bạn có thể làm gì",
+      "status": "answered",
+      "assistant_text": "Tôi là trợ lý nghiên cứu, có thể tìm tin tức, tra cứu thông tin trên web, tìm và tóm tắt các bài đăng trên mạng xã hội, đọc nội dung từ URL cụ thể, và tổng hợp các kết quả thành bản tóm tắt dạng markdown. Các tác vụ như giải toán, viết mã hay các công việc trợ lý chung không nằm trong phạm vi của tôi.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Tôi là trợ lý nghiên cứu, có thể tìm tin tức, tra cứu thông tin trên web, tìm và tóm tắt các bài đăng trên mạng xã hội, đọc nội dung từ URL cụ thể, và tổng hợp các kết quả thành bản tóm tắt dạng markdown. Các tác vụ như giải toán, viết mã hay các công việc trợ lý chung không nằm trong phạm vi của tôi.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "version": "v8",
+      "artifact_version": "v8+pd749a31bc1bd+t6576e6fd32a0",
+      "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+      "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+      "prompt_file": "system_prompt.v8.md",
+      "tools_file": "tools.v5.yaml",
+      "provider": "nvidia",
+      "model": null,
+      "transcript": "current_ui_nvidia_20260729T155642151604.transcript.json"
+    },
+    {
+      "turn_index": 2,
+      "user": "giúp mình xem tweets mới nhất trên X hôm nay",
+      "status": "waiting_for_user",
+      "assistant_text": "Bạn muốn xem tweet mới nhất của tài khoản nào trên X?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "question": "Bạn muốn xem tweet mới nhất của tài khoản nào trên X?",
+                "response_type": "text"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "clarify",
+              "args": {
+                "question": "Bạn muốn xem tweet mới nhất của tài khoản nào trên X?",
+                "response_type": "text"
+              },
+              "result": {
+                "tool": "ask_user",
+                "question": "Bạn muốn xem tweet mới nhất của tài khoản nào trên X?",
+                "response_type": "text",
+                "options": [],
+                "awaiting_user": true
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn muốn xem tweet mới nhất của tài khoản nào trên X?",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn muốn xem tweet mới nhất của tài khoản nào trên X?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ],
+      "version": "v8",
+      "artifact_version": "v8+pd749a31bc1bd+t6576e6fd32a0",
+      "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+      "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+      "prompt_file": "system_prompt.v8.md",
+      "tools_file": "tools.v5.yaml",
+      "provider": "nvidia",
+      "model": null,
+      "transcript": "current_ui_nvidia_20260729T155642151604.transcript.json"
+    }
+  ],
+  "comparisons": [],
+  "updated_at": "2026-07-29T15:58:52"
+}

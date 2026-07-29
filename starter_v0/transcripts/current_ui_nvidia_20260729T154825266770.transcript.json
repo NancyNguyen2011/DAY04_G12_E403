@@ -8,7 +8,32 @@
   "provider": "nvidia",
   "model": null,
   "created_at": "2026-07-29T15:48:25",
-  "turns": [],
+  "turns": [
+    {
+      "turn_index": 1,
+      "user": "bạn có thể làm gì",
+      "status": "answered",
+      "assistant_text": "Tôi có thể tìm tin tức, tra cứu thông tin trên web, khám phá các bài đăng trên mạng xã hội, đọc nội dung từ liên kết bạn cung cấp, và tổng hợp các kết quả thành bản tóm tắt dạng markdown.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Tôi có thể tìm tin tức, tra cứu thông tin trên web, khám phá các bài đăng trên mạng xã hội, đọc nội dung từ liên kết bạn cung cấp, và tổng hợp các kết quả thành bản tóm tắt dạng markdown.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "version": "v8",
+      "artifact_version": "v8+pd749a31bc1bd+t6576e6fd32a0",
+      "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+      "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+      "prompt_file": "system_prompt.v8.md",
+      "tools_file": "tools.v5.yaml",
+      "provider": "nvidia",
+      "model": null,
+      "transcript": "current_ui_nvidia_20260729T154825266770.transcript.json"
+    }
+  ],
   "comparisons": [
     {
       "scenario": "Đăng bản tin AI hôm nay lên Telegram giúp mình",
@@ -45,5 +70,5 @@
       ]
     }
   ],
-  "updated_at": "2026-07-29T15:49:18"
+  "updated_at": "2026-07-29T15:54:26"
 }
