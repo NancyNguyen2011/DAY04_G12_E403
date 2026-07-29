@@ -332,4 +332,7 @@ Dự án được hoàn thành nhờ sự phối hợp của các thành viên n
 - **Trịnh Quang Anh**  
   **Vai trò:** Custom Tool Developer.  
   **Công việc:** Phát triển & tích hợp Custom Tool mới (`weather`) bao gồm `tool.py`, `TOOL.md` và đăng ký hệ thống.
+- **Trần Thế Ninh**  
+  **Vai trò:** Evaluation & Versioning Lead  
+  **Công việc:** Quản lý vòng lặp đánh giá `run_eval.py`, ghi nhận kết quả thực nghiệm vào `version_log.csv`.
 ---
