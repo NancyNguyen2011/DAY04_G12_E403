@@ -9,14 +9,14 @@
 tools:
   # ---------------- Core tools ----------------
   - name: clarify
-    description: "Gửi một câu hỏi cho người dùng."
+    description: "Gửi một câu hỏi cho người dùng khi thiếu thông tin bắt buộc hoặc trước khi thực hiện hành động nhạy cảm (gửi/đăng). Luôn chỉ định rõ response_type: dùng 'yes_no' khi cần xác nhận trước hành động (VD: gửi/đăng), 'choice' khi đưa ra danh sách lựa chọn cụ thể (kèm options), 'text' khi cần người dùng cung cấp thông tin tự do (VD: handle, URL)."
     parameters:
       type: object
       properties:
         question: {type: string, default: "", description: "Câu hỏi"}
-        response_type: {type: string, enum: [text, yes_no, choice], default: "text", description: "Kiểu trả lời"}
+        response_type: {type: string, enum: [text, yes_no, choice], default: "text", description: "Kiểu trả lời mong đợi — luôn chỉ định rõ, đừng bỏ trống"}
         options: {type: array, default: [], items: {type: string}, description: "Các lựa chọn"}
-      required: [question]
+      required: [question, response_type]
 
   - name: timeline
     description: "Lấy các bài đăng gần đây."
