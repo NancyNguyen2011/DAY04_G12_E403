@@ -28,20 +28,28 @@ from versioning import artifact_version_dict, build_artifact_version
 ARTIFACTS = ROOT / "artifacts"
 HISTORY = ARTIFACTS / "history"
 
-# Every entry is byte-identical to the artifact its run JSON was produced with —
-# verified by sha256 against prompt_hash/tools_hash in runs/*.json. Two versions
-# share a file whenever that round changed the other artifact, which is what makes
-# the one-variable-at-a-time discipline visible here.
-ARTIFACT_SETS: dict[str, tuple[Path, Path]] = {
-    "v0 — baseline (base .65)": (HISTORY / "system_prompt.v0.md", HISTORY / "tools.v0.yaml"),
-    "v1 — prompt: boundary (base .85)": (HISTORY / "system_prompt.v1.md", HISTORY / "tools.v0.yaml"),
-    "v2 — tools: arg convention (base .90)": (HISTORY / "system_prompt.v1.md", HISTORY / "tools.v2.yaml"),
-    "v3 — prompt: clarify limits (base .95)": (HISTORY / "system_prompt.v3.md", HISTORY / "tools.v2.yaml"),
-    "v4 — prompt: multi-tool (base .95)": (HISTORY / "system_prompt.v4.md", HISTORY / "tools.v2.yaml"),
-    "v5 — tools: +4 team tools (base .95)": (HISTORY / "system_prompt.v4.md", HISTORY / "tools.v5.yaml"),
-    "v7 — prompt: derive args (group .80)": (HISTORY / "system_prompt.v7.md", HISTORY / "tools.v5.yaml"),
-    "v8 — prompt: scope first (group .90)": (HISTORY / "system_prompt.v8.md", HISTORY / "tools.v5.yaml"),
-    "current": (ARTIFACTS / "system_prompt.md", ARTIFACTS / "tools.yaml"),
+# (prompt, tools, pinned model | None). Every file is byte-identical to the artifact
+# its run JSON was produced with — verified by sha256 against prompt_hash/tools_hash
+# in runs/*.json. Two versions share a file whenever that round changed the other
+# artifact, which is what makes the one-variable-at-a-time discipline visible here.
+#
+# v6 is the odd one out: it changed no artifact at all. It reruns v5's exact prompt
+# and tools against a different model, so it pins the model instead. That is what
+# turns it into a controlled experiment — and why it needs a model slot here rather
+# than an artifact slot.
+NEMOTRON = "nvidia/llama-3.3-nemotron-super-49b-v1.5"
+
+ARTIFACT_SETS: dict[str, tuple[Path, Path, str | None]] = {
+    "v0 — baseline (base .65)": (HISTORY / "system_prompt.v0.md", HISTORY / "tools.v0.yaml", None),
+    "v1 — prompt: boundary (base .85)": (HISTORY / "system_prompt.v1.md", HISTORY / "tools.v0.yaml", None),
+    "v2 — tools: arg convention (base .90)": (HISTORY / "system_prompt.v1.md", HISTORY / "tools.v2.yaml", None),
+    "v3 — prompt: clarify limits (base .95)": (HISTORY / "system_prompt.v3.md", HISTORY / "tools.v2.yaml", None),
+    "v4 — prompt: multi-tool (base .95)": (HISTORY / "system_prompt.v4.md", HISTORY / "tools.v2.yaml", None),
+    "v5 — tools: +4 team tools (base .95)": (HISTORY / "system_prompt.v4.md", HISTORY / "tools.v5.yaml", None),
+    "v6 — model swap: nemotron (base .85)": (HISTORY / "system_prompt.v4.md", HISTORY / "tools.v5.yaml", NEMOTRON),
+    "v7 — prompt: derive args (group .80)": (HISTORY / "system_prompt.v7.md", HISTORY / "tools.v5.yaml", None),
+    "v8 — prompt: scope first (group .90)": (HISTORY / "system_prompt.v8.md", HISTORY / "tools.v5.yaml", None),
+    "current": (ARTIFACTS / "system_prompt.md", ARTIFACTS / "tools.yaml", None),
 }
 
 # Anthropic's radial spike mark: four tapered blades, widest away from the centre.
@@ -291,8 +299,8 @@ def render_turn(turn: dict[str, Any]) -> None:
         )
 
 
-def load_artifacts(label: str):
-    prompt_path, tools_path = ARTIFACT_SETS[label]
+def load_artifacts(label: str, fallback_model: str | None = None):
+    prompt_path, tools_path, pinned_model = ARTIFACT_SETS[label]
     if not (prompt_path.exists() and tools_path.exists()):
         return None
     declarations = load_tool_declarations(tools_path)
@@ -302,6 +310,11 @@ def load_artifacts(label: str):
         "system_prompt": prompt_path.read_text(encoding="utf-8"),
         "declarations": declarations,
         "openai_tools": to_openai_tools(declarations),
+        # A version that pins a model always wins over the sidebar box — otherwise
+        # picking v6 would silently run it on the wrong model and the experiment
+        # would mean nothing.
+        "model": pinned_model or fallback_model or None,
+        "model_pinned": pinned_model is not None,
     }
 
 
@@ -319,10 +332,12 @@ with st.sidebar:
             st.session_state.pop(key, None)
         st.rerun()
 
-active = load_artifacts(artifact_label)
+active = load_artifacts(artifact_label, model_override or None)
 if active is None:
     st.error(f"Thiếu artifact cho {artifact_label}")
     st.stop()
+if active["model_pinned"]:
+    st.sidebar.info(f"Version này ghim model `{active['model']}`, bỏ qua ô Model ở trên.")
 
 artifact_version = build_artifact_version(version_label or "ui", active["prompt_path"], active["tools_path"])
 
@@ -339,7 +354,7 @@ if "transcript_path" not in st.session_state:
         **artifact_version_dict(artifact_version),
         "surface": "streamlit_ui",
         "provider": provider_name,
-        "model": model_override or None,
+        "model": active["model"],
         "created_at": datetime.now().isoformat(timespec="seconds"),
         "turns": [],
         "comparisons": [],
@@ -366,7 +381,9 @@ with card:
         '<dl class="kv">'
         f'<dt>prompt</dt><dd>{html.escape(active["prompt_path"].name)}</dd>'
         f'<dt>tools</dt><dd>{html.escape(active["tools_path"].name)} · {len(active["declarations"])} tool</dd>'
-        f'<dt>provider</dt><dd>{html.escape(provider_name)} · {html.escape(model_override or "default")}</dd>'
+        f'<dt>provider</dt><dd>{html.escape(provider_name)}</dd>'
+        f'<dt>model</dt><dd>{html.escape(active["model"] or "default")}'
+        f'{" · ghim theo version" if active["model_pinned"] else ""}</dd>'
         f'<dt>transcript</dt><dd>{html.escape(st.session_state.transcript_path.name)}</dd>'
         "</dl></div>",
         unsafe_allow_html=True,
@@ -398,7 +415,7 @@ def run_once(bundle: dict[str, Any], messages: list[dict[str, str]]) -> dict[str
         provider=make_provider(provider_name),
         messages=messages,
         tools=bundle["openai_tools"],
-        model=model_override or None,
+        model=bundle["model"],
         max_tool_rounds=max_rounds,
     )
 
@@ -420,7 +437,7 @@ if user_text:
             "prompt_file": active["prompt_path"].name,
             "tools_file": active["tools_path"].name,
             "provider": provider_name,
-            "model": model_override or None,
+            "model": active["model"],
             "transcript": st.session_state.transcript_path.name,
         }
         st.session_state.turns.append(turn)
@@ -440,7 +457,9 @@ st.markdown(
     "<h2>So sánh version</h2>"
     "<p>Chạy cùng một scenario qua nhiều artifact version để thấy routing đổi ở đâu. "
     "Mỗi version dùng đúng prompt và tool declarations của chính nó, nên khác biệt trên "
-    "bảng là khác biệt thật chứ không phải do câu hỏi khác nhau.</p>"
+    "bảng là khác biệt thật chứ không phải do câu hỏi khác nhau. Chọn v5 cùng v6 để so "
+    "hai model trên cùng một artifact — đó là cách R13 được chứng minh là giới hạn của "
+    "model chứ không phải lỗi prompt.</p>"
     "</div>",
     unsafe_allow_html=True,
 )
@@ -460,7 +479,7 @@ if st.button("Chạy so sánh") and scenario and compare_labels:
     rows: list[dict[str, Any]] = []
     progress = st.progress(0.0)
     for position, label in enumerate(compare_labels, start=1):
-        bundle = load_artifacts(label)
+        bundle = load_artifacts(label, model_override or None)
         if bundle is None:
             rows.append({"version": label, "error": "thiếu artifact"})
             continue
@@ -473,6 +492,7 @@ if st.button("Chạy so sánh") and scenario and compare_labels:
             rows.append({
                 "version": label,
                 "artifact_version": version.artifact_version,
+                "model": bundle["model"] or "default",
                 "tools": call_summary(outcome["rounds"]),
                 "status": outcome["status"],
                 "assistant_text": outcome["assistant_text"],
@@ -501,6 +521,7 @@ if st.session_state.comparison:
     st.table([
         {
             "Version": row["version"],
+            "Model": row.get("model", ""),
             "Tool được gọi": row.get("tools", row.get("error", "")),
             "Status": row.get("status", ""),
             "artifact_version": row.get("artifact_version", ""),

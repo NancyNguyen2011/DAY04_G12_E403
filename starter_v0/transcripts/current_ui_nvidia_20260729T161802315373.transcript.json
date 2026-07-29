@@ -1,0 +1,201 @@
+{
+  "transcript_id": "current_ui_nvidia_20260729T161802315373",
+  "version": "current",
+  "artifact_version": "current+pd749a31bc1bd+t6576e6fd32a0",
+  "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+  "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+  "surface": "streamlit_ui",
+  "provider": "nvidia",
+  "model": null,
+  "created_at": "2026-07-29T16:18:02",
+  "turns": [
+    {
+      "turn_index": 1,
+      "user": "thế còn những tweets mới nhất của tài khoản thsottiaux thì sao",
+      "status": "answered",
+      "assistant_text": "Dưới đây là 5 tweet mới nhất của tài khoản **@thsottiaux** (từ mới nhất đến cũ hơn):\n\n| Ngày (UTC) | Nội dung (truncated) | Link | Lượt thích | Lượt retweet | Lượt xem |\n|------------|----------------------|------|-----------|--------------|----------|\n| 29 Jul 2026 04:45 | “One day we created the reset button and the rest is history.” | [x.com/thsottiaux/status/2082326593532473523](https://x.com/thsottiaux/status/2082326593532473523) | 5,261 | 163 | 248,764 |\n| 29 Jul 2026 04:09 | “Hello people of Sol! I've reset usage limits for all ChatGPT Work and Codex users… (cập nhật giới hạn sử dụng GPT‑5.6 Sol).” | [x.com/thsottiaux/status/2082317452755751098](https://x.com/thsottiaux/status/2082317452755751098) | 14,488 | 945 | 1,083,332 |\n| 28 Jul 2026 23:05 | “More opensource goodness. We have just released a CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities in your code.” | [x.com/thsottiaux/status/2082241164850364555](https://x.com/thsottiaux/status/2082241164850364555) | 6,241 | 491 | 382,413 |\n| 28 Jul 2026 05:44 | “Update. I have decided to take a break from X to recharge a bit. See you back tomorrow for more ChatGPT and Codex fun.” | [x.com/thsottiaux/status/2081979033261412537](https://x.com/thsottiaux/status/2081979033261412537) | 11,184 | 158 | 953,300 |\n| 28 Jul 2026 03:09 | “Back at the laptop. The usage limits have been reset for all paid users of Codex and ChatGPT Work. Weeeeeeeee. It's a good day!” | [x.com/thsottiaux/status/2081940052154933696](https://x.com/thsottiaux/status/2081940052154933696) | 12,920 | 596 | 1,140,202 |\n\n*Các số liệu (likes, retweets, views) được lấy trực tiếp từ kết quả truy vấn.*",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "timeline",
+              "args": {
+                "screenname": "thsottiaux",
+                "limit": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "timeline",
+              "args": {
+                "screenname": "thsottiaux",
+                "limit": 5
+              },
+              "result": {
+                "tool": "get_user_tweets",
+                "screenname": "thsottiaux",
+                "items": [
+                  {
+                    "title": "One day we created the reset button and the rest is history.",
+                    "summary": "One day we created the reset button and the rest is history.",
+                    "url": "https://x.com/thsottiaux/status/2082326593532473523",
+                    "source": "@thsottiaux",
+                    "date": "Wed Jul 29 04:45:22 +0000 2026",
+                    "metrics": {
+                      "favorites": 5261,
+                      "retweets": 163,
+                      "views": "248764"
+                    }
+                  },
+                  {
+                    "title": "Hello people of Sol! I've reset usage limits for all ChatGPT Work and Codex users. Together with that, a quick update on",
+                    "summary": "Hello people of Sol! I've reset usage limits for all ChatGPT Work and Codex users. Together with that, a quick update on GPT-5.6 Sol usage limits.\n\nOver the past few weeks, many of you have told us that Sol was using your Codex limits faster than expected. To be clear, we have not reduced usage on any subscription plans.\n\nWe’ve been digging into what was happening and have landed several improvements. As a result, we expect your usage to last around 18% longer during typical use of Sol. Some of you should already see significantly larger improvements from today. Tomorrow, we’ll also restore the five-hour limit that we temporarily paused while investigating.\n\nHere’s what we found:\n- GPT-5.6 Sol is much more willing to work for longer, make additional tool calls, and coordinate complex workflows across tools and subagents. That makes it better at solving hard problems, but some tasks were using far more than we intended.\n- Sol also works harder at the same reasoning effort than previous models. High on Sol can use more tokens than High did on GPT-5.5.\n- Programmatic tool calling, also referred to as code mode, gives Sol much more flexibility to run tool calls in parallel or continue working while waiting. But it also led to more responses per turn, more cached input tokens, and higher usage than expected.\n- This was particularly noticeable when Sol was waiting for tool calls to finish or running many web searches. We’ve improved how we handle both cases and are continuing to make code mode more efficient.\n- The impact was also very uneven. The median user actually found Sol quite token efficient, while some power users working on harder tasks saw their usage drain much faster. We were very focused on average and median usage before launch and missed some cases where the long tail could use significantly more usage.\n\nSol is a significant step forward in what Codex can do, but capability and efficiency do not always improve at the same pace, and some issues only become clear once people are using the model at real-world scale. We should have recognized this sooner and been more upfront about it.\n\nYou keep pushing the frontier and we’ll keep improving efficiency and sharing updates as we go.",
+                    "url": "https://x.com/thsottiaux/status/2082317452755751098",
+                    "source": "@thsottiaux",
+                    "date": "Wed Jul 29 04:09:02 +0000 2026",
+                    "metrics": {
+                      "favorites": 14488,
+                      "retweets": 945,
+                      "views": "1083332"
+                    }
+                  },
+                  {
+                    "title": "More opensource goodness. We have just released a CLI and TypeScript SDK for finding, validating, and fixing security vu",
+                    "summary": "More opensource goodness. We have just released a CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities in your code. Scan repositories, review changes, track findings over time, and run security checks in CI.\n\nhttps://t.co/nkfTbw8p7b",
+                    "url": "https://x.com/thsottiaux/status/2082241164850364555",
+                    "source": "@thsottiaux",
+                    "date": "Tue Jul 28 23:05:54 +0000 2026",
+                    "metrics": {
+                      "favorites": 6241,
+                      "retweets": 491,
+                      "views": "382413"
+                    }
+                  },
+                  {
+                    "title": "Update. I have decided to take a break from x to recharge a bit. See you back tomorrow for more ChatGPT and Codex fun. I",
+                    "summary": "Update. I have decided to take a break from x to recharge a bit. See you back tomorrow for more ChatGPT and Codex fun. It's going to be a fun week.",
+                    "url": "https://x.com/thsottiaux/status/2081979033261412537",
+                    "source": "@thsottiaux",
+                    "date": "Tue Jul 28 05:44:17 +0000 2026",
+                    "metrics": {
+                      "favorites": 11184,
+                      "retweets": 158,
+                      "views": "953300"
+                    }
+                  },
+                  {
+                    "title": "Back at the laptop. The usage limits have been reset for all paid users of Codex and ChatGPT Work. Weeeeeeeee. It's a go",
+                    "summary": "Back at the laptop. The usage limits have been reset for all paid users of Codex and ChatGPT Work. Weeeeeeeee. It's a good day!",
+                    "url": "https://x.com/thsottiaux/status/2081940052154933696",
+                    "source": "@thsottiaux",
+                    "date": "Tue Jul 28 03:09:23 +0000 2026",
+                    "metrics": {
+                      "favorites": 12920,
+                      "retweets": 596,
+                      "views": "1140202"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Dưới đây là 5 tweet mới nhất của tài khoản **@thsottiaux** (từ mới nhất đến cũ hơn):\n\n| Ngày (UTC) | Nội dung (truncated) | Link | Lượt thích | Lượt retweet | Lượt xem |\n|------------|----------------------|------|-----------|--------------|----------|\n| 29 Jul 2026 04:45 | “One day we created the reset button and the rest is history.” | [x.com/thsottiaux/status/2082326593532473523](https://x.com/thsottiaux/status/2082326593532473523) | 5,261 | 163 | 248,764 |\n| 29 Jul 2026 04:09 | “Hello people of Sol! I've reset usage limits for all ChatGPT Work and Codex users… (cập nhật giới hạn sử dụng GPT‑5.6 Sol).” | [x.com/thsottiaux/status/2082317452755751098](https://x.com/thsottiaux/status/2082317452755751098) | 14,488 | 945 | 1,083,332 |\n| 28 Jul 2026 23:05 | “More opensource goodness. We have just released a CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities in your code.” | [x.com/thsottiaux/status/2082241164850364555](https://x.com/thsottiaux/status/2082241164850364555) | 6,241 | 491 | 382,413 |\n| 28 Jul 2026 05:44 | “Update. I have decided to take a break from X to recharge a bit. See you back tomorrow for more ChatGPT and Codex fun.” | [x.com/thsottiaux/status/2081979033261412537](https://x.com/thsottiaux/status/2081979033261412537) | 11,184 | 158 | 953,300 |\n| 28 Jul 2026 03:09 | “Back at the laptop. The usage limits have been reset for all paid users of Codex and ChatGPT Work. Weeeeeeeee. It's a good day!” | [x.com/thsottiaux/status/2081940052154933696](https://x.com/thsottiaux/status/2081940052154933696) | 12,920 | 596 | 1,140,202 |\n\n*Các số liệu (likes, retweets, views) được lấy trực tiếp từ kết quả truy vấn.*",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "timeline",
+          "args": {
+            "screenname": "thsottiaux",
+            "limit": 5
+          },
+          "result": {
+            "tool": "get_user_tweets",
+            "screenname": "thsottiaux",
+            "items": [
+              {
+                "title": "One day we created the reset button and the rest is history.",
+                "summary": "One day we created the reset button and the rest is history.",
+                "url": "https://x.com/thsottiaux/status/2082326593532473523",
+                "source": "@thsottiaux",
+                "date": "Wed Jul 29 04:45:22 +0000 2026",
+                "metrics": {
+                  "favorites": 5261,
+                  "retweets": 163,
+                  "views": "248764"
+                }
+              },
+              {
+                "title": "Hello people of Sol! I've reset usage limits for all ChatGPT Work and Codex users. Together with that, a quick update on",
+                "summary": "Hello people of Sol! I've reset usage limits for all ChatGPT Work and Codex users. Together with that, a quick update on GPT-5.6 Sol usage limits.\n\nOver the past few weeks, many of you have told us that Sol was using your Codex limits faster than expected. To be clear, we have not reduced usage on any subscription plans.\n\nWe’ve been digging into what was happening and have landed several improvements. As a result, we expect your usage to last around 18% longer during typical use of Sol. Some of you should already see significantly larger improvements from today. Tomorrow, we’ll also restore the five-hour limit that we temporarily paused while investigating.\n\nHere’s what we found:\n- GPT-5.6 Sol is much more willing to work for longer, make additional tool calls, and coordinate complex workflows across tools and subagents. That makes it better at solving hard problems, but some tasks were using far more than we intended.\n- Sol also works harder at the same reasoning effort than previous models. High on Sol can use more tokens than High did on GPT-5.5.\n- Programmatic tool calling, also referred to as code mode, gives Sol much more flexibility to run tool calls in parallel or continue working while waiting. But it also led to more responses per turn, more cached input tokens, and higher usage than expected.\n- This was particularly noticeable when Sol was waiting for tool calls to finish or running many web searches. We’ve improved how we handle both cases and are continuing to make code mode more efficient.\n- The impact was also very uneven. The median user actually found Sol quite token efficient, while some power users working on harder tasks saw their usage drain much faster. We were very focused on average and median usage before launch and missed some cases where the long tail could use significantly more usage.\n\nSol is a significant step forward in what Codex can do, but capability and efficiency do not always improve at the same pace, and some issues only become clear once people are using the model at real-world scale. We should have recognized this sooner and been more upfront about it.\n\nYou keep pushing the frontier and we’ll keep improving efficiency and sharing updates as we go.",
+                "url": "https://x.com/thsottiaux/status/2082317452755751098",
+                "source": "@thsottiaux",
+                "date": "Wed Jul 29 04:09:02 +0000 2026",
+                "metrics": {
+                  "favorites": 14488,
+                  "retweets": 945,
+                  "views": "1083332"
+                }
+              },
+              {
+                "title": "More opensource goodness. We have just released a CLI and TypeScript SDK for finding, validating, and fixing security vu",
+                "summary": "More opensource goodness. We have just released a CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities in your code. Scan repositories, review changes, track findings over time, and run security checks in CI.\n\nhttps://t.co/nkfTbw8p7b",
+                "url": "https://x.com/thsottiaux/status/2082241164850364555",
+                "source": "@thsottiaux",
+                "date": "Tue Jul 28 23:05:54 +0000 2026",
+                "metrics": {
+                  "favorites": 6241,
+                  "retweets": 491,
+                  "views": "382413"
+                }
+              },
+              {
+                "title": "Update. I have decided to take a break from x to recharge a bit. See you back tomorrow for more ChatGPT and Codex fun. I",
+                "summary": "Update. I have decided to take a break from x to recharge a bit. See you back tomorrow for more ChatGPT and Codex fun. It's going to be a fun week.",
+                "url": "https://x.com/thsottiaux/status/2081979033261412537",
+                "source": "@thsottiaux",
+                "date": "Tue Jul 28 05:44:17 +0000 2026",
+                "metrics": {
+                  "favorites": 11184,
+                  "retweets": 158,
+                  "views": "953300"
+                }
+              },
+              {
+                "title": "Back at the laptop. The usage limits have been reset for all paid users of Codex and ChatGPT Work. Weeeeeeeee. It's a go",
+                "summary": "Back at the laptop. The usage limits have been reset for all paid users of Codex and ChatGPT Work. Weeeeeeeee. It's a good day!",
+                "url": "https://x.com/thsottiaux/status/2081940052154933696",
+                "source": "@thsottiaux",
+                "date": "Tue Jul 28 03:09:23 +0000 2026",
+                "metrics": {
+                  "favorites": 12920,
+                  "retweets": 596,
+                  "views": "1140202"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "version": "current",
+      "artifact_version": "current+pd749a31bc1bd+t6576e6fd32a0",
+      "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+      "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+      "prompt_file": "system_prompt.md",
+      "tools_file": "tools.yaml",
+      "provider": "nvidia",
+      "model": null,
+      "transcript": "current_ui_nvidia_20260729T161802315373.transcript.json"
+    }
+  ],
+  "comparisons": [],
+  "updated_at": "2026-07-29T16:18:26"
+}
