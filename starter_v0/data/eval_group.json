@@ -1,0 +1,248 @@
+{
+  "dataset_id": "day04_v2_group_eval_g12",
+  "dataset_role": "group",
+  "description": "10 eval cases do nhóm G12 thiết kế gồm 5 single-turn và 5 multi-turn",
+  "allowed_failure_types": [
+    "wrong_tool",
+    "wrong_arg_value",
+    "wrong_boundary",
+    "unnecessary_tool",
+    "out_of_scope",
+    "missing_info"
+  ],
+  "cases": [
+    {
+      "id": "G01_weather_custom_tool",
+      "phase": "B",
+      "query": "Thời tiết Hà Nội hôm nay thế nào?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather",
+            "args": {
+              "location": "Hanoi"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Gọi tool weather mới tạo để tra cứu thời tiết Hà Nội."
+      }
+    },
+    {
+      "id": "G02_arxiv_papers_search",
+      "phase": "B",
+      "query": "Tìm các bài báo khoa học về Large Language Models trên arXiv.",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "Large Language Models"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Tra cứu bài báo khoa học arXiv bằng tool papers."
+      }
+    },
+    {
+      "id": "G03_policy_internal_search",
+      "phase": "B",
+      "query": "Quy định của công ty về bảo mật dữ liệu data privacy là gì?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "policy",
+            "args": {
+              "query": "bảo mật dữ liệu"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Tra cứu tài liệu nội bộ company policy."
+      }
+    },
+    {
+      "id": "G04_missing_paper_url",
+      "phase": "B",
+      "query": "Tóm tắt nội dung bài báo khoa học này giúp mình.",
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Yêu cầu đọc bài báo nhưng không đưa URL/ID -> hỏi lại bằng clarify."
+      }
+    },
+    {
+      "id": "G05_out_of_scope_cooking",
+      "phase": "B",
+      "query": "Cho mình công thức nấu món phở bò Hà Nội truyền thống.",
+      "failure_type": "out_of_scope",
+      "expect": {
+        "no_tool": true
+      },
+      "metadata": {
+        "what_it_tests": "Câu hỏi nấu ăn ngoài phạm vi research -> trả lời trực tiếp hoặc từ chối, không gọi tool."
+      }
+    },
+    {
+      "id": "G06_weather_multiturn",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Thời tiết hôm nay thế nào?"
+        },
+        {
+          "role": "user",
+          "content": "À mình muốn xem ở Đà Nẵng"
+        },
+        {
+          "role": "user",
+          "content": "Cho mình biết thời tiết Đà Nẵng đi"
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather",
+            "args": {
+              "location": "Đà Nẵng"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Multi-turn bổ sung địa điểm Đà Nẵng cho tool weather."
+      }
+    },
+    {
+      "id": "G07_confirm_telegram_multiturn",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Viết bản tin tóm tắt công nghệ hôm nay"
+        },
+        {
+          "role": "user",
+          "content": "Bây giờ đăng bản tin đó lên Telegram cho mình"
+        }
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Multi-turn yêu cầu đăng tin -> phải xin xác nhận yes/no qua clarify."
+      }
+    },
+    {
+      "id": "G08_switch_from_news_to_arxiv",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm tin tức AI hôm nay"
+        },
+        {
+          "role": "user",
+          "content": "Thôi không tìm tin tức nữa, tìm bài báo arXiv về Transformer"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ tìm bài báo arXiv thôi"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "papers",
+            "args": {
+              "query": "Transformer"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Multi-turn chuyển đổi yêu cầu từ tin tức sang bài báo khoa học."
+      }
+    },
+    {
+      "id": "G09_multiturn_clarify_to_fetch",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Đọc bài viết này giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "https://arxiv.org/abs/1706.03762"
+        },
+        {
+          "role": "user",
+          "content": "Đọc đúng đường link vừa gửi nhé"
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "fetch",
+            "args": {
+              "url": "https://arxiv.org/abs/1706.03762"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "what_it_tests": "Multi-turn bổ sung URL sau khi được hỏi lại -> gọi fetch."
+      }
+    },
+    {
+      "id": "G10_multiturn_out_of_scope_math",
+      "phase": "B",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Chào bạn"
+        },
+        {
+          "role": "user",
+          "content": "Tính đạo hàm của hàm số y = sin(x) * cos(x) giúp mình"
+        }
+      ],
+      "failure_type": "out_of_scope",
+      "expect": {
+        "no_tool": true
+      },
+      "metadata": {
+        "what_it_tests": "Multi-turn hỏi bài tập giải toán -> không gọi tool."
+      }
+    }
+  ]
+}
