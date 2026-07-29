@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research Agent — G12 E403</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root{
+  --canvas:#faf9f5; --soft:#f5f0e8; --card:#efe9de; --strong:#e8e0d2;
+  --dark:#181715; --dark-soft:#1f1e1b; --dark-el:#252320;
+  --coral:#cc785c; --coral-a:#a9583e;
+  --ink:#141413; --body:#3d3d3a; --muted:#6c6a64;
+  --line:#e6dfd8; --on-dark:#faf9f5; --on-dark-soft:#cfcac1; --on-dark-lbl:#a8a49b;
+  --ok:#4f9d63; --bad:#c05252;
+  --serif:'Cormorant Garamond',Garamond,'Times New Roman',serif;
+  --sans:Inter,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--canvas);color:var(--body);font-family:var(--sans);overflow:hidden}
+
+.deck{height:100vh;width:100vw;position:relative}
+.slide{position:absolute;inset:0;padding:5vh 6vw;display:none;flex-direction:column;
+       animation:in .28s ease}
+.slide.on{display:flex}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.eyebrow{font-size:13px;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;
+         color:var(--coral-a);margin-bottom:14px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.4vw,76px);line-height:1.03;
+   letter-spacing:-1.6px;color:var(--ink)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.6vw,50px);line-height:1.1;
+   letter-spacing:-1px;color:var(--ink);margin-bottom:6px}
+.sub{font-size:clamp(15px,1.35vw,19px);line-height:1.5;color:var(--muted);max-width:70ch;margin-bottom:26px}
+p{font-size:clamp(14px,1.15vw,17px);line-height:1.6}
+
+.grid{display:grid;gap:16px;margin-top:auto;margin-bottom:auto}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+
+.card{background:var(--card);border-radius:12px;padding:22px 24px}
+.card.line{background:var(--canvas);border:1px solid var(--line)}
+.card h3{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.card p{font-size:14px;color:var(--body)}
+.card .num{font-family:var(--serif);font-size:44px;line-height:1;color:var(--ink);margin-bottom:6px}
+
+.dark{background:var(--dark);border-radius:12px;padding:22px 24px;color:var(--on-dark)}
+.dark h3{color:var(--on-dark)}
+.dark p{color:var(--on-dark-soft)}
+code,.mono{font-family:var(--mono);font-size:13px}
+pre{font-family:var(--mono);font-size:clamp(11px,.92vw,14px);line-height:1.65;color:var(--on-dark-soft);
+    background:var(--dark-el);border-radius:8px;padding:14px 16px;overflow:auto;white-space:pre-wrap}
+.lbl{font-size:11px;letter-spacing:1.3px;text-transform:uppercase;color:var(--on-dark-lbl);margin:10px 0 6px}
+
+table{border-collapse:collapse;width:100%;font-size:clamp(12px,1.02vw,16px)}
+th{text-align:left;font-weight:500;font-size:11px;letter-spacing:1.3px;text-transform:uppercase;
+   color:var(--muted);padding:0 12px 10px 0;border-bottom:1px solid var(--line)}
+td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line);color:var(--ink);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.mono,th.mono{font-family:var(--mono);font-size:.92em}
+.chg{color:var(--coral-a);font-weight:500}
+.keep{color:var(--muted)}
+.up{color:var(--ok);font-weight:500}
+.down{color:var(--bad);font-weight:500}
+
+.coral{background:var(--coral-a);border-radius:12px;padding:32px 36px;color:#fff}
+.coral h2{color:#fff}
+.coral p{color:#fff}
+
+.pill{display:inline-block;font-size:11px;font-weight:500;letter-spacing:1.4px;text-transform:uppercase;
+      border-radius:999px;padding:3px 12px;background:var(--coral-a);color:#fff}
+.pill.g{background:rgba(79,157,99,.16);color:var(--ok)}
+.pill.r{background:rgba(192,82,82,.16);color:var(--bad)}
+
+.foot{position:absolute;left:6vw;right:6vw;bottom:2.6vh;display:flex;justify-content:space-between;
+      align-items:center;font-size:12px;color:var(--muted);font-family:var(--mono)}
+.bar{position:absolute;top:0;left:0;height:3px;background:var(--coral);transition:width .28s}
+.spike{width:22px;height:22px;fill:var(--ink);flex:none}
+.title-wrap{margin:auto 0}
+.members{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{background:var(--card);border-radius:999px;padding:7px 15px;font-size:14px;color:var(--ink)}
+.big-stat{display:flex;gap:34px;align-items:baseline;margin:10px 0 20px}
+.big-stat .n{font-family:var(--serif);font-size:clamp(46px,6vw,86px);line-height:1;color:var(--ink)}
+.big-stat .arrow{font-size:28px;color:var(--coral)}
+ul{margin-left:18px}
+li{font-size:clamp(14px,1.12vw,17px);line-height:1.7;color:var(--body);margin-bottom:5px}
+li b{color:var(--ink);font-weight:600}
+.hint{position:absolute;right:6vw;top:3.5vh;font-size:11px;color:var(--muted);font-family:var(--mono)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<div class="deck" id="deck">
+
+<!-- 1 -->
+<section class="slide on">
+  <div class="title-wrap">
+    <div style="display:flex;align-items:center;gap:11px;margin-bottom:18px">
+      <svg class="spike" viewBox="0 0 24 24"><g><path d="M12 1.6 13.7 10.4 12 12.4 10.3 10.4Z"/><path d="M22.4 12 13.6 13.7 11.6 12 13.6 10.3Z"/><path d="M12 22.4 10.3 13.6 12 11.6 13.7 13.6Z"/><path d="M1.6 12 10.4 10.3 12.4 12 10.4 13.7Z"/></g></svg>
+      <span style="font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted)">AI20k · Day 04 · C401</span>
+    </div>
+    <h1>Research Agent</h1>
+    <p class="sub" style="margin-top:18px">Từ <b style="color:var(--ink)">0.65</b> lên <b style="color:var(--ink)">0.95</b> bằng 4 vòng sửa prompt và tool declaration — mỗi vòng đúng một biến, mỗi con số có một file log chứng minh.</p>
+    <div class="members">
+      <span class="chip">Trần Thế Ninh</span><span class="chip">Trần Lương Hoàng Anh</span>
+      <span class="chip">Trịnh Quang Anh</span><span class="chip">Đào Việt Phong</span>
+      <span class="chip">Nguyễn Trung Đức</span><span class="chip">Nguyễn Thị Thu Trang</span>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <div class="eyebrow">Bài toán</div>
+  <h2>Điều được chấm không phải "chatbot trả lời hay"</h2>
+  <p class="sub">Agent nhận yêu cầu → chọn tool → điền arguments → chạy thật. Sai một trong ba là hỏng, và người dùng thường không biết là nó vừa sai.</p>
+  <div class="grid g3">
+    <div class="card"><h3>Sai tool</h3><p>Hỏi tweet của một người mà đi tìm theo chủ đề.</p></div>
+    <div class="card"><h3>Sai argument</h3><p>Nhồi cả câu người dùng vào ô từ khoá tìm kiếm.</p></div>
+    <div class="card"><h3>Sai ranh giới</h3><p>Thiếu thông tin thì đoán bừa; được nhờ đăng bài thì tự đăng luôn.</p></div>
+  </div>
+  <div class="coral" style="margin-top:20px">
+    <p style="font-size:19px;line-height:1.5">Vòng lặp bắt buộc: <b>chạy eval thật → đọc log → đặt một giả thuyết → sửa đúng một thứ → chạy lại → ghi version log.</b></p>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <div class="eyebrow">Agent của nhóm</div>
+  <h2>14 tool, trong đó 4 tool tự viết</h2>
+  <p class="sub">Provider NVIDIA NIM · model <code>openai/gpt-oss-120b</code></p>
+  <div class="grid g2" style="margin-top:0">
+    <div class="card">
+      <h3>10 tool có sẵn</h3>
+      <p style="line-height:1.9"><code>clarify</code> hỏi lại &amp; xin xác nhận · <code>timeline</code> bài đăng của một tài khoản · <code>social_search</code> theo chủ đề · <code>lookup</code> tìm web · <code>fetch</code> đọc URL · <code>format</code> tạo digest · <code>send</code> Telegram · <code>policy</code> · <code>papers</code> · <code>paper_text</code></p>
+    </div>
+    <div class="dark">
+      <h3>4 tool nhóm tự viết</h3>
+      <p style="line-height:1.9"><b style="color:#fff">github_repos</b> — tìm repo open-source, lọc ngôn ngữ, xếp theo stars/updated<br>
+      <b style="color:#fff">wiki</b> — tra khái niệm, tự lùi vi ↔ en<br>
+      <b style="color:#fff">dedupe_rank</b> — gộp item từ nhiều tool, khử trùng lặp 3 tầng<br>
+      <b style="color:#fff">save_digest</b> — lưu ra file, có confirmation boundary</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide">
+  <div class="eyebrow">Baseline v0 · 13/20</div>
+  <h2>Starter cố tình đưa một prompt tệ</h2>
+  <p class="sub">Không phải agent kém — prompt được viết để phá. Đọc là thấy ngay ba câu gây hoạ.</p>
+  <div class="dark" style="margin-top:0">
+    <div class="lbl">artifacts/system_prompt.md — v0</div>
+    <pre>The user is busy and hates being asked questions. Whenever something is
+missing or unclear, <b style="color:#e08a8a">do not ask them back — just make a sensible guess</b>
+and call a tool right away. If a request mentions a tweet but doesn't say
+whose, <b style="color:#e08a8a">pick a well-known account like Sam Altman.</b>
+
+When the user wants to send, post, or publish something, <b style="color:#e08a8a">just go ahead
+and do it</b> so they don't have to wait.
+
+<b style="color:#e08a8a">Always finish the request in a single step. Pick one tool.</b></pre>
+  </div>
+  <p style="margin-top:18px">Và <code>tools.yaml</code> mô tả kiểu <code>clarify: "Gửi một câu hỏi cho người dùng."</code> — không nói khi nào dùng, không nói argument theo quy ước gì.</p>
+</section>
+
+<!-- 5 -->
+<section class="slide">
+  <div class="eyebrow">Đọc log v0</div>
+  <h2>7 case fail, gom đúng 3 nhóm nguyên nhân</h2>
+  <table style="margin-top:14px">
+    <tr><th style="width:24%">Nhóm</th><th style="width:18%">Case</th><th>Agent đã làm gì</th></tr>
+    <tr><td><b>Ranh giới</b></td><td class="mono">R08 R10<br>R11 R12</td>
+        <td>Gọi <code>lookup</code> để giải tích phân · đoán bừa <code>screenname="sama"</code> · bịa query thay vì xin URL · <b>tự gọi <code>send</code> với <code>confirmed=true</code> và tự soạn nội dung bản tin</b></td></tr>
+    <tr><td><b>Argument dài dòng</b></td><td class="mono">R03 M02</td>
+        <td><code>query="AI news"</code> và <code>"robotics news today"</code> thay vì keyword ngắn — thông tin đã nằm ở <code>topic</code> và <code>timeframe</code> rồi</td></tr>
+    <tr><td><b>Một tool duy nhất</b></td><td class="mono">R13</td>
+        <td>Yêu cầu cần 2 nguồn nhưng chỉ gọi 1 tool</td></tr>
+  </table>
+  <div class="coral" style="margin-top:22px;padding:22px 28px">
+    <p>Ba nhóm này map thành đúng ba vòng sửa, mỗi vòng một biến.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <div class="eyebrow">Vòng 1 · sửa system_prompt.md</div>
+  <h2>Dạy agent hỏi lại và xin phép</h2>
+  <div class="big-stat"><span class="n">0.65</span><span class="arrow">→</span><span class="n">0.85</span>
+    <span style="font-size:15px;color:var(--muted)">case_accuracy · 13/20 → 17/20</span></div>
+  <div class="grid g2" style="margin:0">
+    <div class="card line"><h3>Giả thuyết</h3>
+      <p>Prompt cấm hỏi lại và ép hành động ngay → cả nhóm ranh giới fail. Thay bằng quy tắc: thiếu thông tin bắt buộc thì <code>clarify</code>, hành động ghi ra ngoài thì xin phê duyệt trước, câu ngoài phạm vi thì không gọi tool.</p></div>
+    <div class="card line"><h3>Kết quả</h3>
+      <p><span class="pill g">pass</span> R08 ngoài phạm vi · R10 thiếu tài khoản · R11 thiếu URL<br><br>
+      <span class="pill r">còn fail</span> R12 — agent <i>có</i> gọi <code>clarify</code> nhưng chọn <code>response_type="text"</code> (xin nội dung) thay vì <code>"yes_no"</code> (xin phép)</p></div>
+  </div>
+  <p style="margin-top:18px;color:var(--muted)">R12 lộ ra rằng lỗi còn lại nằm ở <b style="color:var(--ink)">mô tả argument</b>, không phải ở prompt → đó là vòng 2.</p>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <div class="eyebrow">Vòng 2 · sửa tools.yaml</div>
+  <h2>Quy ước argument thuộc về tool, không thuộc prompt</h2>
+  <div class="big-stat"><span class="n">0.85</span><span class="arrow">→</span><span class="n">0.90</span>
+    <span style="font-size:15px;color:var(--muted)">17/20 → 18/20</span></div>
+  <div class="grid g2" style="margin:0">
+    <div class="dark">
+      <div class="lbl">trước</div>
+      <pre>query: {type: string, description: "Truy vấn"}</pre>
+      <div class="lbl">sau</div>
+      <pre>Từ khóa ngắn, chỉ gồm chủ thể cần tra.
+KHÔNG chép lại cả câu của người dùng và
+KHÔNG nhét thêm những gì đã được biểu diễn
+bằng argument khác: đã có topic="news" thì
+đừng thêm "tin tức" vào query, đã có
+timeframe thì đừng thêm "hôm nay".</pre>
+    </div>
+    <div class="card line">
+      <h3>Vì sao đặt ở tool chứ không ở prompt</h3>
+      <p>Vòng 3 và vòng sau đó viết lại prompt khá nhiều, mà quy ước argument <b>vẫn đúng</b> — vì chúng không nằm trong prompt.</p>
+      <p style="margin-top:14px"><span class="pill g">pass</span> R03 · M02 — <code>query</code> rút về <code>"AI"</code>, <code>"robotics"</code></p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <div class="eyebrow">Vòng 3 · sửa system_prompt.md</div>
+  <h2>Hỏi lại cũng cần có giới hạn</h2>
+  <div class="big-stat"><span class="n">0.90</span><span class="arrow">→</span><span class="n">0.95</span>
+    <span style="font-size:15px;color:var(--muted)">18/20 → 19/20</span></div>
+  <p class="sub" style="margin-bottom:18px">Vòng 1 dạy agent hỏi lại, nhưng không dạy <i>khi nào đừng hỏi</i>. Nó đâm ra hỏi quá tay.</p>
+  <div class="grid g2" style="margin:0">
+    <div class="card"><h3>Quy tắc thêm vào</h3>
+      <p><b>Xác nhận đi trước mọi câu hỏi khác.</b> Người dùng nhờ làm một hành động thì việc đầu tiên là xin phê duyệt hành động đó — không phải hỏi chi tiết còn thiếu. Chưa có nội dung cũng không phải lý do bỏ qua cổng xác nhận.</p></div>
+    <div class="card"><h3>Và</h3>
+      <p><b>Đừng hỏi thứ đã có mặc định.</b> Số kết quả, kiểu sắp xếp, khoảng thời gian, template — chọn mặc định rồi chạy, để người dùng sửa sau.</p></div>
+  </div>
+  <p style="margin-top:18px"><span class="pill g">pass</span> R12 — agent chuyển sang <code>clarify(response_type="yes_no")</code></p>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <div class="eyebrow">Kỷ luật thí nghiệm</div>
+  <h2>Hash chứng minh mỗi vòng chỉ đổi một thứ</h2>
+  <p class="sub">Không phải lời hứa — <code>run_eval.py</code> tự băm SHA-256 hai artifact và ghi vào mọi run JSON.</p>
+  <table>
+    <tr><th>Version</th><th>prompt_hash</th><th>tools_hash</th><th>case_accuracy</th></tr>
+    <tr><td>v0</td><td class="mono keep">f0c107a9d7a1</td><td class="mono keep">011c271ef0bb</td><td>0.65</td></tr>
+    <tr><td>v1</td><td class="mono chg">0aa16a42a998 ← đổi</td><td class="mono keep">011c271ef0bb giữ</td><td class="up">0.85</td></tr>
+    <tr><td>v2</td><td class="mono keep">0aa16a42a998 giữ</td><td class="mono chg">92c5d468ac0b ← đổi</td><td class="up">0.90</td></tr>
+    <tr><td>v3</td><td class="mono chg">9ea60fd47901 ← đổi</td><td class="mono keep">92c5d468ac0b giữ</td><td class="up">0.95</td></tr>
+  </table>
+  <p style="margin-top:22px">Mỗi dòng đúng một cột đổi màu. Đó là lý do nhóm dám nói vòng nào tạo ra mức tăng nào.</p>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <div class="eyebrow">Vòng 4 · vòng thất bại mà nhóm giữ lại</div>
+  <h2>Có lúc prompt không phải là câu trả lời</h2>
+  <p class="sub">R13 — "Tìm trên web tin AI hôm nay <b>và</b> tìm thêm tweet về AI" — cần 2 tool. Nhóm viết lại prompt, đưa quy tắc lên đầu, nói thẳng bằng cả hai thứ tiếng.</p>
+  <div class="grid g3" style="margin:0">
+    <div class="card line"><div class="num">0.95</div><p>v3 trước khi sửa</p></div>
+    <div class="card line"><div class="num">0.95</div><p>v4 sau khi sửa — <b>không đổi gì</b></p></div>
+    <div class="dark"><h3>Nên đi probe thẳng model</h3>
+      <p>Gọi API 3 cách diễn đạt, kể cả câu trần trụi <i>"make exactly two tool calls in this one response"</i>.</p>
+      <p style="margin-top:10px"><code style="color:#e08a8a">gpt-oss-120b → 1 call (0/3)</code><br><code style="color:#7fd191">nemotron-49b → 2 call (3/3)</code></p></div>
+  </div>
+  <div class="coral" style="margin-top:20px;padding:22px 28px">
+    <p>Giữ nguyên <code>prompt_hash</code> và <code>tools_hash</code>, chỉ đổi model → <b>R13 chuyển sang PASS.</b> R13 là trần của model, không phải lỗi prompt.</p>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+  <div class="eyebrow">Nhưng đổi model không phải là thắng</div>
+  <h2>Sửa được một case, hỏng ba case khác</h2>
+  <table style="margin-top:10px">
+    <tr><th>Model</th><th>artifact</th><th>R13</th><th>Case khác</th><th>Tổng</th></tr>
+    <tr><td class="mono">openai/gpt-oss-120b</td><td class="mono keep">pac197… + t6576…</td><td><span class="pill r">fail</span></td><td>—</td><td class="up">0.95</td></tr>
+    <tr><td class="mono">nemotron-super-49b</td><td class="mono keep">pac197… + t6576… <i>(y hệt)</i></td><td><span class="pill g">pass</span></td><td>hỏng R01 · R12 · M03 — hỏi lại quá tay</td><td class="down">0.85</td></tr>
+  </table>
+  <div class="grid g2" style="margin-top:26px">
+    <div class="card"><h3>Quyết định kỹ thuật</h3><p>Giữ <code>gpt-oss-120b</code> và <b>chấp nhận R13</b> như một giới hạn đã biết, thay vì đổi model để đẹp một case rồi mất ba case.</p></div>
+    <div class="card"><h3>Vì sao đáng kể trong buổi này</h3><p>Nếu chỉ nhìn con số 0.95 mà không probe, nhóm sẽ đốt thêm nhiều vòng prompt vô ích cho một thứ prompt không sửa được.</p></div>
+  </div>
+</section>
+
+<!-- 12 -->
+<section class="slide">
+  <div class="eyebrow">10 case nhóm tự viết</div>
+  <h2>Base eval 0.95 trông như đã xong — cho tới khi tự viết eval</h2>
+  <div class="big-stat"><span class="n">0.95</span>
+    <span style="font-size:15px;color:var(--muted)">base · 20 case</span>
+    <span class="arrow">→</span><span class="n" style="color:var(--bad)">0.80</span>
+    <span style="font-size:15px;color:var(--muted)">group · 10 case tự viết</span></div>
+  <div class="grid g2" style="margin:0">
+    <div class="card line"><h3>G03 — tool mới không kế thừa ranh giới</h3>
+      <p><code>save_digest</code> ghi ra file, đáng lẽ phải xin phê duyệt như <code>send</code>. Agent lại đi hỏi xin nội dung markdown.</p></div>
+    <div class="card line"><h3>G06 — hỏi thứ đã có trong hội thoại</h3>
+      <p>Sau 2 lượt nói rõ muốn công cụ open-source, agent vẫn hỏi "bạn muốn tìm repo về gì?".</p></div>
+  </div>
+  <p style="margin-top:20px">Cả hai <b>không có case tương ứng trong 20 case base</b>. Đây chính là lý do bài lab bắt tự viết eval.</p>
+</section>
+
+<!-- 13 -->
+<section class="slide">
+  <div class="eyebrow">Vòng 5 và 6 · trên team eval</div>
+  <h2>Một fix có thể phá thứ khác</h2>
+  <table style="margin-top:10px">
+    <tr><th>Version</th><th>Sửa gì</th><th>G03</th><th>G06</th><th>G10</th><th>Tổng</th></tr>
+    <tr><td>v5</td><td class="keep">chưa sửa</td><td><span class="pill r">fail</span></td><td><span class="pill r">fail</span></td><td><span class="pill g">pass</span></td><td>0.80</td></tr>
+    <tr><td>v7</td><td>suy argument từ ngữ cảnh + giữ cổng xác nhận</td><td><span class="pill g">pass</span></td><td><span class="pill r">fail</span></td><td><span class="pill r">fail</span></td><td>0.80</td></tr>
+    <tr><td>v8</td><td>rào lại: ngữ cảnh quyết định <i>tìm gì</i>, phạm vi quyết định <i>có tìm không</i></td><td><span class="pill g">pass</span></td><td><span class="pill g">pass</span></td><td><span class="pill g">pass</span></td><td class="up">0.90</td></tr>
+  </table>
+  <div class="coral" style="margin-top:24px;padding:24px 30px">
+    <p style="font-size:18px">v7 nhìn tổng điểm thì tưởng vô ích — <b>0.80 → 0.80</b>. Mở từng case mới thấy nó sửa được một cái và làm hỏng một cái khác. Đó là lý do phải đọc log chứ không đọc điểm.</p>
+  </div>
+</section>
+
+<!-- 14 -->
+<section class="slide">
+  <div class="eyebrow">UI</div>
+  <h2>Không chỉ có chat — có bằng chứng</h2>
+  <div class="grid g4" style="margin:0">
+    <div class="card"><h3>Request &amp; response</h3><p>Luôn hiện, không phải mở gì.</p></div>
+    <div class="card"><h3>Tool trace</h3><p>Mở expander: tên tool, args, round, status, result hoặc error.</p></div>
+    <div class="card"><h3>Artifact version</h3><p>artifact_version, hai hash, tên file prompt/tools, transcript.</p></div>
+    <div class="dark"><h3>So sánh version</h3><p>Một scenario chạy qua nhiều version, ra bảng cạnh nhau.</p></div>
+  </div>
+  <div class="dark" style="margin-top:20px">
+    <div class="lbl">"Đăng bản tin AI hôm nay lên Telegram giúp mình"</div>
+    <pre>v0 — baseline   lookup → format → send      answered          <b style="color:#e08a8a">đã gửi thật, không hỏi ai</b>
+current         clarify                    waiting_for_user  <b style="color:#7fd191">dừng lại xin xác nhận</b></pre>
+  </div>
+</section>
+
+<!-- 15 -->
+<section class="slide">
+  <div class="eyebrow">Kết quả</div>
+  <h2>Số cuối cùng và cách kiểm chứng</h2>
+  <div class="grid g4" style="margin:0 0 20px">
+    <div class="card line"><div class="num">0.95</div><p>base · 19/20</p></div>
+    <div class="card line"><div class="num">0.90</div><p>team eval · 9/10</p></div>
+    <div class="card line"><div class="num">14</div><p>tool · 4 tự viết</p></div>
+    <div class="card line"><div class="num">11</div><p>run JSON · 170 dòng phân tích</p></div>
+  </div>
+  <div class="grid g2" style="margin:0">
+    <div class="card"><h3>Metric đều hợp lệ</h3><p>Mọi run có <code>provider_error_cases: 0</code> và <code>measured_cases = total_cases</code>. Case <code>tool_results</code> có error đã review thủ công.</p></div>
+    <div class="card"><h3>Đã tái lập độc lập</h3><p>Run <code>v8-check</code> chạy lại ở thời điểm khác, cùng artifact <code>pd749a31bc1bd + t6576e6fd32a0</code> → ra đúng 19/20.</p></div>
+  </div>
+  <p style="margin-top:20px" class="mono">Thử tại: https://perhaps-enzyme-zshops-saves.trycloudflare.com</p>
+</section>
+
+<!-- 16 -->
+<section class="slide">
+  <div class="eyebrow">Rút ra</div>
+  <h2>Bốn thứ nhóm mang về</h2>
+  <ul style="margin-top:14px">
+    <li><b>Sửa hành vi thì vào prompt, sửa quy ước argument thì vào tool declaration.</b> Chia đúng chỗ thì viết lại prompt không làm hỏng argument.</li>
+    <li><b>Không phải lỗi nào cũng sửa được bằng prompt.</b> R13 là giới hạn model — chỉ biết chắc sau khi giữ artifact cố định và đổi mỗi model.</li>
+    <li><b>Điểm không đổi không có nghĩa là không có gì xảy ra.</b> v7 giữ nguyên 0.80 nhưng bên trong là một case được sửa và một case bị phá.</li>
+    <li><b>Eval tự viết mới tìm ra lỗi của chính mình.</b> Base eval 0.95; 10 case tự viết kéo xuống 0.80 và chỉ ra hai lỗi thật.</li>
+  </ul>
+  <div class="coral" style="margin-top:auto;padding:26px 32px">
+    <p style="font-size:19px">Thứ nhóm học được không phải là bộ prompt cuối cùng — mà là <b>cách dùng log để biết mình vừa sửa đúng hay sai</b>.</p>
+  </div>
+</section>
+
+</div>
+
+<div class="foot">
+  <span id="label"></span>
+  <span><span id="n">1</span> / <span id="tot">16</span> &nbsp;·&nbsp; ← → space</span>
+</div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const labels=['Mở đầu','Bài toán','Agent','Baseline v0','Log v0','Vòng 1','Vòng 2','Vòng 3','Hash','Vòng 4','Model','Team eval','v7 → v8','UI','Kết quả','Rút ra'];
+let i=0;
+const bar=document.getElementById('bar'),num=document.getElementById('n'),lab=document.getElementById('label');
+document.getElementById('tot').textContent=slides.length;
+function go(n){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+  bar.style.width=((i+1)/slides.length*100)+'%';
+  num.textContent=i+1; lab.textContent=labels[i]||'';
+  location.hash=i+1;
+}
+addEventListener('keydown',e=>{
+  if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();go(i+1)}
+  if(['ArrowLeft','PageUp','Backspace'].includes(e.key)){e.preventDefault();go(i-1)}
+  if(e.key==='Home')go(0); if(e.key==='End')go(slides.length-1);
+  if(e.key==='f'){document.documentElement.requestFullscreen?.()}
+});
+addEventListener('click',e=>{if(!e.target.closest('a'))go(i + (e.clientX < innerWidth*0.25 ? -1 : 1))});
+go(parseInt(location.hash.slice(1))-1||0);
+</script>
+</body>
+</html>
