@@ -1,1 +1,5 @@
 version,author,changed_artifact,artifact_version,prompt_hash,tools_hash,reason,hypothesis,metric_name,metric_before,metric_after,run_file
+v0,Team,artifacts/system_prompt.md,v0,,baseline run,baseline prompt had bad guidelines,case_accuracy,0.0,0.65,runs/v0_B_base_openrouter_20260729T145458737262.json
+v1,Team,artifacts/system_prompt.md,v1,,fix routing and clarification rules,adding strict routing for news and clarification for missing info will increase accuracy,case_accuracy,0.65,0.85,runs/v1_B_base_openrouter_20260729T151154362888.json
+v2,Team,artifacts/system_prompt.md,v2,,fix R10 R12 M06 edge cases,adding explicit rules for response_type yes_no and dropping social search when switching to web will reach 100 percent,case_accuracy,0.85,1.0,runs/v2_B_base_openrouter_20260729T151439866670.json
+v3,Team,artifacts/tools.yaml,v3,,add custom weather tool,adding weather tool declaration should not degrade base suite performance,case_accuracy,1.0,1.0,runs/v3_B_base_openrouter_20260729T153047961176.json
