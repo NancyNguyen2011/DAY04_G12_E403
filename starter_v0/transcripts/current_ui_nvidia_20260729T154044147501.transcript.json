@@ -1,0 +1,77 @@
+{
+  "transcript_id": "current_ui_nvidia_20260729T154044147501",
+  "version": "current",
+  "artifact_version": "current+pd749a31bc1bd+t6576e6fd32a0",
+  "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+  "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+  "surface": "streamlit_ui",
+  "provider": "nvidia",
+  "model": null,
+  "created_at": "2026-07-29T15:40:44",
+  "turns": [
+    {
+      "turn_index": 1,
+      "user": "Git repo mới nhất được đưa lên hôm nay là gì",
+      "status": "waiting_for_user",
+      "assistant_text": "Bạn muốn tìm repo GitHub mới nhất hôm nay về chủ đề nào? Vui lòng cung cấp từ khóa mô tả nội dung hoặc lĩnh vực của repo bạn quan tâm.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "question": "Bạn muốn tìm repo GitHub mới nhất hôm nay về chủ đề nào? Vui lòng cung cấp từ khóa mô tả nội dung hoặc lĩnh vực của repo bạn quan tâm.",
+                "response_type": "text"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "clarify",
+              "args": {
+                "question": "Bạn muốn tìm repo GitHub mới nhất hôm nay về chủ đề nào? Vui lòng cung cấp từ khóa mô tả nội dung hoặc lĩnh vực của repo bạn quan tâm.",
+                "response_type": "text"
+              },
+              "result": {
+                "tool": "ask_user",
+                "question": "Bạn muốn tìm repo GitHub mới nhất hôm nay về chủ đề nào? Vui lòng cung cấp từ khóa mô tả nội dung hoặc lĩnh vực của repo bạn quan tâm.",
+                "response_type": "text",
+                "options": [],
+                "awaiting_user": true
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn muốn tìm repo GitHub mới nhất hôm nay về chủ đề nào? Vui lòng cung cấp từ khóa mô tả nội dung hoặc lĩnh vực của repo bạn quan tâm.",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn muốn tìm repo GitHub mới nhất hôm nay về chủ đề nào? Vui lòng cung cấp từ khóa mô tả nội dung hoặc lĩnh vực của repo bạn quan tâm.",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ],
+      "version": "v5",
+      "artifact_version": "v5+pac197bc844f6+t6576e6fd32a0",
+      "prompt_hash": "ac197bc844f62c42696373f2665db2db196ea59f47817573f6d2c62228d5a355",
+      "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+      "prompt_file": "system_prompt.v4.md",
+      "tools_file": "tools.v5.yaml",
+      "provider": "nvidia",
+      "model": null,
+      "transcript": "current_ui_nvidia_20260729T154044147501.transcript.json"
+    }
+  ],
+  "comparisons": [],
+  "updated_at": "2026-07-29T15:41:26"
+}

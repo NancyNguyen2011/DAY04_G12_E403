@@ -1,0 +1,39 @@
+{
+  "transcript_id": "v5_ui_nvidia_20260729T154151301045",
+  "version": "v5",
+  "artifact_version": "v5+pac197bc844f6+t6576e6fd32a0",
+  "prompt_hash": "ac197bc844f62c42696373f2665db2db196ea59f47817573f6d2c62228d5a355",
+  "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+  "surface": "streamlit_ui",
+  "provider": "nvidia",
+  "model": null,
+  "created_at": "2026-07-29T15:41:51",
+  "turns": [
+    {
+      "turn_index": 1,
+      "user": "bạn có thể làm gì",
+      "status": "answered",
+      "assistant_text": "Tôi có thể thực hiện các nhiệm vụ nghiên cứu: tìm tin tức, tra cứu thông tin trên web, tìm và tóm tắt các bài đăng trên mạng xã hội, đọc nội dung từ một URL cụ thể, và tổng hợp các mục thu thập được thành bản tóm tắt dạng markdown. Các công việc khác như giải toán, viết mã hay các trợ lý chung không nằm trong phạm vi của tôi.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": "Tôi có thể thực hiện các nhiệm vụ nghiên cứu: tìm tin tức, tra cứu thông tin trên web, tìm và tóm tắt các bài đăng trên mạng xã hội, đọc nội dung từ một URL cụ thể, và tổng hợp các mục thu thập được thành bản tóm tắt dạng markdown. Các công việc khác như giải toán, viết mã hay các trợ lý chung không nằm trong phạm vi của tôi.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [],
+      "version": "current",
+      "artifact_version": "current+pd749a31bc1bd+t6576e6fd32a0",
+      "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+      "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+      "prompt_file": "system_prompt.md",
+      "tools_file": "tools.yaml",
+      "provider": "nvidia",
+      "model": null,
+      "transcript": "v5_ui_nvidia_20260729T154151301045.transcript.json"
+    }
+  ],
+  "comparisons": [],
+  "updated_at": "2026-07-29T15:47:57"
+}

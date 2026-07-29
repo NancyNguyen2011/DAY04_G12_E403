@@ -30,12 +30,20 @@ HISTORY = ARTIFACTS / "history"
 
 # Each label points at the prompt + tool declarations that version actually ran with,
 # so a demo can replay one scenario across versions and show the routing change.
+#
+# Every entry is byte-identical to the artifact its run JSON was produced with —
+# verified by sha256 against prompt_hash/tools_hash in runs/*.json. Two versions
+# share a file whenever that round changed the other artifact, which is what makes
+# the one-variable-at-a-time discipline visible here.
 ARTIFACT_SETS: dict[str, tuple[Path, Path]] = {
-    "v0 — baseline": (HISTORY / "system_prompt.v0.md", HISTORY / "tools.v0.yaml"),
-    "v1 — boundary fix": (HISTORY / "system_prompt.v1.md", HISTORY / "tools.v0.yaml"),
-    "v2 — tool declarations": (HISTORY / "system_prompt.v1.md", HISTORY / "tools.v2.yaml"),
-    "v3 — clarify limits": (HISTORY / "system_prompt.v3.md", HISTORY / "tools.v2.yaml"),
-    "v5 — team tools added": (HISTORY / "system_prompt.v4.md", HISTORY / "tools.v5.yaml"),
+    "v0 — baseline (base .65)": (HISTORY / "system_prompt.v0.md", HISTORY / "tools.v0.yaml"),
+    "v1 — prompt: boundary (base .85)": (HISTORY / "system_prompt.v1.md", HISTORY / "tools.v0.yaml"),
+    "v2 — tools: arg convention (base .90)": (HISTORY / "system_prompt.v1.md", HISTORY / "tools.v2.yaml"),
+    "v3 — prompt: clarify limits (base .95)": (HISTORY / "system_prompt.v3.md", HISTORY / "tools.v2.yaml"),
+    "v4 — prompt: multi-tool (base .95)": (HISTORY / "system_prompt.v4.md", HISTORY / "tools.v2.yaml"),
+    "v5 — tools: +4 team tools (base .95)": (HISTORY / "system_prompt.v4.md", HISTORY / "tools.v5.yaml"),
+    "v7 — prompt: derive args (group .80)": (HISTORY / "system_prompt.v7.md", HISTORY / "tools.v5.yaml"),
+    "v8 — prompt: scope first (group .90)": (HISTORY / "system_prompt.v8.md", HISTORY / "tools.v5.yaml"),
     "current": (ARTIFACTS / "system_prompt.md", ARTIFACTS / "tools.yaml"),
 }
 
@@ -353,7 +361,7 @@ scenario = st.text_input(
 compare_labels = st.multiselect(
     "Version cần so sánh",
     list(ARTIFACT_SETS),
-    default=["v0 — baseline", "current"],
+    default=["v0 — baseline (base .65)", "current"],
 )
 
 if st.button("Chạy so sánh") and scenario and compare_labels:
