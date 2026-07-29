@@ -314,13 +314,3 @@ Kênh nộp, quy tắc đặt tên và deadline cuối theo thông báo của gi
    - **v3 + Report B — 17:15–17:35:** áp dụng feedback, chạy v3 và hoàn thiện report bằng evidence.
    - **Final gate — 17:35–17:40:** kiểm tra và chuẩn bị nộp `starter_v0/`.
 7. **Kahoot Recap — 17:40–18:00.**
-
----
-
-##  Contributors & Work Breakdown (Group 12 - E403)
-
-Dự án được hoàn thành nhờ sự phối hợp đồng bộ của các thành viên nhóm G12:
-
-| STT | Họ và tên | Vai trò | Phân công công việc chính |
-| :---: | :--- | :--- | :--- |
-| **3** | **Trịnh Quang Anh** | Custom Tool Developer | Phát triển & tích hợp Custom Tool mới (`weather`) bao gồm `tool.py`, `TOOL.md` và đăng ký hệ thống. |
