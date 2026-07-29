@@ -3,6 +3,10 @@ from __future__ import annotations
 import argparse
 import json
 import re
+<<<<<<< HEAD
+=======
+import sys
+>>>>>>> 922c28cf1b48a09ab52fa2a3d13f1a9e635b5ff0
 from datetime import datetime
 from pathlib import Path
 from typing import Any
@@ -13,6 +17,16 @@ from providers.base import ToolCall
 from tools import TOOL_FUNCTIONS, load_tool_declarations, to_openai_tools
 from versioning import artifact_version_dict, build_artifact_version
 
+<<<<<<< HEAD
+=======
+# Windows consoles default to a legacy codepage (e.g. cp1252) that cannot
+# encode Vietnamese text or emoji. Since prompts/tool args/results here are
+# largely Vietnamese, any print() with such characters would otherwise crash
+# mid-conversation regardless of the terminal used to launch this process.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+>>>>>>> 922c28cf1b48a09ab52fa2a3d13f1a9e635b5ff0
 
 ROOT = Path(__file__).parent
 ARTIFACTS_DIR = ROOT / "artifacts"
@@ -112,7 +126,11 @@ def run_model_tool_loop(
         non_clarification_events: list[dict[str, Any]] = []
 
         for call in calls:
+<<<<<<< HEAD
             print(f"🔧 {call.name}({json.dumps(call.args, ensure_ascii=False, sort_keys=True)})")
+=======
+            print(f"[tool] {call.name}({json.dumps(call.args, ensure_ascii=False, sort_keys=True)})")
+>>>>>>> 922c28cf1b48a09ab52fa2a3d13f1a9e635b5ff0
             event = execute_tool_call(call)
             round_record["tool_results"].append(event)
             all_tool_events.append(event)

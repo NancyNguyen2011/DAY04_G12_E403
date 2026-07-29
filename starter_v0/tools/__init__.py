@@ -17,6 +17,14 @@ from .policy.tool import search_company_policy
 from .social_search.tool import search_tweets
 from .send.tool import send_telegram
 from .lookup.tool import web_search
+<<<<<<< HEAD
+=======
+from .dedupe_rank.tool import dedupe_and_rank
+from .github_repos.tool import search_github_repos
+from .save_digest.tool import save_digest
+from .wiki.tool import wiki_lookup
+from .weather.tool import get_weather
+>>>>>>> 922c28cf1b48a09ab52fa2a3d13f1a9e635b5ff0
 
 
 # NOTE (starter_v0): tool names here are intentionally vague. These keys are the
@@ -35,6 +43,15 @@ TOOL_FUNCTIONS = {
     "policy": search_company_policy,
     "papers": arxiv_search,
     "paper_text": get_arxiv_paper_text,
+<<<<<<< HEAD
+=======
+    # ---- Team-written tools (declarations added to tools.yaml after v4) ----
+    "github_repos": search_github_repos,
+    "wiki": wiki_lookup,
+    "dedupe_rank": dedupe_and_rank,
+    "save_digest": save_digest,
+    "weather": get_weather,
+>>>>>>> 922c28cf1b48a09ab52fa2a3d13f1a9e635b5ff0
 }
 
 

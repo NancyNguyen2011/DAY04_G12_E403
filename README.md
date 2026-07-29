@@ -314,3 +314,22 @@ Kênh nộp, quy tắc đặt tên và deadline cuối theo thông báo của gi
    - **v3 + Report B — 17:15–17:35:** áp dụng feedback, chạy v3 và hoàn thiện report bằng evidence.
    - **Final gate — 17:35–17:40:** kiểm tra và chuẩn bị nộp `starter_v0/`.
 7. **Kahoot Recap — 17:40–18:00.**
+
+---
+
+## Contributors & Work Breakdown (Group 12 - E403)
+
+Dự án được hoàn thành nhờ sự phối hợp của các thành viên nhóm G12:
+- **Nguyễn Thị Thu Trang**  
+  **Vai trò:** Documentation & Report Lead  
+  **Công việc:** Tổng hợp kết quả thực nghiệm, xây dựng kịch bản demo và hoàn thiện báo cáo kỹ thuật `REPORT.md`.
+- **Trần Lương Hoàng Anh**  
+  **Vai trò:** Team Lead & Agent Optimization  
+  **Công việc:** Điều phối tiến độ chung, thiết kế và tối ưu `system_prompt.md` qua các phiên bản.
+- **Nguyễn Trung Đức**  
+  **Vai trò:** Group Test Suite Designer  
+  **Công việc:** Thiết kế và kiểm thử 10 bộ Eval Cases của nhóm (`data/eval_group.json` gồm 5 single-turn và 5 multi-turn).
+- **Trịnh Quang Anh**  
+  **Vai trò:** Custom Tool Developer.  
+  **Công việc:** Phát triển & tích hợp Custom Tool mới (`weather`) bao gồm `tool.py`, `TOOL.md` và đăng ký hệ thống.
+---
