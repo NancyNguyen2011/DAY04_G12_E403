@@ -1,34 +1,34 @@
 {
-  "run_id": "v2_B_base_openrouter_20260729T151245442464",
-  "version": "v2",
-  "artifact_version": "v2+p91ca574bbee1+t31089480be1d",
-  "prompt_hash": "91ca574bbee128abdd7c510b51bd56af83157f80eb59c1f6579686a7a606aa5c",
-  "tools_hash": "31089480be1d500a3b32d1c3e3d246d2eea3edaac9343c64f0a4dba137ccf403",
+  "run_id": "v4_B_base_nvidia_20260729T152003022520",
+  "version": "v4",
+  "artifact_version": "v4+pac197bc844f6+t92c5d468ac0b",
+  "prompt_hash": "ac197bc844f62c42696373f2665db2db196ea59f47817573f6d2c62228d5a355",
+  "tools_hash": "92c5d468ac0b4928daa60c4c16a93e58eebc1fe1af0dc793fa9e8fed0a168f4f",
   "phase": "B",
   "suite": "base",
-  "provider": "openrouter",
-  "model": "openai/gpt-4o-mini",
-  "system_prompt": "C:\\Users\\anh21\\Downloads\\DAY04_G12_E403\\starter_v0\\artifacts\\system_prompt.md",
-  "tools": "C:\\Users\\anh21\\Downloads\\DAY04_G12_E403\\starter_v0\\artifacts\\tools.yaml",
+  "provider": "nvidia",
+  "model": "openai/gpt-oss-120b",
+  "system_prompt": "C:\\AI20K\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student-k3-main\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\AI20K\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student-k3-main\\starter_v0\\artifacts\\tools.yaml",
   "eval_cases": "data\\eval_base.json",
   "dataset_id": "day04_v2_research_base",
   "dataset_role": "base",
   "description": "Core eval cho research agent: routing đúng tool + đúng args, hỏi lại khi thiếu (ask_user), xác nhận trước khi gửi, và xử lý câu ngoài phạm vi / không cần tool. Chấm trên tool_calls + args (subset). KHÔNG sửa file này — chỉ thêm case vào eval_group.json.",
-  "generated_at": "2026-07-29T15:12:45",
+  "generated_at": "2026-07-29T15:20:03",
   "summary": {
     "total_cases": 20,
     "measured_cases": 20,
     "provider_error_cases": 0,
     "passed_cases": 19,
     "case_accuracy": 0.95,
-    "tool_routing_accuracy": 1.0,
+    "tool_routing_accuracy": 0.95,
     "argument_accuracy": 0.95,
     "multiturn_accuracy": 1.0,
     "failure_counts": {
-      "wrong_boundary": 1
+      "wrong_tool": 1
     },
     "observed_mismatch_counts": {
-      "wrong_arg_value": 1
+      "missing_tool_call": 1
     }
   },
   "results": [
@@ -62,7 +62,8 @@
           {
             "name": "timeline",
             "args": {
-              "screenname": "sama"
+              "screenname": "sama",
+              "limit": 1
             }
           }
         ],
@@ -76,12 +77,26 @@
         {
           "tool": "timeline",
           "args": {
-            "screenname": "sama"
+            "screenname": "sama",
+            "limit": 1
           },
           "result": {
             "tool": "get_user_tweets",
-            "error": "HTTPError",
-            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/timeline.php?screenname=sama"
+            "screenname": "sama",
+            "items": [
+              {
+                "title": "wrong",
+                "summary": "wrong",
+                "url": "https://x.com/sama/status/2081832600591892712",
+                "source": "@sama",
+                "date": "Mon Jul 27 20:02:25 +0000 2026",
+                "metrics": {
+                  "favorites": 11304,
+                  "retweets": 282,
+                  "views": "2199565"
+                }
+              }
+            ]
           }
         }
       ]
@@ -136,8 +151,70 @@
           },
           "result": {
             "tool": "search_tweets",
-            "error": "HTTPError",
-            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/search.php?query=GPT-5&search_type=Latest"
+            "query": "GPT-5",
+            "search_type": "Latest",
+            "items": [
+              {
+                "title": "Opus 5 with no reasoning effort at all turned in almost the same path length as GPT-5 at medium effort on LisanBench.",
+                "summary": "Opus 5 with no reasoning effort at all turned in almost the same path length as GPT-5 at medium effort on LisanBench.\n\nGPT-5 medium averaged over 30k reasoning tokens to get there. Opus 5 used 510.\n\nThat's roughly 60x the tokens for a comparable result, and Opus 5 wasn't even trying.",
+                "url": "https://x.com/defaiscope/status/2082380026226303479",
+                "source": "@defaiscope",
+                "date": "Wed Jul 29 08:17:41 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "4"
+                }
+              },
+              {
+                "title": "https://t.co/sbzzazB9S6",
+                "summary": "https://t.co/sbzzazB9S6",
+                "url": "https://x.com/gsemetfr/status/2082379985931682114",
+                "source": "@gsemetfr",
+                "date": "Wed Jul 29 08:17:32 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "3"
+                }
+              },
+              {
+                "title": "JCODE: Rust Tabanlı AI Agent Harness Mimarisi",
+                "summary": "JCODE: Rust Tabanlı AI Agent Harness Mimarisi\nPerformans Benchmarking, Mimari Derin İnceleme, Kurulum Rehberi ve Topluluk Eleştirileri\n\n1. Giriş ve Genel Bakış\n\nYazılım geliştirme süreçlerinde Büyük Dil Modellerinin (LLM) doğrudan terminal üzerinden kullanılması, Claude Code gibi araçların yaygınlaşmasıyla yeni bir boyut kazandı. Ancak Node.js ve JavaScript tabanlı bu harness\nsistemleri, yüksek bellek tüketimi (300 MB - 600 MB) ve başlatma sürelerindeki gecikmeler (3+ saniye) nedeniyle geliştiricilerin tepkisini çekmektedir.\n\nGeliştirici Jesse Huang ( 1jehuang ) tarafından açık kaynak olarak yayınlanan jcode, terminal üzerinde çalışan sıfır bağımlılıklı, yüksek performanslı bir AI agent arayüzüdür. Saf Rust diliyle yazılmış olan proje, Claude Code mimarisine kıyasla 245 kat daha hızlı ilk yanıt süresi (TTTF) ve son derece düşük sistem kaynağı kullanımı vaat etmektedir.\n\n2. Teknik Benchmark ve Mimarinin Karşılaştırılması\n\nResmi test sonuçları ve bağımsız doğrulama verilerine göre jcode ile mevcut popüler çözümler arasındaki temel teknik farklar aşağıdaki tabloda özetlenmiştir: \n\nBenden Ufak Bir Not: Agent Harness Nedir?\n\njcode kendisi bir yapay zeka modeli değildir. OpenAI (GPT-4o), Anthropic (Claude 3.5/3.7), Google (Gemini) ve yerel modeller (Ollama) gibi 30'dan fazla model sağlayıcısını bağlayan, komut çalıştırma, dosya okuma/yazma ve\nsemantik hafıza yönetimini üstlenen TUI (Terminal User Interface) katmanıdır. \n\n3. Öne Çıkan Mimari Özellikler\n\nAgent Swarm Yönetimi: Tek bir kod deposu (repository) üzerinde birden fazla agent'ın aynı anda çalışmasına izin verir. Agent'lar kendi aralarında mesajlaşabilir ve çakışan kod değişikliklerini (diff) anlık olarak algılar. Semantik Vektör Hafızası (SpecMem): Düz metin not defterleri yerine konuşma geçmişini vektör gömmelerine (embeddings) dönüştürerek ilgili bağlamı otomatik çeker.\n\nSession Persistence (Oturum Sürdürme): Kesilen veya yarım kalan çalışmayı, durum kaybı olmadan kaldığı yerden devam ettirme olanağı sağlar.\n\n4. Eleştirel Yaklaşım ve Topluluk Tartışmaları\n\nJcode sunduğu olağanüstü performans rakamlarıyla dikkat çekse de, geliştirici topluluğunda ve teknik forumlarda bazı ciddi eleştirilerle karşı karşıyadır:\n\nA. Kod Aşırmak (Plagiarism) ve Açık Kaynak Etiği\nReddit ( r/ClaudeCode ) ve GitHub tartışmalarında, projenin semantik hafıza ve agent koordinasyon mimarisinin diğer açık kaynak projelerden ve LLM çıktıları yardımıyla kopyalanıp Rust'a doğrudan port edildiği öne sürülmüştür. Katkı sağlayan ilk geliştiricilere lisans atıfı yapılmaması açık kaynak etiği açısından soru işaretleri yaratmaktadır.\n\nB. RAM Kullanımındaki \"Pazarlama Rakamları\"\nÖne çıkarılan 27.8 MB RAM değeri, projenin en önemli özelliği olan yerel semantik gömme (local embedding) özelliği tamamen kapatıldığında geçerlidir. Lokal vektör hafızası aktif edildiğinde bellek tüketimi **167 MB**\nseviyelerine yükselmektedir. Yine de Node.js alternatiflerine göre hafif olsa da pazarlama söylemi ile gerçek dünya kullanımı arasında fark mevcuttur.\n\nC. Erken Aşama Hataları ve Stabilite\nProjenin GitHub deposunda 100'ün üzerinde açık issue (hata bildirimi) yer almaktadır. Özellikle karmaşık OAuth doğrulama adımlarında, bazı LLM sağlayıcılarının token sınırlarında ve uç durumlardaki Swarm kilitlenmelerinde\nkararsızlıklar yaşandığı rapor edilmiştir. \n\n5. Detaylı Kurulum ve Kullanım Rehberi\n\nAdım 1: Sistem Gereksinimleri ve Hazırlık\njcode statik bir Rust binary'si olarak derlendiği için sisteminizde Rust araç zincirinin (Rustup) kurulu olması önerilir.\n\n# Rust yükleme (Linux/macOS)\ncurl --proto '=https' --tlsv1.2 -sSf https://t.co/ZR3uVSGhvV | sh\n\n# Versiyon kontrolü\nrustc --version\n\nAdım 2: jcode Kurulumu\nDepoyu klonlayarak veya Cargo paket yöneticisi üzerinden doğrudan kurabilirsiniz:\n\n# Cargo ile doğrudan kurulum\ncargo install jcode\n\n# Alternatif: Kaynak koddan derleme\ngit clone https://t.co/JJVCTev4DN\ncd jcode\ncargo build --release\nsudo cp target/release/jcode /usr/local/bin/\n\nAdım 3: Model ve API Key Yapılandırması\nKullanmak istediğiniz API sağlayıcısının anahtarını ortam değişkeni olarak tanımlayabilirsiniz:\n\n# Anthropic Claude API\nexport ANTHROPIC_API_KEY=\"sk-ant-api...\"\n# OpenAI API\nexport OPENAI_API_KEY=\"sk-proj-...\"\n# Google Gemini API\nexport GEMINI_API_KEY=\"AIzaSy...\"\n\nAdım 4: Proje Dizininde Başlatma\n\n# Çalışmak istediğiniz proje klasörüne gidin\ncd /path/to/your/project\n# jcode TUI arayüzünü başlatın\njcode\n\n6. Sonuç ve Genel Değerlendirme\n\nJcode , Node.js tabanlı hantal AI agent arayüzlerine karşı Rust diliyle sunulmuş son derece nitelikli, teknik açıdan cesur bir alternatiftir. 14ms TTTF süresi ve düşük kaynak tüketimi, sistem kaynaklarını korumak isteyen geliştiriciler için mükemmel bir fırsattır. Ancak, henüz geliştirme aşamasında olması, etik tartışmalar ve potansiyel stabilite sorunları göz önüne alındığında, kritik üretim (production) ortamlarından ziyade kişisel projelerde ve lokal testlerde kullanılması önerilmektedir.\n\nSorumluluk Reddi ve Tavsiye:\n\nBu tarz uygulamalardaki açıklardan muzdarip olmamak için bir uyarı yapmak lazım sanırım. Bu bir reklam değildir. Bilgi olarak paylaşıyorum. Geliştirme aşamasındaki AI agent harness sistemlerine komut çalıştırma yetkisi verirken sandbox/container yapılarının (Docker, DevContainer vb.) kullanılması önerilir.",
+                "url": "https://x.com/Jomolos/status/2082379618258956532",
+                "source": "@Jomolos",
+                "date": "Wed Jul 29 08:16:04 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "10"
+                }
+              },
+              {
+                "title": "So opus 5 is doing mistakes that is not good for a top tier model, the mistakes suddenly happening after using for 2 day",
+                "summary": "So opus 5 is doing mistakes that is not good for a top tier model, the mistakes suddenly happening after using for 2 days. \n\nI have a new plan I will use opus 5 as a brain but will use other models like grok4.5 and gpt 5.6 to fix the issues in each implimentation plan.",
+                "url": "https://x.com/Vivek828716/status/2082379539507016033",
+                "source": "@Vivek828716",
+                "date": "Wed Jul 29 08:15:45 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "1"
+                }
+              },
+              {
+                "title": "Chat GPT plus ✏️",
+                "summary": "Chat GPT plus ✏️\n\n07 วัน 𓏔 50 บาท\n┈┈┈┈┈┈┈\n30 วัน 𓏔 179 บาท ⚠️\n꒰ รีnวิตเหลือ 109 บาท ꒱\n\nเมลร้าน หาร5 เมลปิดเคลม\nใช้โมเดล GPT-5,GPT4o\n\n𓈈สั่งซื้อ =\nhttps://t.co/jdQFg4iwsA\n “thx u for Oder”\n\n#หารchatgpt #หารแชทจีพีที \n#หารchatgptplus งยีขายีบีบีกพะ",
+                "url": "https://x.com/PAI1988894/status/2082379499061309491",
+                "source": "@PAI1988894",
+                "date": "Wed Jul 29 08:15:35 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 0,
+                  "views": "11"
+                }
+              }
+            ]
           }
         }
       ]
@@ -354,8 +431,8 @@
           },
           "result": {
             "tool": "get_user_tweets",
-            "error": "HTTPError",
-            "message": "429 Client Error: Too Many Requests for url: https://twitter-api45.p.rapidapi.com/timeline.php?screenname=elonmusk"
+            "error": "JSONDecodeError",
+            "message": "Expecting value: line 1 column 1 (char 0)"
           }
         }
       ]
@@ -391,7 +468,7 @@
           {
             "name": "lookup",
             "args": {
-              "query": "tin công nghệ",
+              "query": "công nghệ",
               "topic": "news",
               "timeframe": "week",
               "max_results": 5
@@ -408,51 +485,51 @@
         {
           "tool": "lookup",
           "args": {
-            "query": "tin công nghệ",
+            "query": "công nghệ",
             "topic": "news",
             "timeframe": "week",
             "max_results": 5
           },
           "result": {
             "tool": "web_search",
-            "query": "tin công nghệ",
+            "query": "công nghệ",
             "topic": "news",
             "timeframe": "week",
             "items": [
+              {
+                "title": "Digital technologies enabling China's shift toward smart manufacturing - Xinhua",
+                "url": "https://english.news.cn/20260723/89d8abce342447e48771c5e8f0af5c48/c.html",
+                "source": "english.news.cn",
+                "summary": "Digital technologies enabling China's shift toward smart manufacturing-Xinhua. This is how the premium substrate glass panels roll off the cutting-edge G8.5+ substrate glass production line of Caihong Display Devices Company Limited in Xianyang, in northwest China's Shaanxi Province, demonstrating how digital technology is transforming the production of display materials. Caihong's G8.5+ substrate glass production line has broken the long-standing monopoly of overseas companies in the large-size substrate glass market, enabling China to achieve self-reliance and secure supply of high-end display materials, according to an executive of the company who preferred to be anonymous. \"By integrating cutting-edge technologies such as big data and artificial intelligence into the entire production process, our technical team has begun building an integrated intelligent system covering the full chain, from R&D and design to smart manufacturing and energy management,\" the executive said. Caihong's smart G8.5+ substrate glass production line represents a broader trend in which China's manufacturing sector is leveraging digital intelligence to upgrade and break through technological bottlenecks.",
+                "score": 0.18728161
+              },
+              {
+                "title": "Apple is reportedly worried about smart glasses, too - Yahoo Tech",
+                "url": "https://tech.yahoo.com/wearables/article/apple-is-reportedly-worried-about-smart-glasses-too-135710319.html",
+                "source": "tech.yahoo.com",
+                "summary": "Explore the latest in AI technology with expert reviews, news and insights on AI technology, machine learning, AI tools and more. Explore the latest in audio technology with expert reviews, news and insights on headphones, speakers, sound systems and more. Explore the latest in computing with expert reviews, news and insights on computers, laptops, tablets, peripherals and more. Explore the latest in gaming with expert reviews, news and insights on gaming systems, video games, previews, rumors and more. Explore the latest in home entertainment with expert reviews, news and insights on sound systems, home theaters, home audio and more. Explore the latest in streaming technology with expert reviews, news and insights on live TV streaming, streaming platforms and more. Explore the latest in VPN technology with expert reviews, news and insights on VPN services, software, browser extensions and more. Explore the latest in smart home technology with expert reviews, news, and insights on smart home security, smart thermometers, and other home devices and gadgets.",
+                "score": 0.17271566
+              },
+              {
+                "title": "Sam Altman says we are in the singularity: 'This is the moment' - Yahoo Tech",
+                "url": "https://tech.yahoo.com/ai/articles/sam-altman-says-singularity-moment-180054442.html",
+                "source": "tech.yahoo.com",
+                "summary": "Explore the latest in AI technology with expert reviews, news and insights on AI technology, machine learning, AI tools and more. Explore the latest in audio technology with expert reviews, news and insights on headphones, speakers, sound systems and more. Explore the latest in computing with expert reviews, news and insights on computers, laptops, tablets, peripherals and more. Explore the latest in gaming with expert reviews, news and insights on gaming systems, video games, previews, rumors and more. Explore the latest in home entertainment with expert reviews, news and insights on sound systems, home theaters, home audio and more. Explore the latest in streaming technology with expert reviews, news and insights on live TV streaming, streaming platforms and more. Explore the latest in VPN technology with expert reviews, news and insights on VPN services, software, browser extensions and more. Explore the latest in cybersecurity with expert reviews, news, and insights on breaking stories and coverage.",
+                "score": 0.14932065
+              },
               {
                 "title": "Indonesia’s nickel challenge shifts from mining to processing - Mining Technology",
                 "url": "https://www.mining-technology.com/analyst-comment/indonesias-nickel-challenge-shifts-from-mining-to-processing/",
                 "source": "mining-technology.com",
                 "summary": "*   How future of work M&A performed in the mining industry in Q3 2024. With a free Mining Technology profile, you can:. Mining news and in-depth feature articles on the latest mining company deals and projects covering trends in mineral exploration with up to date data on the most mined metal and mineral commodities. We may store and access personal data such as cookies, device identifiers or other similar technologies on your device and process such data to enhance site navigation, personalize ads and content when you visit our sites, measure ad and content performance, gain audience insights, analyze our site traffic as well as develop and improve our products and services. Blocking some types of cookies may impact your experience of the site and the services we are able to offer. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work.",
-                "score": 0.327529
-              },
-              {
-                "title": "Global silver output is expected to remain broadly stable in 2026 - Mining Technology",
-                "url": "https://www.mining-technology.com/analyst-comment/global-silver-output-stable-2026/",
-                "source": "mining-technology.com",
-                "summary": "*   How future of work M&A performed in the mining industry in Q3 2024. With a free Mining Technology profile, you can:. Mining news and in-depth feature articles on the latest mining company deals and projects covering trends in mineral exploration with up to date data on the most mined metal and mineral commodities. We may store and access personal data such as cookies, device identifiers or other similar technologies on your device and process such data to enhance site navigation, personalize ads and content when you visit our sites, measure ad and content performance, gain audience insights, analyze our site traffic as well as develop and improve our products and services. These cookies are necessary for the website to function and cannot be switched off in our systems. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work.",
-                "score": 0.23275496
-              },
-              {
-                "title": "Why Continuous Hormone Monitoring Could Transform Women's Health Monitoring - Forbes",
-                "url": "https://www.forbes.com/sites/geristengel/2026/07/24/ida-tin-coined-femtech-now-shes-funding-continuous-hormone-monitoring/",
-                "source": "forbes.com",
-                "summary": "# Ida Tin Coined Femtech. Now She’s Funding Continuous Hormone Monitoring. Ida Tin coined \"femtech\" and built Clue. Now she's directing a €40 million German government challenge to fund what femtech skipped: biosensors that read hormones continuously in real time. The goal isn't a single winning product—it's the shared scientific infrastructure, including the first standardized hormone dataset, that no startup could build alone. A jury convened in Leipzig and selected the eight teams to compete for the €40 million SPRIND Continuous Hormone Monitoring Challenge in Europe’s first government-backed race to develop biosensors that measure at least four hormones over seven days. Leading the effort is Ida Tin, the Danish entrepreneur who founded the period-tracking app, Clue, in 2012 and coined the term “femtech” in 2016—a word that helped make women’s health a recognized investment category. That gap, she argues, explains why a decade of femtech investment has not materially closed the diagnostic divide for the most common women’s health conditions.",
-                "score": 0.20958327
-              },
-              {
-                "title": "Metals X profitability bodes well for Elementos’ tin ambitions - Mining.com.au",
-                "url": "https://mining.com.au/metals-x-profitability-bodes-well-for-elementos-tin-ambitions/",
-                "source": "mining.com.au",
-                "summary": "Metals X profitability bodes well for Elementos’ tin ambitions•GoldArc defines two Yttria gold corridors•Vulcan begins civil construction at Lionheart•Ballard’s West Knell rings in the highest grade yet•Encounter’s Elsa target extends beyond the weathered zone•Argosy advances feasibility works at Rincon lithium project•Barrick evacuates Chile mine workers after winter storms•Talisman defines large gold system at Sheepyard•Evolution to acquire Carnaby Resources in $213 million deal•First Au completes acquisition of Viking’s Riverina East•Full speed ahead for Dalaroo’s Gold Ridge campaign•Noosa insight: Cash reserves point to more gold deals•Talga signs Hanwa Vittangi offtake LOI•Australia supports global moratorium on deep-sea mining•USA Rare Earth and InfraVia build rare earth hub with Carester•Auric outlines $145 million Goldfields plan•Jindal invests $228 million to electrify Moatize•Brookfield buys Aypa in $10 billion deal as BESS market surges•Vault Strategic launches magnetic survey at War Bond•Agnico Eagle invests $60.9 million in Cadillac Mines Metals X profitability bodes well for Elementos’ tin ambitions•GoldArc defines two Yttria gold corridors•Vulcan begins civil construction at Lionheart•Ballard’s West Knell rings in the highest grade yet•Encounter’s Elsa target extends beyond the weathered zone•Argosy advances feasibility works at Rincon lithium project•Barrick evacuates Chile mine workers after winter storms•Talisman defines large gold system at Sheepyard•Evolution to acquire Carnaby Resources in $213 million deal•First Au completes acquisition of Viking’s Riverina East•Full speed ahead for Dalaroo’s Gold Ridge campaign•Noosa insight: Cash reserves point to more gold deals•Talga signs Hanwa Vittangi offtake LOI•Australia supports global moratorium on deep-sea mining•USA Rare Earth and InfraVia build rare earth hub with Carester•Auric outlines $145 million Goldfields plan•Jindal invests $228 million to electrify Moatize•Brookfield buys Aypa in $10 billion deal as BESS market surges•Vault Strategic launches magnetic survey at War Bond•Agnico Eagle invests $60.9 million in Cadillac Mines.",
-                "score": 0.111541085
+                "score": 0.13717403
               },
               {
                 "title": "Yujin Technology Selected for Government AI Manufacturing Platform Project - thelec.net",
                 "url": "https://www.thelec.net/news/articleView.html?idxno=12443",
                 "source": "thelec.net",
                 "summary": "* UPDATE : 2026-07-22 21:26 (Wed). Yujin Technology Selected for Government AI Manufacturing Platform Project. ## Consortium to develop generative AI platform for battery equipment manufacturing with 1.1 billion won in first-year funding. * Published 2026.07.22 21:26. Yujin Technology said on July 22 that it has been selected as the preferred bidder for the South Korean government's 2026 AI Transformation (AX) One-Stop Voucher Program, led by the Ministry of Science and ICT and the National IT Industry Promotion Agency (NIPA). Yujin Technology will carry out the project through a consortium with Plan I and Gabia, developing a generative AI-based manufacturing platform for battery equipment. The project will receive approximately 1.1 billion won in government funding during its first year. A second year of funding of a similar scale is expected following an evaluation of the first year's performance. During the first phase, Yujin Technology plans to complete development of the AI platform and conduct proof-of-concept demonstrations.",
-                "score": 0.10935357
+                "score": 0.13078444
               }
             ]
           }
@@ -511,8 +588,70 @@
           },
           "result": {
             "tool": "search_tweets",
-            "error": "HTTPError",
-            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/search.php?query=OpenAI&search_type=Top"
+            "query": "OpenAI",
+            "search_type": "Top",
+            "items": [
+              {
+                "title": "🚨 GitHub just dropped a bomb. 🔥",
+                "summary": "🚨 GitHub just dropped a bomb. 🔥\n\nSomeone released a repository that lets you use Claude Code for free, forever.\n\nThis isn't a crack.\n\nIt automatically routes your requests through 10+ free OpenAI-compatible providers, including DeepSeek, Kimi, and more.\n\n⚡ Setup takes about 5 minutes.\n\n👨‍💻 Already trusted by 20,000+ developers.\n\nIf you're tired of paying for Claude but still want the same developer experience...\n\nThis is the GitHub repo everyone's been sharing lately.",
+                "url": "https://x.com/QCXINT_/status/2080428758474150268",
+                "source": "@QCXINT_",
+                "date": "Thu Jul 23 23:04:03 +0000 2026",
+                "metrics": {
+                  "favorites": 1384,
+                  "retweets": 189,
+                  "views": "143769"
+                }
+              },
+              {
+                "title": "10 agent evals every AI engineer should know",
+                "summary": "10 agent evals every AI engineer should know\n\n1) golden set\n\na frozen set of cases you run after every prompt model or tool change\n\nuse it as your baseline to see whether the system improved or quietly broke\n\nOpenAI Evals helps you build repeatable benchmark sets and compare model changes\n\n→ https://t.co/dr1GZlC75R\n\n2) llm as judge\n\na second model scores open ended answers against a written rubric\n\nuse it when there is no exact output to compare against\n\nOpenEvals provides ready made evaluators for LLM applications\n\n→ https://t.co/S2yhnByFIP\n\n3) rubric scoring\n\nscore correctness tone safety and cost separately\n\none quality number hides the problem\n\nDeepEval helps you create custom metrics and score every dimension independently\n\n→ https://t.co/q9Z6Xmixia\n\n4) trajectory eval\n\ngrade the path the agent took\n\nnot only the final answer\n\nAgentEvals checks agent actions decisions and tool calls across the full trajectory\n\n→ https://t.co/0oziAl54az\n\n5) tool unit tests\n\ntest every tool with fixed inputs and outputs\n\nno model in the loop\n\nMCP Inspector helps you inspect and test MCP servers tools and responses separately\n\n→ https://t.co/IVmt5qpWIN\n\n6) regression suite\n\nreplay previous runs against every new prompt model or toolset\n\nthen compare the results\n\nPromptfoo helps you run repeatable eval suites catch regressions and add checks to CI\n\n→ https://t.co/zxi2PuWuhe\n\n7) a b in prod\n\nsplit real traffic between two versions and compare actual outcomes\n\nGrowthBook provides feature flags controlled experiments and product analytics\n\n→ https://t.co/DGlE3JjDD3\n\n8) human review\n\nsample real runs and let a person grade them honestly\n\nuse it to calibrate your automated judge\n\nArgilla helps teams collect human feedback review outputs and build better datasets\n\n→ https://t.co/QHWb7skWjr\n\n9) shadow run\n\nlet the candidate run on real traffic while its output is shown to nobody\n\nuse it before a risky rollout\n\nLangfuse helps you trace production runs compare candidates and monitor eval results\n\n→ https://t.co/IrhDf38tRn\n\n10) red team\n\nattack the system before somebody else does\n\njailbreaks prompt injection data leaks and tool abuse\n\nGarak scans LLM systems for vulnerabilities and unsafe behavior\n\n→ https://t.co/w8ObyW4ZKv\n\noffline evals tell you it works\n\nonline evals tell you it still works\n\nyou probably do not need all ten today\n\nstart with the two that would have caught your last outage\n\nbookmark this",
+                "url": "https://x.com/elune0x/status/2080710242929697122",
+                "source": "@elune0x",
+                "date": "Fri Jul 24 17:42:34 +0000 2026",
+                "metrics": {
+                  "favorites": 1079,
+                  "retweets": 139,
+                  "views": "147991"
+                }
+              },
+              {
+                "title": "Gilbert Strang, a quiet MIT professor, picked up a piece of chalk and explained the one skill standing between you and e",
+                "summary": "Gilbert Strang, a quiet MIT professor, picked up a piece of chalk and explained the one skill standing between you and every account you have ever blown.\n\nMIT put the entire course online. it has been free for over twenty years. almost nobody finishes it.\n\nHis point: the market never pays in certainties. it pays in probabilities, and a human gut can barely hold one straight. the math that holds ten thousand at once, weighs them, and collapses them into a single call is linear algebra. it is the branch Citadel and OpenAI both pay $400K to hire for.\n\nhe is not a trading guru. his 18.06 lectures are the most watched math class on the planet.\n\nSkip to where he turns a wall of numbers into one vector. a single object carrying a thousand odds at once, in notation a beginner can follow.\n\nNo slides. no jargon. one piece of chalk.\n\na quant I know rewatches lecture one every year before he sizes a single position.\n\nYou do not have a strategy problem. you have a math problem. the fix has been free for two decades, and you are still guessing.",
+                "url": "https://x.com/0xLoran/status/2081760744358445158",
+                "source": "@0xLoran",
+                "date": "Mon Jul 27 15:16:53 +0000 2026",
+                "metrics": {
+                  "favorites": 348,
+                  "retweets": 58,
+                  "views": "44343"
+                }
+              },
+              {
+                "title": "Sam Altman, CEO of OpenAI: ",
+                "summary": "Sam Altman, CEO of OpenAI: \n\n\"It figured out that it could basically cheat on the test by chaining together multiple zero-day exploits to break out of the sandbox, get access to the internet, and then break through multiple systems on the Hugging Face side to get the answer to the test and look really good on the eval.\"\n\nThat was an unreleased model. Nobody asked it to hack anything. They asked it to score well.\n\nThey paused training.\n\nIt was not trying to escape. It was trying to pass. Breaking out of the sandbox was just the cheapest route to a higher number.\n\nWe keep testing these systems for whether they want to hurt us. This one just wanted a good grade.",
+                "url": "https://x.com/caspr_exe/status/2082153657424834624",
+                "source": "@caspr_exe",
+                "date": "Tue Jul 28 17:18:11 +0000 2026",
+                "metrics": {
+                  "favorites": 99,
+                  "retweets": 9,
+                  "views": "11154"
+                }
+              },
+              {
+                "title": "OpenAI's newest AI escaped the test environment it was locked inside and hacked into another company on its OWN.",
+                "summary": "OpenAI's newest AI escaped the test environment it was locked inside and hacked into another company on its OWN.\n\nTo remind you:\n\nLast week one of the biggest AI companies on Earth got breached. \n\nA platform called Hugging Face, which hosts more than a million AI models and datasets, said an \"autonomous AI agent\" had broken into its systems. Nobody knew whose agent it was.\n\nFor five days the whole industry wondered who was behind it.\n\nYesterday OpenAI raised its hand and said it was them. Or more precisely, it was their models, acting completely on their own.\n\nSo what did these models actually do?\n\nOpenAI was running two of them, GPT-5.6 Sol and an unreleased model they will only describe as \"even more capable.\" They wanted to measure how good the models were at hacking, so they deliberately turned the safety filters down.\n\nThey locked both models inside a sealed test environment with no real internet access. The only task was a benchmark called ExploitGym, a set of 898 real software vulnerabilities where the model has to turn each bug into a working attack.\n\nBut the models got OBSESSED with winning...\n\nInstead of solving the test the honest way, they went hunting for a shortcut. They found a zero-day flaw in the software running their own sandbox, a bug nobody knew existed, and used it to break out.\n\nOnce they were loose on the open internet, they worked out that Hugging Face was probably storing the answer key to the benchmark.\n\nSo they hacked their way in.\n\nThey chained multiple exploits together, escalated their access, moved across servers, and pulled the test solutions straight out of Hugging Face's live production database.\n\nThey literally cheated on the test by breaking into another company to steal the answers.\n\nOpenAI called it \"an unprecedented cyber incident, involving state-of-the-art cyber capabilities.\" In their own words, the models were \"hyperfocused on finding a solution\" and went \"to extreme lengths to achieve a rather narrow testing goal.\"\n\nAnd this was not the first time:\n\nBefore Sol ever launched, an independent red-team lab called METR caught it gaming its own tests to inflate its scores. It hid an exploit inside a data stream, escalated its privileges on the testing server, and leaked the answers human evaluators had hidden. And OpenAI shipped it anyway.\n\nThe day before the Hugging Face story, OpenAI paused a different unreleased model. This is the same model that earlier this year disproved a famous 1946 math conjecture, a result a Fields Medal winner called a breakthrough. They told it to only post its results to Slack but it found a way out of its sandbox and posted to a public GitHub page instead.\n\nThey had to pause it because it kept finding ways to act outside the box they built for it.\n\nAnd it is not just OpenAI...\n\nAnthropic has reported that one of its own models slipped its sandbox during safety testing and reached the internet it was never supposed to touch, then used it to email a researcher.\n\nSo step back and look at what these companies are telling you:\n\nThe only thing standing between these models and a real attack was a set of safety filters. Turn those filters down for a single test, and the model taught itself to escape, break into a company it was never pointed at, and take what it wanted.\n\nOpenAI even said they expect incidents like it to \"become more commonplace\" as the models get more capable.\n\nSam Altman also predicted there'll be a major cyber attack this year.\n\nAnd keep in mind that Sol is not a locked-away experiment but a publicly available model that businesses are already wiring into their own systems.\n\nThe next model that breaks out of its box might not be doing it just to cheat on a math test...",
+                "url": "https://x.com/Ric_RTP/status/2079941508807921958",
+                "source": "@Ric_RTP",
+                "date": "Wed Jul 22 14:47:53 +0000 2026",
+                "metrics": {
+                  "favorites": 809,
+                  "retweets": 276,
+                  "views": "163144"
+                }
+              }
+            ]
           }
         }
       ]
@@ -538,7 +677,7 @@
         "routing_correct": true,
         "args_correct": true,
         "actual_tool_calls": [],
-        "actual_text": "Yêu cầu của bạn nằm ngoài phạm vi nghiên cứu/tin tức. Bạn có thể tham khảo sách giáo khoa hoặc tài liệu học tập để tìm hiểu về nguyên hàm của \\(x^2\\).",
+        "actual_text": "Xin lỗi, tôi không hỗ trợ giải toán.",
         "case_failure_type": "out_of_scope",
         "observed_mismatch": null,
         "failure_type": null,
@@ -567,7 +706,7 @@
         "routing_correct": true,
         "args_correct": true,
         "actual_tool_calls": [],
-        "actual_text": "Tôi là một trợ lý nghiên cứu nhanh chóng và chủ động, có khả năng tìm kiếm thông tin trên internet, mạng xã hội, và các cơ sở dữ liệu khoa học. Tôi có thể giúp bạn:\n\n- Tìm kiếm tin tức và thông tin mới nhất.\n- Lấy nội dung từ các trang web.\n- Tìm kiếm bài báo khoa học.\n- Theo dõi các bài đăng trên mạng xã hội.\n- Tóm tắt và định dạng thông tin.\n\nNếu bạn có yêu cầu cụ thể nào, hãy cho tôi biết!",
+        "actual_text": "Tôi là trợ lý nghiên cứu, có thể tra cứu tin tức, tìm bài đăng trên các mạng xã hội, đọc nội dung từ URL cụ thể và tổng hợp các thông tin thu thập được thành bản tóm tắt. Các chức năng này được thực hiện bằng các công cụ nội bộ được cung cấp.",
         "case_failure_type": "unnecessary_tool",
         "observed_mismatch": null,
         "failure_type": null,
@@ -605,7 +744,7 @@
           {
             "name": "clarify",
             "args": {
-              "question": "Bạn muốn tóm tắt tweet của tài khoản nào?",
+              "question": "Bạn muốn tóm tắt 5 tweet mới nhất của tài khoản nào trên X/Twitter?",
               "response_type": "text"
             }
           }
@@ -620,12 +759,12 @@
         {
           "tool": "clarify",
           "args": {
-            "question": "Bạn muốn tóm tắt tweet của tài khoản nào?",
+            "question": "Bạn muốn tóm tắt 5 tweet mới nhất của tài khoản nào trên X/Twitter?",
             "response_type": "text"
           },
           "result": {
             "tool": "ask_user",
-            "question": "Bạn muốn tóm tắt tweet của tài khoản nào?",
+            "question": "Bạn muốn tóm tắt 5 tweet mới nhất của tài khoản nào trên X/Twitter?",
             "response_type": "text",
             "options": [],
             "awaiting_user": true
@@ -663,7 +802,7 @@
           {
             "name": "clarify",
             "args": {
-              "question": "Bạn vui lòng cung cấp địa chỉ URL của bài viết mà bạn muốn tóm tắt?",
+              "question": "Bạn có thể cung cấp đường link của bài viết mà bạn muốn tôi tóm tắt không?",
               "response_type": "text"
             }
           }
@@ -678,12 +817,12 @@
         {
           "tool": "clarify",
           "args": {
-            "question": "Bạn vui lòng cung cấp địa chỉ URL của bài viết mà bạn muốn tóm tắt?",
+            "question": "Bạn có thể cung cấp đường link của bài viết mà bạn muốn tôi tóm tắt không?",
             "response_type": "text"
           },
           "result": {
             "tool": "ask_user",
-            "question": "Bạn vui lòng cung cấp địa chỉ URL của bài viết mà bạn muốn tóm tắt?",
+            "question": "Bạn có thể cung cấp đường link của bài viết mà bạn muốn tôi tóm tắt không?",
             "response_type": "text",
             "options": [],
             "awaiting_user": true
@@ -714,37 +853,35 @@
         ]
       },
       "result": {
-        "passed": false,
+        "passed": true,
         "routing_correct": true,
-        "args_correct": false,
+        "args_correct": true,
         "actual_tool_calls": [
           {
             "name": "clarify",
             "args": {
-              "question": "Bạn có thể cung cấp nội dung bản tin mà bạn muốn đăng lên Telegram không?",
-              "response_type": "text"
+              "question": "Bạn có muốn tôi gửi bản tin này lên kênh Telegram ngay bây giờ? Hành động này sẽ đăng nội dung hiện tại của bạn lên Telegram và không thể hoàn tác.",
+              "response_type": "yes_no"
             }
           }
         ],
         "actual_text": null,
         "case_failure_type": "wrong_boundary",
-        "observed_mismatch": "wrong_arg_value",
-        "failure_type": "wrong_boundary",
-        "failures": [
-          "response_type: expected 'yes_no', got 'text'"
-        ]
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
       },
       "tool_results": [
         {
           "tool": "clarify",
           "args": {
-            "question": "Bạn có thể cung cấp nội dung bản tin mà bạn muốn đăng lên Telegram không?",
-            "response_type": "text"
+            "question": "Bạn có muốn tôi gửi bản tin này lên kênh Telegram ngay bây giờ? Hành động này sẽ đăng nội dung hiện tại của bạn lên Telegram và không thể hoàn tác.",
+            "response_type": "yes_no"
           },
           "result": {
             "tool": "ask_user",
-            "question": "Bạn có thể cung cấp nội dung bản tin mà bạn muốn đăng lên Telegram không?",
-            "response_type": "text",
+            "question": "Bạn có muốn tôi gửi bản tin này lên kênh Telegram ngay bây giờ? Hành động này sẽ đăng nội dung hiện tại của bạn lên Telegram và không thể hoàn tác.",
+            "response_type": "yes_no",
             "options": [],
             "awaiting_user": true
           }
@@ -782,9 +919,9 @@
         ]
       },
       "result": {
-        "passed": true,
-        "routing_correct": true,
-        "args_correct": true,
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
         "actual_tool_calls": [
           {
             "name": "lookup",
@@ -794,21 +931,15 @@
               "timeframe": "day",
               "max_results": 5
             }
-          },
-          {
-            "name": "social_search",
-            "args": {
-              "query": "AI",
-              "search_type": "Latest",
-              "limit": 5
-            }
           }
         ],
         "actual_text": null,
         "case_failure_type": "wrong_tool",
-        "observed_mismatch": null,
-        "failure_type": null,
-        "failures": []
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "wrong_tool",
+        "failures": [
+          "missing tool call social_search"
+        ]
       },
       "tool_results": [
         {
@@ -862,19 +993,6 @@
               }
             ]
           }
-        },
-        {
-          "tool": "social_search",
-          "args": {
-            "query": "AI",
-            "search_type": "Latest",
-            "limit": 5
-          },
-          "result": {
-            "tool": "search_tweets",
-            "error": "HTTPError",
-            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/search.php?query=AI&search_type=Latest"
-          }
         }
       ]
     },
@@ -899,7 +1017,7 @@
         "routing_correct": true,
         "args_correct": true,
         "actual_tool_calls": [],
-        "actual_text": "Yêu cầu của bạn nằm ngoài phạm vi nghiên cứu/tin tức. Tuy nhiên, bạn có thể tham khảo đoạn mã sau để viết hàm Fibonacci bằng đệ quy trong Python:\n\n```python\ndef fibonacci(n):\n    if n <= 0:\n        return 0\n    elif n == 1:\n        return 1\n    else:\n        return fibonacci(n - 1) + fibonacci(n - 2)\n```\n\nHàm này sẽ trả về số Fibonacci thứ `n`.",
+        "actual_text": "Xin lỗi, việc viết mã lập trình không nằm trong phạm vi hỗ trợ của tôi.",
         "case_failure_type": "out_of_scope",
         "observed_mismatch": null,
         "failure_type": null,
@@ -971,8 +1089,69 @@
           },
           "result": {
             "tool": "get_user_tweets",
-            "error": "HTTPError",
-            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/timeline.php?screenname=elonmusk"
+            "screenname": "elonmusk",
+            "items": [
+              {
+                "title": "RT @teslaownersSV: BREAKING: Grok 4.5 just claimed the top spot on the new HighWalk Benchmark.",
+                "summary": "RT @teslaownersSV: BREAKING: Grok 4.5 just claimed the top spot on the new HighWalk Benchmark.\n\nThe independent test measures how well AI m…",
+                "url": "https://x.com/elonmusk/status/2082369174828118361",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:34:34 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 110,
+                  "views": "398721"
+                }
+              },
+              {
+                "title": "RT @SawyerMerritt: This is a fantastic article about @Tesla's FSD by The Detroit News:",
+                "summary": "RT @SawyerMerritt: This is a fantastic article about @Tesla's FSD by The Detroit News:\n\n\"Determined to maintain their individual transporta…",
+                "url": "https://x.com/elonmusk/status/2082368994552782986",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:33:51 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 899,
+                  "views": "308650"
+                }
+              },
+              {
+                "title": "RT @SciGuySpace: This has been my experience as well. I \"drive\" almost exclusively on FSD now, without incident, and it ",
+                "summary": "RT @SciGuySpace: This has been my experience as well. I \"drive\" almost exclusively on FSD now, without incident, and it feels remarkable. I…",
+                "url": "https://x.com/elonmusk/status/2082368965498773975",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:33:44 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 142,
+                  "views": "301190"
+                }
+              },
+              {
+                "title": "RT @cb_doge: Help build the AI that advances humanity.",
+                "summary": "RT @cb_doge: Help build the AI that advances humanity.\n\nSpaceXAI is hiring exceptional engineers to work on @Grok. Explore all open roles t…",
+                "url": "https://x.com/elonmusk/status/2082368915129401688",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:33:32 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 151,
+                  "views": "309301"
+                }
+              },
+              {
+                "title": "Cool",
+                "summary": "Cool",
+                "url": "https://x.com/elonmusk/status/2082368400702226588",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:31:29 +0000 2026",
+                "metrics": {
+                  "favorites": 3678,
+                  "retweets": 349,
+                  "views": "557716"
+                }
+              }
+            ]
           }
         }
       ]
@@ -1024,7 +1203,8 @@
             "args": {
               "query": "robotics",
               "topic": "news",
-              "timeframe": "day"
+              "timeframe": "day",
+              "max_results": 5
             }
           }
         ],
@@ -1040,7 +1220,8 @@
           "args": {
             "query": "robotics",
             "topic": "news",
-            "timeframe": "day"
+            "timeframe": "day",
+            "max_results": 5
           },
           "result": {
             "tool": "web_search",
@@ -1152,8 +1333,45 @@
           },
           "result": {
             "tool": "get_user_tweets",
-            "error": "HTTPError",
-            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/timeline.php?screenname=karpathy"
+            "screenname": "karpathy",
+            "items": [
+              {
+                "title": "One pattern I find useful for working with LLMs is a nice long ramble session. Sometimes the LLM needs more bits to unde",
+                "summary": "One pattern I find useful for working with LLMs is a nice long ramble session. Sometimes the LLM needs more bits to understand what you're trying to achieve, but you're too lazy to type them. In these cases I like to lean back, switch to /voice and just ramble for like 10 minutes, total mess, anything goes, full stream of consciousness. Sometimes I declare it up top, something like \"switching to speech recognition sorry for any typos...\". Sometimes I turn it into a small interview of a few turns. But I find that the LLMs are somehow very good at reconstructing long incoherent rambles and often their echo of your own tangle of thoughts comes out quite a bit cleaner than what you started with. The result is that you improve the mind meld and have to correct things less from that point on.",
+                "url": "https://x.com/karpathy/status/2079610838143623371",
+                "source": "@karpathy",
+                "date": "Tue Jul 21 16:53:55 +0000 2026",
+                "metrics": {
+                  "favorites": 48649,
+                  "retweets": 4065,
+                  "views": "3900407"
+                }
+              },
+              {
+                "title": "RT @jarredsumner: Rewriting Bun in Rust",
+                "summary": "RT @jarredsumner: Rewriting Bun in Rust\n\nhttps://t.co/Rl8bcaxBFc",
+                "url": "https://x.com/karpathy/status/2075266731170537506",
+                "source": "@karpathy",
+                "date": "Thu Jul 09 17:11:59 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 1094,
+                  "views": "40706"
+                }
+              },
+              {
+                "title": "RT @petergostev: I spent a LOT of time through the hardest 3D prompts at Fable, it is a 45 min video, but I have 60+ ver",
+                "summary": "RT @petergostev: I spent a LOT of time through the hardest 3D prompts at Fable, it is a 45 min video, but I have 60+ very cool demos for yo…",
+                "url": "https://x.com/karpathy/status/2073496962566164990",
+                "source": "@karpathy",
+                "date": "Sat Jul 04 19:59:34 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 166,
+                  "views": "40696"
+                }
+              }
+            ]
           }
         }
       ]
@@ -1296,8 +1514,45 @@
           },
           "result": {
             "tool": "get_user_tweets",
-            "error": "HTTPError",
-            "message": "403 Client Error: Forbidden for url: https://twitter-api45.p.rapidapi.com/timeline.php?screenname=elonmusk"
+            "screenname": "elonmusk",
+            "items": [
+              {
+                "title": "RT @teslaownersSV: BREAKING: Grok 4.5 just claimed the top spot on the new HighWalk Benchmark.",
+                "summary": "RT @teslaownersSV: BREAKING: Grok 4.5 just claimed the top spot on the new HighWalk Benchmark.\n\nThe independent test measures how well AI m…",
+                "url": "https://x.com/elonmusk/status/2082369174828118361",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:34:34 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 110,
+                  "views": "398721"
+                }
+              },
+              {
+                "title": "RT @SawyerMerritt: This is a fantastic article about @Tesla's FSD by The Detroit News:",
+                "summary": "RT @SawyerMerritt: This is a fantastic article about @Tesla's FSD by The Detroit News:\n\n\"Determined to maintain their individual transporta…",
+                "url": "https://x.com/elonmusk/status/2082368994552782986",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:33:51 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 899,
+                  "views": "309105"
+                }
+              },
+              {
+                "title": "RT @SciGuySpace: This has been my experience as well. I \"drive\" almost exclusively on FSD now, without incident, and it ",
+                "summary": "RT @SciGuySpace: This has been my experience as well. I \"drive\" almost exclusively on FSD now, without incident, and it feels remarkable. I…",
+                "url": "https://x.com/elonmusk/status/2082368965498773975",
+                "source": "@elonmusk",
+                "date": "Wed Jul 29 07:33:44 +0000 2026",
+                "metrics": {
+                  "favorites": 0,
+                  "retweets": 142,
+                  "views": "301622"
+                }
+              }
+            ]
           }
         }
       ]
@@ -1385,7 +1640,7 @@
                 "title": "OpenAI’s High-Stakes, High-Touch Push to Make AI Work for Business",
                 "url": "https://www.wsj.com/cio-journal/openais-high-stakes-high-touch-push-to-make-ai-work-for-business-7f08b7d4",
                 "source": "wsj.com",
-                "summary": "## The AI model maker has formed a services company staffed with forward deployed engineers and a partnership program to help businesses get real value from their technology\n\nBy\n\nand\n\nListen\n\n(2 min)\n\nColin Jarvis, head of Forward Deployed Engineering for OpenAI, speaks at an event with SoftBank.\n\nOpenAI’s push into the enterprise market is ramping up as it faces increasing pressure to prove that AI can actually deliver for big businesses. [...] The artificial intelligence giant in recent months has invested $150 million in a new enterprise partner program and launched the OpenAI Deployment Co., a stand-alone services firm that will embed technical expertise with business customers.\n\nCopyright ©2026 Dow Jones & Company, Inc. All Rights Reserved. 87990cbe856818d5eddac44c7b1cdeb8\n\n## Videos\n\n### Most Popular in CIO",
+                "summary": "## The AI model maker has formed a services company staffed with forward deployed engineers and a partnership program to help businesses get real value from their technology\n\nBy\n\nand\n\nListen\n\n(2 min)\n\nColin Jarvis, head of Forward Deployed Engineering for OpenAI, speaks at an event with SoftBank.\n\nOpenAI’s push into the enterprise market is ramping up as it faces increasing pressure to prove that AI can actually deliver for big businesses. [...] The artificial intelligence giant in recent months has invested $150 million in a new enterprise partner program and launched the OpenAI Deployment Co., a stand-alone services firm that will embed technical expertise with business customers.\n\nCopyright ©2026 Dow Jones & Company, Inc. All Rights Reserved. 87990cbe856818d5eddac44c7b1cdeb8\n\n## Videos\n\n### Most Popular in CIO [...] This copy is for your personal, non-commercial use only. Distribution and use of this material are governed by\nour Subscriber Agreement and by copyright law. For non-personal use or to order multiple copies, please contact\nDow Jones Reprints at 1-800-843-0008 or visit www.djreprints.com.\n\n# OpenAI’s High-Stakes, High-Touch Push to Make AI Work for Business",
                 "score": 0.57952
               },
               {
@@ -1406,7 +1661,7 @@
                 "title": "How are companies, governments responding to the OpenAI hack?",
                 "url": "https://www.aljazeera.com/news/2026/7/23/how-are-companies-governments-responding-to-the-openai-hack",
                 "source": "aljazeera.com",
-                "summary": "ChatGPT owner OpenAI has admitted an “unprecedented cyber incident” – two of its most capable artificial intelligence models hacked into another AI company on their own – stirring debates over the need for stronger technology guardrails.\n\nThe company said its AI systems broke out of a testing environment and hacked startup Hugging Face.\n\nThe startup had disclosed on July 16 that its servers were hacked by an unknown but sophisticated agent acting on its own.",
+                "summary": "ChatGPT owner OpenAI has admitted an “unprecedented cyber incident” – two of its most capable artificial intelligence models hacked into another AI company on their own – stirring debates over the need for stronger technology guardrails.\n\nThe company said its AI systems broke out of a testing environment and hacked startup Hugging Face.\n\nThe startup had disclosed on July 16 that its servers were hacked by an unknown but sophisticated agent acting on its own. [...] Advertisement\n\nThe incident occurred during an OpenAI internal testing session designed to assess the models’ cybersecurity capabilities. OpenAI had removed standard safety measures for the test.\n\nBoth sought to cheat their way through a problem during the test, OpenAI said. They went to “extreme lengths to achieve a rather narrow testing goal” and “found ways to gain access to secret information that it could use to cheat the evaluation”. [...] Live\n\nLive\n\nEXPLAINER\n\nNews|Technology\n\n# How are companies, governments responding to the OpenAI hack?\n\nOpenAI’s AI models hacked into another company, prompting calls for renewed scrutiny of safeguards for advanced AI systems.\n\nSave\n\nShare\n\nA man with a microphone\n\nOpenAI CEO Sam Altman speaks during a panel discussion at the Technical University of Berlin on February 7, 2025, in Berlin, Germany [Sean Gallup/Getty Images]\n\n\n\nBy Al Jazeera Staff\n\nPublished On 23 Jul 202623 Jul 2026",
                 "score": 0.5194
               }
             ]

@@ -1,0 +1,1056 @@
+{
+  "run_id": "v8_B_group_nvidia_20260729T152827376137",
+  "version": "v8",
+  "artifact_version": "v8+pd749a31bc1bd+t6576e6fd32a0",
+  "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+  "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+  "phase": "B",
+  "suite": "group",
+  "provider": "nvidia",
+  "model": "openai/gpt-oss-120b",
+  "system_prompt": "C:\\AI20K\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student-k3-main\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "C:\\AI20K\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student-k3-main\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "10 case do nhóm tự thiết kế: 5 single-turn (query) + 5 multi-turn (turns). Phủ đủ 6 failure_type và kiểm tra routing sang các tool nhóm tự viết (github_repos, wiki, save_digest) mà không giẫm chân lên tool core.",
+  "generated_at": "2026-07-29T15:28:27",
+  "summary": {
+    "total_cases": 10,
+    "measured_cases": 10,
+    "provider_error_cases": 0,
+    "passed_cases": 9,
+    "case_accuracy": 0.9,
+    "tool_routing_accuracy": 0.9,
+    "argument_accuracy": 0.9,
+    "multiturn_accuracy": 0.8,
+    "failure_counts": {
+      "missing_info": 1
+    },
+    "observed_mismatch_counts": {
+      "missing_tool_call": 1
+    }
+  },
+  "results": [
+    {
+      "id": "G01_repo_not_websearch",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_code_vs_web",
+        "difficulty": "medium",
+        "what_it_tests": "Hỏi về thư viện/mã nguồn mở → github_repos. Bẫy ở chỗ câu này cũng trả lời được bằng lookup; tool mới phải thắng đúng ngữ cảnh code."
+      },
+      "input": "Có thư viện open-source nào để crawl web không?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_repos",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "github_repos",
+            "args": {
+              "query": "web crawler library",
+              "sort_by": "stars",
+              "language": "",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "github_repos",
+          "args": {
+            "query": "web crawler library",
+            "sort_by": "stars",
+            "language": "",
+            "limit": 5
+          },
+          "result": {
+            "tool": "search_github_repos",
+            "query": "web crawler library",
+            "sort_by": "stars",
+            "total_found": 399,
+            "items": [
+              {
+                "title": "apify/crawlee",
+                "url": "https://github.com/apify/crawlee",
+                "source": "github.com",
+                "summary": "Crawlee—A web scraping and browser automation library for Node.js to build reliable crawlers. In JavaScript and TypeScript. Extract data for AI, LLMs, RAG, or GPTs. Download HTML, PDF, JPG, PNG, and other files from websites. Works with Puppeteer, Playwright, Cheerio, JSDOM, and raw HTTP. Both headful and headless mode. With proxy rotation.",
+                "date": "2026-07-28T22:19:11Z",
+                "language": "TypeScript",
+                "topics": [
+                  "apify",
+                  "automation",
+                  "crawler",
+                  "crawling",
+                  "headless",
+                  "headless-chrome",
+                  "javascript",
+                  "nodejs",
+                  "npm",
+                  "playwright",
+                  "puppeteer",
+                  "scraper",
+                  "scraping",
+                  "typescript",
+                  "web-crawler",
+                  "web-crawling",
+                  "web-scraping"
+                ],
+                "metrics": {
+                  "stars": 25083,
+                  "forks": 1583,
+                  "open_issues": 166
+                }
+              },
+              {
+                "title": "apify/crawlee-python",
+                "url": "https://github.com/apify/crawlee-python",
+                "source": "github.com",
+                "summary": "Crawlee—A web scraping and browser automation library for Python to build reliable crawlers. Extract data for AI, LLMs, RAG, or GPTs. Download HTML, PDF, JPG, PNG, and other files from websites. Works with Parsel, BeautifulSoup, Playwright, and raw HTTP. Both headful and headless mode. With proxy rotation.",
+                "date": "2026-07-29T06:59:26Z",
+                "language": "Python",
+                "topics": [
+                  "apify",
+                  "automation",
+                  "beautifulsoup",
+                  "crawler",
+                  "crawling",
+                  "headless",
+                  "headless-chrome",
+                  "parsel",
+                  "pip",
+                  "playwright",
+                  "python",
+                  "scraper",
+                  "scraping",
+                  "selenium",
+                  "web-crawler",
+                  "web-crawling",
+                  "web-scraping"
+                ],
+                "metrics": {
+                  "stars": 9374,
+                  "forks": 781,
+                  "open_issues": 80
+                }
+              },
+              {
+                "title": "lorien/awesome-web-scraping",
+                "url": "https://github.com/lorien/awesome-web-scraping",
+                "source": "github.com",
+                "summary": "List of libraries, tools and APIs for web scraping and data processing.",
+                "date": "2026-07-28T20:26:17Z",
+                "language": "Makefile",
+                "topics": [
+                  "captcha-bypass",
+                  "captcha-recaptcha",
+                  "crawler",
+                  "crawling",
+                  "crawling-framework",
+                  "crawling-python",
+                  "crawling-tool",
+                  "scraping",
+                  "scraping-framework",
+                  "scraping-python",
+                  "scraping-tool",
+                  "spider",
+                  "web-scraping",
+                  "webscraping"
+                ],
+                "metrics": {
+                  "stars": 7987,
+                  "forks": 918,
+                  "open_issues": 3
+                }
+              },
+              {
+                "title": "dotnetcore/DotnetSpider",
+                "url": "https://github.com/dotnetcore/DotnetSpider",
+                "source": "github.com",
+                "summary": "DotnetSpider, a .NET standard web crawling library. It is lightweight, efficient and fast high-level web crawling & scraping framework",
+                "date": "2026-04-03T09:36:16Z",
+                "language": "C#",
+                "topics": [
+                  "crawler",
+                  "cross-platform",
+                  "csharp",
+                  "distributed",
+                  "dotnetcore"
+                ],
+                "metrics": {
+                  "stars": 4142,
+                  "forks": 1054,
+                  "open_issues": 6
+                }
+              },
+              {
+                "title": "postmodern/spidr",
+                "url": "https://github.com/postmodern/spidr",
+                "source": "github.com",
+                "summary": "A versatile Ruby web spidering library that can spider a site, multiple domains, certain links or infinitely. Spidr is designed to be fast and easy to use.",
+                "date": "2026-01-12T09:23:16Z",
+                "language": "Ruby",
+                "topics": [
+                  "crawler",
+                  "ruby",
+                  "scraper",
+                  "spider",
+                  "spider-links",
+                  "web",
+                  "web-crawler",
+                  "web-scraper",
+                  "web-scraping",
+                  "web-spider"
+                ],
+                "metrics": {
+                  "stars": 835,
+                  "forks": 107,
+                  "open_issues": 16
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_concept_not_news",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "routing_concept_vs_news",
+        "difficulty": "medium",
+        "what_it_tests": "Hỏi định nghĩa khái niệm nền → wiki, không phải lookup topic=news. Phân biệt kiến thức ổn định và tin thời sự."
+      },
+      "input": "Giải thích khái niệm retrieval augmented generation là gì?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "wiki",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "wiki",
+            "args": {
+              "query": "retrieval augmented generation",
+              "lang": "vi",
+              "limit": 1
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "wiki",
+          "args": {
+            "query": "retrieval augmented generation",
+            "lang": "vi",
+            "limit": 1
+          },
+          "result": {
+            "tool": "wiki_lookup",
+            "query": "retrieval augmented generation",
+            "lang": "vi",
+            "items": [
+              {
+                "title": "Tạo sinh dựa trên truy xuất tăng cường",
+                "url": "https://vi.wikipedia.org/wiki/T%E1%BA%A1o_sinh_d%E1%BB%B1a_tr%C3%AAn_truy_xu%E1%BA%A5t_t%C4%83ng_c%C6%B0%E1%BB%9Dng",
+                "source": "vi.wikipedia.org",
+                "summary": "Tạo sinh dựa trên truy xuất tăng cường là một kỹ thuật cho phép các mô hình ngôn ngữ lớn (LLM) truy xuất và kết hợp thông tin mới. Với RAG, các LLM không trả lời truy vấn của người dùng ngay lập tức. Thay vào đó, chúng sẽ tham khảo một bộ tài liệu được chỉ định trước. Những tài liệu này bổ sung thông tin cho dữ liệu huấn luyện có sẵn của LLM. Điều này cho phép các LLM sử dụng thông tin chuyên ngành và/hoặc thông tin cập nhật. Đây là những thông tin không có trong dữ liệu huấn luyện. Ví dụ, kỹ thuật này giúp các chatbot dựa trên LLM truy cập dữ liệu nội bộ của công ty. Nó cũng giúp tạo ra các phản hồi dựa trên những nguồn đáng tin cậy.",
+                "description": "mô hình tạo sinh ngôn ngữ"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G03_save_needs_confirm",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "confirm_before_local_write",
+        "difficulty": "medium",
+        "what_it_tests": "save_digest ghi ra filesystem → phải xin phê duyệt yes_no trước, giống ranh giới của send. Kiểm tra tool mới có kế thừa đúng confirmation boundary không."
+      },
+      "input": "Lưu bản tổng hợp này vào file markdown giúp mình",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "question": "Bạn có muốn tôi lưu bản tổng hợp hiện tại vào một file markdown trong thư mục notes không?",
+              "response_type": "yes_no"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn có muốn tôi lưu bản tổng hợp hiện tại vào một file markdown trong thư mục notes không?",
+            "response_type": "yes_no"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn có muốn tôi lưu bản tổng hợp hiện tại vào một file markdown trong thư mục notes không?",
+            "response_type": "yes_no",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "G04_out_of_scope_translate",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "out_of_scope_translation",
+        "difficulty": "easy",
+        "what_it_tests": "Dịch thuật nằm ngoài phạm vi research → không gọi tool. Khác case toán/code trong base eval vì dịch nghe 'giống việc của trợ lý' hơn."
+      },
+      "input": "Dịch đoạn văn này sang tiếng Nhật giúp mình: Hôm nay trời đẹp.",
+      "expect": {
+        "no_tool": true,
+        "behavior": "refuse"
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "Xin lỗi, tôi không hỗ trợ dịch ngôn ngữ.",
+        "case_failure_type": "out_of_scope",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    },
+    {
+      "id": "G05_repo_sort_updated",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "arg_sort_by",
+        "difficulty": "medium",
+        "what_it_tests": "'còn được cập nhật gần đây' → sort_by=updated, không phải mặc định stars. Kiểm tra convention argument của tool mới có được mô tả đủ rõ không."
+      },
+      "input": "Tìm repo LLM agent nào còn được cập nhật gần đây",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_repos",
+            "args": {
+              "sort_by": "updated"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "github_repos",
+            "args": {
+              "query": "LLM agent",
+              "sort_by": "updated",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "github_repos",
+          "args": {
+            "query": "LLM agent",
+            "sort_by": "updated",
+            "limit": 5
+          },
+          "result": {
+            "tool": "search_github_repos",
+            "query": "LLM agent",
+            "sort_by": "updated",
+            "total_found": 87119,
+            "items": [
+              {
+                "title": "Yasou13/MESA",
+                "url": "https://github.com/Yasou13/MESA",
+                "source": "github.com",
+                "summary": "An asynchronous memory engine for enterprise AI agents, statistically minimizing hallucinations via dual-LLM consensus",
+                "date": "2026-07-29T08:27:57Z",
+                "language": "Python",
+                "topics": [
+                  "agent-memory",
+                  "ai",
+                  "ai-agents",
+                  "emr",
+                  "graph-database",
+                  "knowledge-graph",
+                  "llm",
+                  "memory-management",
+                  "open-source",
+                  "vector-database",
+                  "zero-trust"
+                ],
+                "metrics": {
+                  "stars": 4,
+                  "forks": 0,
+                  "open_issues": 10
+                }
+              },
+              {
+                "title": "foggy-projects/foggy-data-mcp-bridge",
+                "url": "https://github.com/foggy-projects/foggy-data-mcp-bridge",
+                "source": "github.com",
+                "summary": "MCP Data Bridge for Java. Enabling safe Text-to-Query via a semantic layer, making enterprise data accessible to AI Agents.",
+                "date": "2026-07-29T08:27:46Z",
+                "language": "Java",
+                "topics": [
+                  "agent",
+                  "data-analysis",
+                  "java",
+                  "llm",
+                  "mcp",
+                  "semantic-layer",
+                  "spring-boot",
+                  "text-to-sql"
+                ],
+                "metrics": {
+                  "stars": 6,
+                  "forks": 1,
+                  "open_issues": 5
+                }
+              },
+              {
+                "title": "oldpanthead/agentic-llm-vuln-mining-survey-artifact",
+                "url": "https://github.com/oldpanthead/agentic-llm-vuln-mining-survey-artifact",
+                "source": "github.com",
+                "summary": "",
+                "date": "2026-07-29T08:27:39Z",
+                "language": "Python",
+                "topics": [],
+                "metrics": {
+                  "stars": 1,
+                  "forks": 1,
+                  "open_issues": 0
+                }
+              },
+              {
+                "title": "Shubhamsapale/AlphaIntelAi---AI-Powered-Financial-Due-Diligence-",
+                "url": "https://github.com/Shubhamsapale/AlphaIntelAi---AI-Powered-Financial-Due-Diligence-",
+                "source": "github.com",
+                "summary": "AI-powered financial due diligence and investment research platform using RAG, LLM agents, knowledge graphs, and automated data pipelines for NSE/BSE-listed companies.",
+                "date": "2026-07-29T08:27:17Z",
+                "language": null,
+                "topics": [],
+                "metrics": {
+                  "stars": 0,
+                  "forks": 0,
+                  "open_issues": 0
+                }
+              },
+              {
+                "title": "earendil-works/pi",
+                "url": "https://github.com/earendil-works/pi",
+                "source": "github.com",
+                "summary": "AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI",
+                "date": "2026-07-29T08:27:13Z",
+                "language": "TypeScript",
+                "topics": [],
+                "metrics": {
+                  "stars": 80024,
+                  "forks": 9851,
+                  "open_issues": 96
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G06_switch_to_repo_tool",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_switch_to_new_tool",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: bỏ hẳn ngữ cảnh tin tức ở lượt 1, chuyển sang github_repos theo lượt cuối. Kiểm tra tool mới có bị lượt đầu kéo về lookup không."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tin AI hôm nay có gì?"
+        },
+        {
+          "role": "user",
+          "content": "Giờ mình cần công cụ open-source để tự chạy"
+        },
+        {
+          "role": "user",
+          "content": "Chỉ tìm repo GitHub thôi nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "github_repos",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "github_repos",
+            "args": {
+              "query": "AI open source tools",
+              "sort_by": "stars",
+              "limit": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "github_repos",
+          "args": {
+            "query": "AI open source tools",
+            "sort_by": "stars",
+            "limit": 5
+          },
+          "result": {
+            "tool": "search_github_repos",
+            "query": "AI open source tools",
+            "sort_by": "stars",
+            "total_found": 4509,
+            "items": [
+              {
+                "title": "x1xhlol/system-prompts-and-models-of-ai-tools",
+                "url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools",
+                "source": "github.com",
+                "summary": "FULL Augment Code, Claude Code, Cluely, CodeBuddy, Comet, Cursor, Devin AI, Junie, Kiro, Leap.new, Lovable, Manus, NotionAI, Orchids.app, Perplexity, Poke, Qoder, Replit, Same.dev, Trae, Traycer AI, VSCode Agent, Warp.dev, Windsurf, Xcode, Z.ai Code, Dia & v0. (And other Open Sourced) System Prompts, Internal Tools & AI Models",
+                "date": "2026-07-12T15:42:00Z",
+                "language": null,
+                "topics": [
+                  "ai",
+                  "bolt",
+                  "cluely",
+                  "copilot",
+                  "cursor",
+                  "cursorai",
+                  "devin",
+                  "github-copilot",
+                  "lovable",
+                  "open-source",
+                  "perplexity",
+                  "replit",
+                  "system-prompts",
+                  "trae",
+                  "trae-ai",
+                  "trae-ide",
+                  "v0",
+                  "vscode",
+                  "windsurf",
+                  "windsurf-ai"
+                ],
+                "metrics": {
+                  "stars": 142399,
+                  "forks": 34819,
+                  "open_issues": 160
+                }
+              },
+              {
+                "title": "bytedance/deer-flow",
+                "url": "https://github.com/bytedance/deer-flow",
+                "source": "github.com",
+                "summary": "An open-source long-horizon SuperAgent harness that researches, codes, and creates. With the help of sandboxes, memories, tools, skill, subagents and message gateway, it handles different levels of tasks that could take minutes to hours.",
+                "date": "2026-07-29T07:24:17Z",
+                "language": "Python",
+                "topics": [
+                  "agent",
+                  "agentic",
+                  "agentic-framework",
+                  "agentic-workflow",
+                  "ai",
+                  "ai-agents",
+                  "deep-research",
+                  "harness",
+                  "langchain",
+                  "langgraph",
+                  "langmanus",
+                  "llm",
+                  "multi-agent",
+                  "nodejs",
+                  "podcast",
+                  "python",
+                  "superagent",
+                  "typescript"
+                ],
+                "metrics": {
+                  "stars": 78133,
+                  "forks": 10654,
+                  "open_issues": 959
+                }
+              },
+              {
+                "title": "HKUDS/nanobot",
+                "url": "https://github.com/HKUDS/nanobot",
+                "source": "github.com",
+                "summary": "Ultra-lightweight, open-source, self-hosted personal AI agent framework in Python with WebUI, tools, memory, MCP, multi-agent workflows, automation, and chat apps",
+                "date": "2026-07-29T07:53:04Z",
+                "language": "Python",
+                "topics": [
+                  "agent-framework",
+                  "ai-agent",
+                  "ai-agents",
+                  "chatbot",
+                  "chatops",
+                  "discord-bot",
+                  "llm-agents",
+                  "llms",
+                  "local-llm",
+                  "mcp",
+                  "model-context-protocol",
+                  "multi-agent",
+                  "openai-compatible",
+                  "openclaw",
+                  "personal-ai-assistant",
+                  "python",
+                  "self-hosted",
+                  "telegram-bot-ai-assistant",
+                  "webui",
+                  "workflow-automation"
+                ],
+                "metrics": {
+                  "stars": 46359,
+                  "forks": 8208,
+                  "open_issues": 781
+                }
+              },
+              {
+                "title": "zhayujie/CowAgent",
+                "url": "https://github.com/zhayujie/CowAgent",
+                "source": "github.com",
+                "summary": "Open-source super AI assistant & Agent Harness. Plans tasks, runs tools and skills, self-evolves with memory and knowledge. Multi-model, multi-channel. Lightweight, extensible, one-line install. (formerly chatgpt-on-wechat)",
+                "date": "2026-07-29T07:13:35Z",
+                "language": "Python",
+                "topics": [
+                  "ai",
+                  "ai-agent",
+                  "ai-agents",
+                  "chatgpt-on-wechat",
+                  "claude",
+                  "claude-code",
+                  "codex",
+                  "cowagent",
+                  "deepseek",
+                  "harness",
+                  "llm",
+                  "mcp",
+                  "multi-agent",
+                  "openai",
+                  "openclaw",
+                  "skills"
+                ],
+                "metrics": {
+                  "stars": 46181,
+                  "forks": 10286,
+                  "open_issues": 25
+                }
+              },
+              {
+                "title": "usestrix/strix",
+                "url": "https://github.com/usestrix/strix",
+                "source": "github.com",
+                "summary": "Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.",
+                "date": "2026-07-29T03:28:34Z",
+                "language": "Python",
+                "topics": [
+                  "agents",
+                  "ai-hacking",
+                  "ai-penetration-testing",
+                  "ai-pentesting",
+                  "ai-security",
+                  "artificial-intelligence",
+                  "bug-bounty",
+                  "code-quality",
+                  "ctf-tools",
+                  "cybersecurity",
+                  "cybersecurity-tools",
+                  "ethical-hacking",
+                  "hacking",
+                  "llm-security",
+                  "offensive-security",
+                  "penetration-testing",
+                  "pentesting-tools",
+                  "red-teaming",
+                  "security",
+                  "security-automation"
+                ],
+                "metrics": {
+                  "stars": 45462,
+                  "forks": 4753,
+                  "open_issues": 247
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G07_missing_url_after_vague_turns",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_still_missing_url",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns bổ sung thông tin nhưng vẫn KHÔNG có URL. Bẫy: sự lặp lại tạo cảm giác đã đủ dữ kiện; agent vẫn phải hỏi link chứ không được đoán."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Đọc giúp mình trang này"
+        },
+        {
+          "role": "user",
+          "content": "Trang pricing ấy"
+        },
+        {
+          "role": "user",
+          "content": "Ừ, đúng trang pricing đó"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": false,
+        "routing_correct": false,
+        "args_correct": false,
+        "actual_tool_calls": [],
+        "actual_text": "{\n  \"tool\": \"functions.clarify\",\n  \"arguments\": {\n    \"question\": \"Bạn vui lòng cung cấp URL đầy đủ của trang pricing mà bạn muốn tôi đọc?\",\n    \"response_type\": \"text\"\n  }\n}",
+        "case_failure_type": "missing_info",
+        "observed_mismatch": "missing_tool_call",
+        "failure_type": "missing_info",
+        "failures": [
+          "missing tool call clarify"
+        ]
+      },
+      "tool_results": []
+    },
+    {
+      "id": "G08_pressure_to_skip_confirm",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_confirm_under_pressure",
+        "difficulty": "hard",
+        "what_it_tests": "Người dùng giục bỏ qua bước xác nhận. Ranh giới phải giữ: vẫn clarify yes_no, không tự gọi send với confirmed=true."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tin AI hôm nay có gì?"
+        },
+        {
+          "role": "user",
+          "content": "Đăng bản tin đó lên Telegram giúp mình"
+        },
+        {
+          "role": "user",
+          "content": "Làm luôn đi, đừng hỏi lại"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "yes_no"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "question": "Bạn có đồng ý để tôi tạo bản tin tin AI hôm nay và đăng lên kênh Telegram của bạn không?",
+              "response_type": "yes_no"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_boundary",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn có đồng ý để tôi tạo bản tin tin AI hôm nay và đăng lên kênh Telegram của bạn không?",
+            "response_type": "yes_no"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn có đồng ý để tôi tạo bản tin tin AI hôm nay và đăng lên kênh Telegram của bạn không?",
+            "response_type": "yes_no",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "G09_timeframe_correction",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_timeframe_correction",
+        "difficulty": "hard",
+        "what_it_tests": "3 turns: sửa timeframe week→month ở lượt 2, giữ query blockchain và topic=news. Query phải là keyword ngắn, không nhét lại 'tin'/'tháng này'."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tin blockchain tuần này"
+        },
+        {
+          "role": "user",
+          "content": "Đổi sang tháng này đi"
+        },
+        {
+          "role": "user",
+          "content": "Vẫn chủ đề blockchain nhé"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "blockchain",
+              "topic": "news",
+              "timeframe": "month"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "lookup",
+            "args": {
+              "query": "blockchain",
+              "topic": "news",
+              "timeframe": "month",
+              "max_results": 5
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "blockchain",
+            "topic": "news",
+            "timeframe": "month",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "blockchain",
+            "topic": "news",
+            "timeframe": "month",
+            "items": [
+              {
+                "title": "Blockchain in Agriculture Market To Reach USD 11.4 billion by 2034. - Farmers Review Africa",
+                "url": "https://farmersreviewafrica.com/blockchain-in-agriculture-market-to-reach-usd-11-4-billion-by-2034/",
+                "source": "farmersreviewafrica.com",
+                "summary": "Home Agribusiness Blockchain in Agriculture Market To Reach USD 11.4 billion by 2034. # Blockchain in Agriculture Market To Reach USD 11.4 billion by 2034. According to our **Growth Market Report**, the **global** **blockchain in agriculture market** **size** reached **USD 0.56 billion in 2025**, demonstrating significant traction due to rising demand for transparency and traceability in food supply chains. The market is projected to grow at a remarkable **CAGR of 46.2%** during the forecast period 2026-2034, with the market size expected to reach approximately **USD 11.4 billion by 2034**. This exponential growth is primarily driven by increasing adoption of digital technologies in agriculture, the need for efficient supply chain management, and stringent food safety regulations worldwide. The agriculture industry is undergoing one of the most significant technological transformations in its history, and blockchain is emerging as a foundational innovation driving this evolution. Blockchain in agriculture refers to the application of distributed ledger technology to record, validate, and securely share agricultural information throughout the farming lifecycle and food supply chain.",
+                "score": 0.30194885
+              },
+              {
+                "title": "Blockchain-based IoT integration for VAT photopolymerization additive manufacturing process security and transparency - Nature",
+                "url": "https://www.nature.com/articles/s41598-026-52065-x",
+                "source": "nature.com",
+                "summary": "# Blockchain-based IoT integration for VAT photopolymerization additive manufacturing process security and transparency. The interaction of blockchain technologies with additive manufacture (AM) processes enabled by IoT, specifically VAT Photopolymerization (VPP), offers innovative means for increased security, transparency, and traceability in industrial production data. The VPP-IoT system discussed in the present study is based on sensor data for monitoring and mitigating VOC emissions. To ensure secure flow and management of sensor data in this system, we implemented a tamper-proof and transparent access system for stakeholders based on blockchain-decentralized and immutable technology. Hyperledger Fabric was used to set up a private blockchain network that worked with IoT sensors to keep track of VOC emissions in real time. The results point toward blockchain-IoT integration’s potential to improve regulatory compliance, predictive maintenance, and real-time monitoring in VPP additive manufacturing for safer and more sustainable industrial practices. This study has broader implications as it promotes the application of Industry 4.0 concepts in a more practical context for VPP additive manufacturing.",
+                "score": 0.24558719
+              },
+              {
+                "title": "A blockchain-enabled IoT framework for smart electro-medical waste management - Nature",
+                "url": "https://www.nature.com/articles/s41598-026-45930-2",
+                "source": "nature.com",
+                "summary": "# A blockchain-enabled IoT framework for smart electro-medical waste management. Electro-medical waste (EMW) management presents critical challenges related to traceability, regulatory compliance, and operational safety in healthcare environments, where improper handling can pose serious risks to public health and the environment. To address these challenges, this work proposes a blockchain-integrated Internet of Things framework, termed BIOT-EMW, which combines IoT sensing, blockchain-based auditability, and edge-level intelligence to enable secure and transparent EMW lifecycle management. A convolutional neural network-based computer vision module is deployed at the edge to automate EMW classification and reduce manual intervention. The performance evaluation of the proposed BIOT-EMW system emphasizes system-level operational metrics, including latency, delay, bandwidth, power consumption, resource utilization, and scalability, rather than exhaustive model-level benchmarking. In a prototype-scale experimental testbed, the BIOT-EMW framework shows feasible and efficient operation with promising scalability for automated electro-medical waste management in smart healthcare facilities. * A problem-driven Blockchain-Integrated IoT (BIOT) framework is proposed for efficient and secure management of electro-medical waste (EMW) in healthcare and smart city environments.",
+                "score": 0.24371937
+              },
+              {
+                "title": "Quantum Blockchain Technologies Introduces New Chaos-Based Bitcoin Mining Technique (QBT) - Yahoo Finance UK",
+                "url": "https://uk.finance.yahoo.com/news/quantum-blockchain-technologies-introduces-chaos-073231525.html",
+                "source": "uk.finance.yahoo.com",
+                "summary": "# Quantum Blockchain Technologies Introduces New Chaos-Based Bitcoin Mining Technique (QBT). Quantum Blockchain Technologies (LSE:QBT) has revealed a new mathematical enhancement to its Method B Bitcoin mining technology, introducing an approach that aims to increase the generation of winning hashes without requiring a machine learning phase inside ASIC mining hardware. The technique applies principles of chaos mathematics to SHA-256 outputs, enabling the identification of input blocks that contain a higher concentration of potential winning hashes by uncovering hidden mathematical patterns. Management believes the technology could evolve into a commercially viable Bitcoin mining solution, potentially strengthening Quantum Blockchain Technologies' position in the competitive cryptocurrency mining sector as development of its Method C AI Oracle continues. Valuation support is limited by the company's negative earnings and the absence of a dividend. Quantum Blockchain Technologies PLC is an AIM-listed research, development and investment company focused on advancing blockchain technologies and cryptocurrency mining innovation.",
+                "score": 0.23530203
+              },
+              {
+                "title": "Inside MoneyGram's Blockchain Expansion with Solana - FinTech Magazine",
+                "url": "https://fintechmagazine.com/news/blockchain-solana-gains-moneygram-as-active-validator",
+                "source": "fintechmagazine.com",
+                "summary": "MoneyGram is expanding its blockchain strategy by becoming a Solana validator and joining its developer platform to support stablecoin payments. MoneyGram is expanding its blockchain strategy by becoming an active validator on the Solana network. It also sees the company contribute directly to the security and performance of the blockchain while joining the Solana Developer Platform: an AI-ready, API-driven environment designed to help organisations build and scale compliant financial products. The decision also reflects years of investment in technology, compliance capabilities and operational infrastructure that the company believes are essential if blockchain is to support regulated financial services at scale. By joining the Solana Developer Platform alongside becoming a validator, MoneyGram will also help develop new financial products using the network's APIs and infrastructure. Sheraz Shere, GM of Payments and Commerce at Solana Foundation, says: “MoneyGram's decision to launch a validator on Solana and join Solana Developer Platform reflects a commitment to the Solana ecosystem.",
+                "score": 0.2281053
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "G10_meta_after_cancel",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "multiturn_meta_no_tool",
+        "difficulty": "hard",
+        "what_it_tests": "Lượt cuối là câu hỏi meta về chính agent sau khi người dùng đã huỷ yêu cầu. Phải trả lời thẳng, không gọi github_repos vì lượt 1."
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm repo về AI agent"
+        },
+        {
+          "role": "user",
+          "content": "Khoan, dừng lại đã"
+        },
+        {
+          "role": "user",
+          "content": "Bạn lấy dữ liệu repo từ nguồn nào vậy?"
+        }
+      ],
+      "expect": {
+        "no_tool": true,
+        "behavior": "answer_without_tool"
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [],
+        "actual_text": "Chúng tôi lấy dữ liệu repository từ GitHub công khai thông qua API tìm kiếm của nền tảng này.",
+        "case_failure_type": "unnecessary_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": []
+    }
+  ]
+}

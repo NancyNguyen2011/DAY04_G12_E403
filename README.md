@@ -26,7 +26,7 @@ Nhiệm vụ bắt buộc:
 - Tự viết đúng 10 eval case vào `data/eval_group.json`: 5 single-turn + 5 multi-turn.
 - Nộp run JSON, transcript JSON, report.
 - Có UI chạy được. Khuyến nghị Streamlit để làm nhanh, nhưng nhóm có thể dùng bất kỳ framework nào và tự chọn nền tảng deploy phù hợp.
-- Hoàn thành `artifacts/REPORT.md`: Phần A xong trước 16:30 để làm tài liệu phụ trợ khi demo; Phần B hoàn thiện sau để nộp bài.
+- Hoàn thành `artifacts/REPORT.md`: Phần A xong trước 11:30 để làm tài liệu phụ trợ khi demo; Phần B hoàn thiện sau để nộp bài.
 
 UI là deliverable core, không phải bonus. Starter không cung cấp `app.py`; nhóm tự tạo UI bằng framework đã chọn.
 
@@ -279,7 +279,7 @@ Không nên chạy ba bản sao giống hệt nhau chỉ để có tên v1/v2/v3
 
 Hoàn thành `artifacts/REPORT.md`. File này có 2 phần với deadline khác nhau:
 
-- **Phần A — Giới thiệu agent**: ngắn gọn 1 trang để team khác hiểu nhanh agent có tool gì, làm được gì, thử bằng câu hỏi nào. Xong trước 16:30 để làm tài liệu phụ trợ khi demo.
+- **Phần A — Giới thiệu agent**: ngắn gọn 1 trang để team khác hiểu nhanh agent có tool gì, làm được gì, thử bằng câu hỏi nào. Xong trước 11:30 để làm tài liệu phụ trợ khi demo.
 - **Phần B — Chi tiết / Bằng chứng**: bảng đầy đủ v0–v3, failure analysis, eval cases, live chat, reflection — dựa trên log thật. Có thể hoàn thiện sau buổi debate để nộp bài.
 
 Khuyến nghị tối thiểu cho Phần A là markdown trong `REPORT.md`. Nếu muốn show mượt hơn, có thể làm thêm poster HTML/SVG 1 trang để trình bày cùng nội dung.
@@ -301,16 +301,16 @@ Submit `starter_v0/` with:
 Do not submit `.env`, API keys, `.venv/`, hoặc cache/build output.
 Kênh nộp, quy tắc đặt tên và deadline cuối theo thông báo của giảng viên; team cần xác nhận các thông tin này trước khi zip hoặc gửi repo link.
 
-## Checkpoints — K4 buổi chiều (14:00–18:00)
+## Checkpoints — K3 buổi sáng (09:00–13:00)
 
-0. **Kickoff — 14:00–14:15:** chia nhóm, phân vai và mở `starter_v0/`.
-1. **Setup — 14:15–14:40:** chuẩn bị môi trường, API keys và chạy provider preflight.
-2. **Baseline v0 — 14:40–15:15:** chạy base eval, đọc một failed trace, dựng UI local và ghi bốn metric.
-3. **v1 + Tool — 15:15–15:50:** sửa một giả thuyết, hoàn thiện một tool mới, chạy v1 và cập nhật version log.
-4. **Nghỉ — 15:50–16:05.**
-5. **Eval + v2 — 16:05–16:30:** hoàn thành 10 team eval cases, evidence v2, ba kịch bản demo, Report A và rehearsal.
-6. **Demo → Ship — 16:30–17:40:**
-   - **Showdown — 16:30–17:15:** giới thiệu, live test và challenge.
-   - **v3 + Report B — 17:15–17:35:** áp dụng feedback, chạy v3 và hoàn thiện report bằng evidence.
-   - **Final gate — 17:35–17:40:** kiểm tra và chuẩn bị nộp `starter_v0/`.
-7. **Kahoot Recap — 17:40–18:00.**
+0. **Kickoff — 09:00–09:15:** chia nhóm, phân vai và mở `starter_v0/`.
+1. **Setup — 09:15–09:40:** chuẩn bị môi trường, API keys và chạy provider preflight.
+2. **Baseline v0 — 09:40–10:15:** chạy base eval, đọc một failed trace, dựng UI local và ghi bốn metric.
+3. **v1 + Tool — 10:15–10:50:** sửa một giả thuyết, hoàn thiện một tool mới, chạy v1 và cập nhật version log.
+4. **Nghỉ — 10:50–11:05.**
+5. **Eval + v2 — 11:05–11:30:** hoàn thành 10 team eval cases, evidence v2, ba kịch bản demo, Report A và rehearsal.
+6. **Demo → Ship — 11:30–12:40:**
+   - **Showdown — 11:30–12:15:** giới thiệu, live test và challenge.
+   - **v3 + Report B — 12:15–12:35:** áp dụng feedback, chạy v3 và hoàn thiện report bằng evidence.
+   - **Final gate — 12:35–12:40:** kiểm tra và chuẩn bị nộp `starter_v0/`.
+7. **Kahoot Recap — 12:40–13:00.**

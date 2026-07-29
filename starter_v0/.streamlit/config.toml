@@ -1,0 +1,25 @@
+# Claude design system — cream canvas + coral accent + warm dark surfaces.
+# Both modes are defined so the appearance toggle can never leave a label
+# unreadable: Streamlit paints every widget from these values.
+
+[theme]
+base = "light"
+primaryColor = "#cc785c"
+backgroundColor = "#faf9f5"
+secondaryBackgroundColor = "#efe9de"
+textColor = "#141413"
+linkColor = "#cc785c"
+borderColor = "#e6dfd8"
+font = "sans-serif"
+codeFont = "monospace"
+
+[theme.sidebar]
+backgroundColor = "#f5f0e8"
+secondaryBackgroundColor = "#efe9de"
+borderColor = "#e6dfd8"
+
+[server]
+headless = true
+
+[browser]
+gatherUsageStats = false

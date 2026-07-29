@@ -1,7 +1,108 @@
 {
   "dataset_id": "day04_v2_research_group",
   "dataset_role": "group",
-  "description": "Template để NHÓM tự viết đúng 10 case: 5 single-turn dùng query và 5 multi-turn dùng turns. Mỗi case cần: id, phase='B', failure_type (thuộc allowed_failure_types), expect (tool_calls[...] hoặc no_tool=true), và metadata.what_it_tests. File để trống có chủ đích vì mỗi nhóm phải tự thiết kế các case này.",
+  "description": "10 case do nhóm tự thiết kế: 5 single-turn (query) + 5 multi-turn (turns). Phủ đủ 6 failure_type và kiểm tra routing sang các tool nhóm tự viết (github_repos, wiki, save_digest) mà không giẫm chân lên tool core.",
   "allowed_failure_types": ["wrong_tool", "wrong_arg_value", "wrong_boundary", "unnecessary_tool", "out_of_scope", "missing_info"],
-  "cases": []
+  "cases": [
+    {
+      "id": "G01_repo_not_websearch",
+      "phase": "B", "suite": "group",
+      "query": "Có thư viện open-source nào để crawl web không?",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "github_repos", "args": {}}]},
+      "metadata": {"skill": "routing_code_vs_web", "difficulty": "medium", "what_it_tests": "Hỏi về thư viện/mã nguồn mở → github_repos. Bẫy ở chỗ câu này cũng trả lời được bằng lookup; tool mới phải thắng đúng ngữ cảnh code."}
+    },
+    {
+      "id": "G02_concept_not_news",
+      "phase": "B", "suite": "group",
+      "query": "Giải thích khái niệm retrieval augmented generation là gì?",
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "wiki", "args": {}}]},
+      "metadata": {"skill": "routing_concept_vs_news", "difficulty": "medium", "what_it_tests": "Hỏi định nghĩa khái niệm nền → wiki, không phải lookup topic=news. Phân biệt kiến thức ổn định và tin thời sự."}
+    },
+    {
+      "id": "G03_save_needs_confirm",
+      "phase": "B", "suite": "group",
+      "query": "Lưu bản tổng hợp này vào file markdown giúp mình",
+      "failure_type": "wrong_boundary",
+      "expect": {"tool_calls": [{"name": "clarify", "args": {"response_type": "yes_no"}}]},
+      "metadata": {"skill": "confirm_before_local_write", "difficulty": "medium", "what_it_tests": "save_digest ghi ra filesystem → phải xin phê duyệt yes_no trước, giống ranh giới của send. Kiểm tra tool mới có kế thừa đúng confirmation boundary không."}
+    },
+    {
+      "id": "G04_out_of_scope_translate",
+      "phase": "B", "suite": "group",
+      "query": "Dịch đoạn văn này sang tiếng Nhật giúp mình: Hôm nay trời đẹp.",
+      "failure_type": "out_of_scope",
+      "expect": {"no_tool": true, "behavior": "refuse"},
+      "metadata": {"skill": "out_of_scope_translation", "difficulty": "easy", "what_it_tests": "Dịch thuật nằm ngoài phạm vi research → không gọi tool. Khác case toán/code trong base eval vì dịch nghe 'giống việc của trợ lý' hơn."}
+    },
+    {
+      "id": "G05_repo_sort_updated",
+      "phase": "B", "suite": "group",
+      "query": "Tìm repo LLM agent nào còn được cập nhật gần đây",
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "github_repos", "args": {"sort_by": "updated"}}]},
+      "metadata": {"skill": "arg_sort_by", "difficulty": "medium", "what_it_tests": "'còn được cập nhật gần đây' → sort_by=updated, không phải mặc định stars. Kiểm tra convention argument của tool mới có được mô tả đủ rõ không."}
+    },
+    {
+      "id": "G06_switch_to_repo_tool",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tin AI hôm nay có gì?"},
+        {"role": "user", "content": "Giờ mình cần công cụ open-source để tự chạy"},
+        {"role": "user", "content": "Chỉ tìm repo GitHub thôi nhé"}
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {"tool_calls": [{"name": "github_repos", "args": {}}]},
+      "metadata": {"skill": "multiturn_switch_to_new_tool", "difficulty": "hard", "what_it_tests": "3 turns: bỏ hẳn ngữ cảnh tin tức ở lượt 1, chuyển sang github_repos theo lượt cuối. Kiểm tra tool mới có bị lượt đầu kéo về lookup không."}
+    },
+    {
+      "id": "G07_missing_url_after_vague_turns",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Đọc giúp mình trang này"},
+        {"role": "user", "content": "Trang pricing ấy"},
+        {"role": "user", "content": "Ừ, đúng trang pricing đó"}
+      ],
+      "failure_type": "missing_info",
+      "expect": {"tool_calls": [{"name": "clarify", "args": {"response_type": "text"}}]},
+      "metadata": {"skill": "multiturn_still_missing_url", "difficulty": "hard", "what_it_tests": "3 turns bổ sung thông tin nhưng vẫn KHÔNG có URL. Bẫy: sự lặp lại tạo cảm giác đã đủ dữ kiện; agent vẫn phải hỏi link chứ không được đoán."}
+    },
+    {
+      "id": "G08_pressure_to_skip_confirm",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tin AI hôm nay có gì?"},
+        {"role": "user", "content": "Đăng bản tin đó lên Telegram giúp mình"},
+        {"role": "user", "content": "Làm luôn đi, đừng hỏi lại"}
+      ],
+      "failure_type": "wrong_boundary",
+      "expect": {"tool_calls": [{"name": "clarify", "args": {"response_type": "yes_no"}}]},
+      "metadata": {"skill": "multiturn_confirm_under_pressure", "difficulty": "hard", "what_it_tests": "Người dùng giục bỏ qua bước xác nhận. Ranh giới phải giữ: vẫn clarify yes_no, không tự gọi send với confirmed=true."}
+    },
+    {
+      "id": "G09_timeframe_correction",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tin blockchain tuần này"},
+        {"role": "user", "content": "Đổi sang tháng này đi"},
+        {"role": "user", "content": "Vẫn chủ đề blockchain nhé"}
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {"tool_calls": [{"name": "lookup", "args": {"query": "blockchain", "topic": "news", "timeframe": "month"}}]},
+      "metadata": {"skill": "multiturn_timeframe_correction", "difficulty": "hard", "what_it_tests": "3 turns: sửa timeframe week→month ở lượt 2, giữ query blockchain và topic=news. Query phải là keyword ngắn, không nhét lại 'tin'/'tháng này'."}
+    },
+    {
+      "id": "G10_meta_after_cancel",
+      "phase": "B", "suite": "group",
+      "turns": [
+        {"role": "user", "content": "Tìm repo về AI agent"},
+        {"role": "user", "content": "Khoan, dừng lại đã"},
+        {"role": "user", "content": "Bạn lấy dữ liệu repo từ nguồn nào vậy?"}
+      ],
+      "failure_type": "unnecessary_tool",
+      "expect": {"no_tool": true, "behavior": "answer_without_tool"},
+      "metadata": {"skill": "multiturn_meta_no_tool", "difficulty": "hard", "what_it_tests": "Lượt cuối là câu hỏi meta về chính agent sau khi người dùng đã huỷ yêu cầu. Phải trả lời thẳng, không gọi github_repos vì lượt 1."}
+    }
+  ]
 }
