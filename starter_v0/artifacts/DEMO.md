@@ -109,12 +109,16 @@ Mỗi vòng **chỉ sửa đúng một artifact**, và hash chứng minh điều
 
 ## 3. Phân vai
 
+Đây là đề xuất, nhóm đổi thoải mái — chỉ cần giữ nguyên tắc ở dưới bảng.
+
 | Vai | Việc | Ai |
 |---|---|---|
-| Người kể | Nói kịch bản 1.1 → 1.2 → 1.3, giữ nhịp | |
-| Người bấm | Gõ prompt, mở expander trace đúng lúc | |
-| Người số liệu | Mở run JSON khi bị hỏi, đọc đúng field | |
-| Người trả challenge | Dùng mục 5 | |
+| Người kể | Nói kịch bản 1.1 → 1.2 → 1.3, giữ nhịp | Trần Thế Ninh |
+| Người bấm | Gõ prompt, mở expander trace đúng lúc | Trần Lương Hoàng Anh |
+| Người số liệu | Mở run JSON khi bị hỏi, đọc đúng field | Trịnh Quang Anh |
+| Người trả challenge | Dùng mục 5 | Đào Việt Phong |
+| Canh giờ + fallback | Nhắc còn bao nhiêu phút; mạng chết thì chuyển sang transcript đã mở sẵn | Nguyễn Trung Đức |
+| Ghi feedback | Chép lại câu hỏi và góp ý của lớp để làm Report B sau debate | Nguyễn Thị Thu Trang |
 
 Người bấm và người kể **không nên là một người** — vừa gõ vừa nói sẽ vấp.
 

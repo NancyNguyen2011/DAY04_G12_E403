@@ -7,7 +7,7 @@
 ## Team
 
 - Team: G12 — E403
-- Members: _(điền tên thành viên)_
+- Members: Trần Thế Ninh · Trần Lương Hoàng Anh · Trịnh Quang Anh · Đào Việt Phong · Nguyễn Trung Đức · Nguyễn Thị Thu Trang
 - Provider/model: `nvidia` (NVIDIA NIM) / `openai/gpt-oss-120b`
 
 ---
