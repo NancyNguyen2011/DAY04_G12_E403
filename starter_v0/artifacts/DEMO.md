@@ -5,7 +5,7 @@
 
 **Setup:** provider `nvidia` · model `openai/gpt-oss-120b` · 14 tool declarations
 
-**UI:** local http://localhost:8501 · public **https://perhaps-enzyme-zshops-saves.trycloudflare.com**
+**UI:** local http://localhost:8501 · public **https://gentleman-venue-describe-where.trycloudflare.com**
 
 > Link public sống theo phiên tunnel. Tắt tunnel hoặc tắt máy là link chết và đổi khi mở lại.
 > Kiểm tra ngay trước khi lên; nếu chết: `cloudflared tunnel --url http://localhost:8501`.

@@ -20,7 +20,7 @@ Research agent: tìm tin theo chủ đề hoặc theo tài khoản X/Twitter, đ
 
 **Link dùng thử (truy cập được trong showdown):**
 
-> **Public URL: https://perhaps-enzyme-zshops-saves.trycloudflare.com**
+> **Public URL: https://gentleman-venue-describe-where.trycloudflare.com**
 >
 > Local: `http://localhost:8501` (chạy `streamlit run app.py` trong `starter_v0/`).
 > Link public đi qua Cloudflare Tunnel và **chỉ sống trong phiên tunnel đang mở** — nếu

@@ -1,0 +1,643 @@
+{
+  "transcript_id": "current_ui_nvidia_20260729T165439060425",
+  "version": "current",
+  "artifact_version": "current+pd749a31bc1bd+t6576e6fd32a0",
+  "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+  "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+  "surface": "streamlit_ui",
+  "provider": "nvidia",
+  "model": null,
+  "created_at": "2026-07-29T16:54:39",
+  "turns": [
+    {
+      "turn_index": 1,
+      "user": "thời tiết hà nội hôm nay",
+      "status": "answered",
+      "assistant_text": "Hà Nội hôm nay có thời tiết **mưa rải rác kèm sấm sét** (Moderate or heavy rain with thunder). Nhiệt độ hiện tại khoảng **27.9 °C** (82 °F), độ ẩm **89 %**, gió tới **16 km/h** từ hướng Đông‑Nam. Trường hợp mưa có khả năng **57 %** và áp suất không khí khoảng **1002 hPa**【lookup】.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "lookup",
+              "args": {
+                "query": "Hanoi weather today",
+                "topic": "general",
+                "timeframe": "day",
+                "max_results": 5
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "lookup",
+              "args": {
+                "query": "Hanoi weather today",
+                "topic": "general",
+                "timeframe": "day",
+                "max_results": 5
+              },
+              "result": {
+                "tool": "web_search",
+                "query": "Hanoi weather today",
+                "topic": "general",
+                "timeframe": "day",
+                "items": [
+                  {
+                    "title": "Weather in Hanoi",
+                    "url": "https://www.weatherapi.com/",
+                    "source": "weatherapi.com",
+                    "summary": "{'location': {'name': 'Hanoi', 'region': '', 'country': 'Vietnam', 'lat': 21.0333, 'lon': 105.85, 'tz_id': 'Asia/Bangkok', 'localtime_epoch': 1785318884, 'localtime': '2026-07-29 16:54'}, 'current': {'last_updated_epoch': 1785318300, 'last_updated': '2026-07-29 16:45', 'temp_c': 27.9, 'temp_f': 82.2, 'is_day': 1, 'condition': {'text': 'Moderate or heavy rain with thunder', 'icon': '//cdn.weatherapi.com/weather/64x64/day/389.png', 'code': 1276}, 'wind_mph': 10.1, 'wind_kph': 16.2, 'wind_degree': 134, 'wind_dir': 'SE', 'pressure_mb': 1002.0, 'pressure_in': 29.59, 'precip_mm': 1.29, 'precip_in': 0.05, 'humidity': 89, 'cloud': 50, 'feelslike_c': 30.8, 'feelslike_f': 87.3, 'windchill_c': 31.0, 'windchill_f': 87.7, 'heatindex_c': 36.9, 'heatindex_f': 98.4, 'dewpoint_c': 24.4, 'dewpoint_f': 76.0, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 2.6, 'gust_mph': 18.8, 'gust_kph': 30.2, 'will_it_rain': 0, 'chance_of_rain': 57, 'will_it_snow': 0, 'chance_of_snow': 0, 'wetbulb_c': 26.1, 'wetbulb_f': 79.0}}",
+                    "score": 0.8860349
+                  },
+                  {
+                    "title": "Weather today July 29: Northern region continues to have heavy rain, with very heavy rain in some places",
+                    "url": "https://news.laodong.vn/ban-tin/thoi-tiet-hom-nay-297-mien-bac-tiep-tuc-mua-to-co-noi-mua-rat-to-1742273.ldo",
+                    "source": "news.laodong.vn",
+                    "summary": "LAO ĐỘNG TV\n\nVietnamese  -  Korean  -  French  -  Spanish  -  Japanese   -   Chinese   -   Russian \n\n Chinese\n Russian\n\nBÁO LAO ĐỘNG\n\nOriginal Vietnamese content is translated by OpenAI\n\nDu Lịch   Công Đoàn   Dn Tộc Tôn Giáo   Lao Động Trẻ   Công Đoàn Việt Nam\n\n59s   Latest News\n\nLao Dong TV\n\n# Weather today July 29: Northern region continues to have heavy rain, with very heavy rain in some places\n\nLINH ANH  06:00, Wed Jul 29, 2026 (GMT+7) [...] 2 Tìm tiện ích chặn quảng cáo đang bật (uBlock Origin, AdBlock, AdGuard...)\n\n3 Chọn Tắt cho trang này hoặc nhấn nút nguồn để tắt tiện ích\n\n4 Tải lại trang để quảng cáo hiển thị bình thường\n\nCảm ơn bạn đã hỗ trợ Lao Dong Newspaper!",
+                    "score": 0.8430832
+                  },
+                  {
+                    "title": "Weather Forecast for July 29, 2026 | Strong Southwest Monsoon Activity ...",
+                    "url": "https://www.youtube.com/watch?v=bJ2-Ro8LDbU",
+                    "source": "youtube.com",
+                    "summary": "và Thanh Hóa, mưa cũng sẽ còn trong đêm nay đến sáng mai có điểm mưa to trên 150 mm tập trung tại tỉnh Lào Cai, chính là vùng màu vàng trên bản đồ này. Đây cũng là khu vực cần lưu ý về lũ quét trên các sông suối nhỏ cũng như là sạt lở đất ở sân đối núi. Đến trưa mai ở miền Bắc mưa giảm, nhiệt độ tại phường Hoà Kiếm, Thủ đô Hà Nội và hầu khắp các nơi khác dao động từ 30 đến 33° C. Quý vị sẽ thấy nóng hơn ngày hôm nay. Ở Trung Bộ từ phường Tĩnh Gia của tỉnh Thanh Hóa đến phường Thành Sen của tỉnh [...] Thành Sen của tỉnh Hà Tĩnh có mưa bất trợt trong ngày. Còn từ phường Đông Hà của tỉnh Quảng Trị tới phường Phan Thiết, tỉnh Lâm Đồng trưa mai trời có nắng, chiều tối có mưa dông. Nhiệt độ các phường không nơi nào vượt quá mức nhiệt là 34° C. Còn vùng biển Tây từ tỉnh Cà Mau đến tỉnh An Giang, hôm nay có mưa dong giải rác, dễ đi kèm với lốc xoáy và gió giật mạnh cấp 7 đến cấp tá8. Tại đó khu Trường Sa cũng có mưa dông tiềm ẩn với lốc xoáy, gió mạnh cấp năm tại vùng biển phía tây mạnh cấp sáu, [...] [âm nhạc] Chào quý vị và các bạn. Hiện nay, gió tây nam ở phía Nam vẫn đang hoạt động mạnh, gây mưa vừa và mưa to cho khu vực cao nguyên Trung Bộ và Nam Bộ. Dự báo là mưa sẽ còn tiếp diễn từ chiều tối nay đến đêm mai. Lượng mưa phổ biến ở khu vực này từ 50 đến 110 mm. Cục bộ có những nơi mưa rất to với lượng là trên 170 mm. Nguy cơ xảy ra sạt lở sườn đồi núi ở khu vực cao nguyên Trung Bộ cũng như là tình trạng ngập úng ở tỉnh Lâm Đồng và những vùng trụ thấp ở Nam Bộ. Ở Bắc Bộ và Thanh Hóa, mưa",
+                    "score": 0.84215075
+                  },
+                  {
+                    "title": "Dự báo thời tiết 12h30 - 29/07/2026 | Nơi nào mưa to nhất? | VTVWDB",
+                    "url": "https://www.youtube.com/watch?v=Fn_Ni0Zqcrw",
+                    "source": "youtube.com",
+                    "summary": "32 cho đến 34° C. Về chiều tối thì mưa rông có thể xuất hiện giải rác. Còn ở Bắc Bộ, dự báo chiều nay trời sẽ tiếp tục có mưa dông bất chợt. Tại khu vực vùng núi, dự báo sẽ có nơi mưa to, không khí mát mẻ. Với nhiệt độ cao nhất tại thủ đô Hà Nội cũng như nhiều tỉnh thành sẽ không vượt quá mức nhiệt là 32° C. Trên biển quanh các đặc khu Hoàng Sa, đặc khu Trường Sa và vùng biển Tây từ Cà Mau đến An Giang đều cảnh báo với mưa dông kèm nguy cơ về lốc xoáy, gió giật mạnh cấp 7 cho đến cấp tá. Cuối [...] khu vực Duyên Hải, Nam Trung Bộ cũng có mưa dông giải rác vào khoảng thời gian chiều tối nay. Còn trong chiều nay, trời sẽ tiếp tục có nắng và khá nóng với nhiệt độ cao nhất nhiều phường ven biển từ Đà Nẵng xuống đến Lâm Đồng trong khoảng từ 32 đến 34° C. Riêng phường Tuy Hòa có nắng nóng với mức nhiệt là 35° C. Nắng mây đan sen cũng là trạng thái chủ đạo ở khu vực Bắc miền Trung vào khoảng thời gian chiều nay. Cảm giác oi nóng với nhiệt độ cao nhất phổ biến trong khoảng là từ 32 cho đến 34° C. [...] là do gió mùa tây nam hiện đang hoạt động mạnh ở những khu vực này. Cụ thể thì vùng biển từ Khánh Hòa đến thành phố Hồ Chí Minh ra tới khu vực phía tây của giữa biển Đông là nơi có gió mạnh nhất. Cảnh báo chiều và đêm nay gió vào khoảng cấp năm có lúc cấp sáu giật cấp 7 đến cấp 8. Độ cao sóng từ 2 đến 3 m biển động. Còn trên đất liền, gió sẽ đẩy ẩm vào và khiến vùng mưa sẽ mở rộng ra hầu khắp các tỉnh thành thuộc khu vực Nam Bộ cũng như ở cao nguyên Trung Bộ vào khoảng thời gian chiều đến tối",
+                    "score": 0.818055
+                  },
+                  {
+                    "title": "PRESS WEATHER NO. 076 - WEATHER OF OTHER CITIES",
+                    "url": "https://www.info.gov.hk/gia/wr/202607/29/P2026072900207.htm",
+                    "source": "info.gov.hk",
+                    "summary": "```\nRIO DE JANEIRO 21 32 FINE\n```\n\n  \n\n```\nSANTIAGO 7 18 OVERCAST\n```\n\n  \n\n```\nMEXICO CITY 14 24 SHOWERS\n```\n\n  \n\n```\nLIMA 18 23 BRIGHT\n```\n\n  \n\n```\nCARACAS 20 28 FINE\n```\n\n  \n\n```\n\n  \n  \nDISPATCHED BY HONG KONG OBSERVATORY AT 10:00 HKT ON 29.07.2026\n\n  \n\nArchives   Yesterday's Press Releases\n\nBack to Index Page\n\nBack to top\n\nToday's Press Releases [...] ```\nMANILA 24 29 THUNDERSTORMS\n```\n\n  \n\n```\nCEBU 25 32 THUNDERSTORMS\n```\n\n  \n\n```\nHANOI 25 32 RAIN\n```\n\n  \n\n```\nHO CHI MINH CITY 25 30 RAIN\n```\n\n  \n\n```\nBANGKOK 27 34 THUNDERSTORMS\n```\n\n  \n\n```\nKUALA LUMPUR 25 33 THUNDERSTORMS\n```\n\n  \n\n```\nSINGAPORE 25 34 THUNDERSTORMS\n```\n\n  \n\n```\nNEW DELHI 23 33 RAIN\n```\n\n  \n\n```\nMUMBAI 25 31 THUNDERSTORMS\n```\n\n  \n\n```\nKARACHI 28 35 CLOUDY\n```\n\n  \n\n```\nJAKARTA 26 32 OVERCAST\n```\n\n  \n\n```\nBALI 23 29 SHOWERS\n```\n\n  \n\n```\nB.S.BEGAWAN 26 33 THUNDERSTORMS\n``` [...] ```\nMUSCAT 30 41 CLOUDY\n```\n\n  \n\n```\nTEHRAN 25 37 FINE\n```\n\n  \n\n```\nPHNOM PENH 25 32 THUNDERSTORMS\n```\n\n  \n\n```\nYANGON 21 31 SHOWERS\n```\n\n  \n  \n\n```\nSYDNEY 10 19 FINE\n```\n\n  \n\n```\nMELBOURNE 7 13 SHOWERS\n```\n\n  \n\n```\nBRISBANE 12 24 CLOUDY\n```\n\n  \n\n```\nGEELONG 6 13 SHOWERS\n```\n\n  \n\n```\nHORSHAM 4 12 CLOUDY\n```\n\n  \n\n```\nMILDURA 4 15 CLOUDY\n```\n\n  \n\n```\nWELLINGTON 9 13 WINDY\n```\n\n  \n\n```\nAUCKLAND 7 16 CLOUDY\n```\n\n  \n  \n\n```\nTORONTO 19 26 CLOUDY\n```\n\n  \n\n```\nVANCOUVER 14 21 CLOUDY\n```",
+                    "score": 0.599087
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Hà Nội hôm nay có thời tiết **mưa rải rác kèm sấm sét** (Moderate or heavy rain with thunder). Nhiệt độ hiện tại khoảng **27.9 °C** (82 °F), độ ẩm **89 %**, gió tới **16 km/h** từ hướng Đông‑Nam. Trường hợp mưa có khả năng **57 %** và áp suất không khí khoảng **1002 hPa**【lookup】.",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "lookup",
+          "args": {
+            "query": "Hanoi weather today",
+            "topic": "general",
+            "timeframe": "day",
+            "max_results": 5
+          },
+          "result": {
+            "tool": "web_search",
+            "query": "Hanoi weather today",
+            "topic": "general",
+            "timeframe": "day",
+            "items": [
+              {
+                "title": "Weather in Hanoi",
+                "url": "https://www.weatherapi.com/",
+                "source": "weatherapi.com",
+                "summary": "{'location': {'name': 'Hanoi', 'region': '', 'country': 'Vietnam', 'lat': 21.0333, 'lon': 105.85, 'tz_id': 'Asia/Bangkok', 'localtime_epoch': 1785318884, 'localtime': '2026-07-29 16:54'}, 'current': {'last_updated_epoch': 1785318300, 'last_updated': '2026-07-29 16:45', 'temp_c': 27.9, 'temp_f': 82.2, 'is_day': 1, 'condition': {'text': 'Moderate or heavy rain with thunder', 'icon': '//cdn.weatherapi.com/weather/64x64/day/389.png', 'code': 1276}, 'wind_mph': 10.1, 'wind_kph': 16.2, 'wind_degree': 134, 'wind_dir': 'SE', 'pressure_mb': 1002.0, 'pressure_in': 29.59, 'precip_mm': 1.29, 'precip_in': 0.05, 'humidity': 89, 'cloud': 50, 'feelslike_c': 30.8, 'feelslike_f': 87.3, 'windchill_c': 31.0, 'windchill_f': 87.7, 'heatindex_c': 36.9, 'heatindex_f': 98.4, 'dewpoint_c': 24.4, 'dewpoint_f': 76.0, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 2.6, 'gust_mph': 18.8, 'gust_kph': 30.2, 'will_it_rain': 0, 'chance_of_rain': 57, 'will_it_snow': 0, 'chance_of_snow': 0, 'wetbulb_c': 26.1, 'wetbulb_f': 79.0}}",
+                "score": 0.8860349
+              },
+              {
+                "title": "Weather today July 29: Northern region continues to have heavy rain, with very heavy rain in some places",
+                "url": "https://news.laodong.vn/ban-tin/thoi-tiet-hom-nay-297-mien-bac-tiep-tuc-mua-to-co-noi-mua-rat-to-1742273.ldo",
+                "source": "news.laodong.vn",
+                "summary": "LAO ĐỘNG TV\n\nVietnamese  -  Korean  -  French  -  Spanish  -  Japanese   -   Chinese   -   Russian \n\n Chinese\n Russian\n\nBÁO LAO ĐỘNG\n\nOriginal Vietnamese content is translated by OpenAI\n\nDu Lịch   Công Đoàn   Dn Tộc Tôn Giáo   Lao Động Trẻ   Công Đoàn Việt Nam\n\n59s   Latest News\n\nLao Dong TV\n\n# Weather today July 29: Northern region continues to have heavy rain, with very heavy rain in some places\n\nLINH ANH  06:00, Wed Jul 29, 2026 (GMT+7) [...] 2 Tìm tiện ích chặn quảng cáo đang bật (uBlock Origin, AdBlock, AdGuard...)\n\n3 Chọn Tắt cho trang này hoặc nhấn nút nguồn để tắt tiện ích\n\n4 Tải lại trang để quảng cáo hiển thị bình thường\n\nCảm ơn bạn đã hỗ trợ Lao Dong Newspaper!",
+                "score": 0.8430832
+              },
+              {
+                "title": "Weather Forecast for July 29, 2026 | Strong Southwest Monsoon Activity ...",
+                "url": "https://www.youtube.com/watch?v=bJ2-Ro8LDbU",
+                "source": "youtube.com",
+                "summary": "và Thanh Hóa, mưa cũng sẽ còn trong đêm nay đến sáng mai có điểm mưa to trên 150 mm tập trung tại tỉnh Lào Cai, chính là vùng màu vàng trên bản đồ này. Đây cũng là khu vực cần lưu ý về lũ quét trên các sông suối nhỏ cũng như là sạt lở đất ở sân đối núi. Đến trưa mai ở miền Bắc mưa giảm, nhiệt độ tại phường Hoà Kiếm, Thủ đô Hà Nội và hầu khắp các nơi khác dao động từ 30 đến 33° C. Quý vị sẽ thấy nóng hơn ngày hôm nay. Ở Trung Bộ từ phường Tĩnh Gia của tỉnh Thanh Hóa đến phường Thành Sen của tỉnh [...] Thành Sen của tỉnh Hà Tĩnh có mưa bất trợt trong ngày. Còn từ phường Đông Hà của tỉnh Quảng Trị tới phường Phan Thiết, tỉnh Lâm Đồng trưa mai trời có nắng, chiều tối có mưa dông. Nhiệt độ các phường không nơi nào vượt quá mức nhiệt là 34° C. Còn vùng biển Tây từ tỉnh Cà Mau đến tỉnh An Giang, hôm nay có mưa dong giải rác, dễ đi kèm với lốc xoáy và gió giật mạnh cấp 7 đến cấp tá8. Tại đó khu Trường Sa cũng có mưa dông tiềm ẩn với lốc xoáy, gió mạnh cấp năm tại vùng biển phía tây mạnh cấp sáu, [...] [âm nhạc] Chào quý vị và các bạn. Hiện nay, gió tây nam ở phía Nam vẫn đang hoạt động mạnh, gây mưa vừa và mưa to cho khu vực cao nguyên Trung Bộ và Nam Bộ. Dự báo là mưa sẽ còn tiếp diễn từ chiều tối nay đến đêm mai. Lượng mưa phổ biến ở khu vực này từ 50 đến 110 mm. Cục bộ có những nơi mưa rất to với lượng là trên 170 mm. Nguy cơ xảy ra sạt lở sườn đồi núi ở khu vực cao nguyên Trung Bộ cũng như là tình trạng ngập úng ở tỉnh Lâm Đồng và những vùng trụ thấp ở Nam Bộ. Ở Bắc Bộ và Thanh Hóa, mưa",
+                "score": 0.84215075
+              },
+              {
+                "title": "Dự báo thời tiết 12h30 - 29/07/2026 | Nơi nào mưa to nhất? | VTVWDB",
+                "url": "https://www.youtube.com/watch?v=Fn_Ni0Zqcrw",
+                "source": "youtube.com",
+                "summary": "32 cho đến 34° C. Về chiều tối thì mưa rông có thể xuất hiện giải rác. Còn ở Bắc Bộ, dự báo chiều nay trời sẽ tiếp tục có mưa dông bất chợt. Tại khu vực vùng núi, dự báo sẽ có nơi mưa to, không khí mát mẻ. Với nhiệt độ cao nhất tại thủ đô Hà Nội cũng như nhiều tỉnh thành sẽ không vượt quá mức nhiệt là 32° C. Trên biển quanh các đặc khu Hoàng Sa, đặc khu Trường Sa và vùng biển Tây từ Cà Mau đến An Giang đều cảnh báo với mưa dông kèm nguy cơ về lốc xoáy, gió giật mạnh cấp 7 cho đến cấp tá. Cuối [...] khu vực Duyên Hải, Nam Trung Bộ cũng có mưa dông giải rác vào khoảng thời gian chiều tối nay. Còn trong chiều nay, trời sẽ tiếp tục có nắng và khá nóng với nhiệt độ cao nhất nhiều phường ven biển từ Đà Nẵng xuống đến Lâm Đồng trong khoảng từ 32 đến 34° C. Riêng phường Tuy Hòa có nắng nóng với mức nhiệt là 35° C. Nắng mây đan sen cũng là trạng thái chủ đạo ở khu vực Bắc miền Trung vào khoảng thời gian chiều nay. Cảm giác oi nóng với nhiệt độ cao nhất phổ biến trong khoảng là từ 32 cho đến 34° C. [...] là do gió mùa tây nam hiện đang hoạt động mạnh ở những khu vực này. Cụ thể thì vùng biển từ Khánh Hòa đến thành phố Hồ Chí Minh ra tới khu vực phía tây của giữa biển Đông là nơi có gió mạnh nhất. Cảnh báo chiều và đêm nay gió vào khoảng cấp năm có lúc cấp sáu giật cấp 7 đến cấp 8. Độ cao sóng từ 2 đến 3 m biển động. Còn trên đất liền, gió sẽ đẩy ẩm vào và khiến vùng mưa sẽ mở rộng ra hầu khắp các tỉnh thành thuộc khu vực Nam Bộ cũng như ở cao nguyên Trung Bộ vào khoảng thời gian chiều đến tối",
+                "score": 0.818055
+              },
+              {
+                "title": "PRESS WEATHER NO. 076 - WEATHER OF OTHER CITIES",
+                "url": "https://www.info.gov.hk/gia/wr/202607/29/P2026072900207.htm",
+                "source": "info.gov.hk",
+                "summary": "```\nRIO DE JANEIRO 21 32 FINE\n```\n\n  \n\n```\nSANTIAGO 7 18 OVERCAST\n```\n\n  \n\n```\nMEXICO CITY 14 24 SHOWERS\n```\n\n  \n\n```\nLIMA 18 23 BRIGHT\n```\n\n  \n\n```\nCARACAS 20 28 FINE\n```\n\n  \n\n```\n\n  \n  \nDISPATCHED BY HONG KONG OBSERVATORY AT 10:00 HKT ON 29.07.2026\n\n  \n\nArchives   Yesterday's Press Releases\n\nBack to Index Page\n\nBack to top\n\nToday's Press Releases [...] ```\nMANILA 24 29 THUNDERSTORMS\n```\n\n  \n\n```\nCEBU 25 32 THUNDERSTORMS\n```\n\n  \n\n```\nHANOI 25 32 RAIN\n```\n\n  \n\n```\nHO CHI MINH CITY 25 30 RAIN\n```\n\n  \n\n```\nBANGKOK 27 34 THUNDERSTORMS\n```\n\n  \n\n```\nKUALA LUMPUR 25 33 THUNDERSTORMS\n```\n\n  \n\n```\nSINGAPORE 25 34 THUNDERSTORMS\n```\n\n  \n\n```\nNEW DELHI 23 33 RAIN\n```\n\n  \n\n```\nMUMBAI 25 31 THUNDERSTORMS\n```\n\n  \n\n```\nKARACHI 28 35 CLOUDY\n```\n\n  \n\n```\nJAKARTA 26 32 OVERCAST\n```\n\n  \n\n```\nBALI 23 29 SHOWERS\n```\n\n  \n\n```\nB.S.BEGAWAN 26 33 THUNDERSTORMS\n``` [...] ```\nMUSCAT 30 41 CLOUDY\n```\n\n  \n\n```\nTEHRAN 25 37 FINE\n```\n\n  \n\n```\nPHNOM PENH 25 32 THUNDERSTORMS\n```\n\n  \n\n```\nYANGON 21 31 SHOWERS\n```\n\n  \n  \n\n```\nSYDNEY 10 19 FINE\n```\n\n  \n\n```\nMELBOURNE 7 13 SHOWERS\n```\n\n  \n\n```\nBRISBANE 12 24 CLOUDY\n```\n\n  \n\n```\nGEELONG 6 13 SHOWERS\n```\n\n  \n\n```\nHORSHAM 4 12 CLOUDY\n```\n\n  \n\n```\nMILDURA 4 15 CLOUDY\n```\n\n  \n\n```\nWELLINGTON 9 13 WINDY\n```\n\n  \n\n```\nAUCKLAND 7 16 CLOUDY\n```\n\n  \n  \n\n```\nTORONTO 19 26 CLOUDY\n```\n\n  \n\n```\nVANCOUVER 14 21 CLOUDY\n```",
+                "score": 0.599087
+              }
+            ]
+          }
+        }
+      ],
+      "version": "current",
+      "artifact_version": "current+pd749a31bc1bd+t6576e6fd32a0",
+      "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+      "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+      "prompt_file": "system_prompt.md",
+      "tools_file": "tools.yaml",
+      "provider": "nvidia",
+      "model": null,
+      "transcript": "current_ui_nvidia_20260729T165439060425.transcript.json"
+    },
+    {
+      "turn_index": 2,
+      "user": "cho mình xin các paper về AI",
+      "status": "answered",
+      "assistant_text": "Dưới đây là 5 bài báo khoa học gần đây liên quan đến trí tuệ nhân tạo (AI) mà tôi tìm được trên arXiv:\n\n| # | Tiêu đề | Tác giả | Ngày công bố | Link PDF |\n|---|--------|---------|---------------|----------|\n| 1 | **Faith in AI can narrow the futures individuals consider** | Aoi Naito, Hirokazu Shirado | 30 Mar 2026 | [PDF](https://arxiv.org/pdf/2603.28944v2) |\n| 2 | **Foundations of GenIR** | Qingyao Ai, Jingtao Zhan, Yiqun Liu | 6 Jan 2025 | [PDF](https://arxiv.org/pdf/2501.02842v1) |\n| 3 | **Competing Visions of Ethical AI: A Case Study of OpenAI** | Melissa Wilfley, Mengting Ai, Madelyn Rose Sanfilippo | 23 Jan 2026 | [PDF](https://arxiv.org/pdf/2601.16513v1) |\n| 4 | **Towards The Ultimate Brain: Exploring Scientific Discovery with ChatGPT AI** | Gerardo Adesso | 8 Jul 2023 | [PDF](https://arxiv.org/pdf/2308.12400v1) |\n| 5 | **Meaningful human control: actionable properties for AI system development** | Luciano Cavalcante Siebert *et al.* | 25 Nov 2021 (cập nhật 19 May 2022) | [PDF](https://arxiv.org/pdf/2112.01298v2) |\n\nBạn có thể tải các PDF qua các liên kết ở cột “Link PDF”. Nếu cần thêm bài báo hoặc muốn lọc theo tiêu chí khác (ví dụ: mới nhất, theo lĩnh vực cụ thể), hãy cho tôi biết!",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "AI",
+                "max_results": 5,
+                "sort_by": "relevance"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "AI",
+                "max_results": 5,
+                "sort_by": "relevance"
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "AI",
+                "api_query": "all:AI",
+                "total_results": 62313,
+                "items": [
+                  {
+                    "arxiv_id": "2603.28944v2",
+                    "title": "Faith in AI can narrow the futures individuals consider",
+                    "summary": "Artificial intelligence (AI) predictions are increasingly used to inform human decisions. Here, using a behavioral implementation of the classic Newcomb's paradox in 1,305 participants, we show that AI predictions can also shape the reasoning people use to make a decision. In this paradigm, perceived predictive authority can alter how people reason about their future actions, leading them to forgo a guaranteed reward. Over 40% of participants treated AI as such a predictive authority about their own behavior, significantly increasing the odds of forgoing the guaranteed reward by a factor of 3.39 (95% CI: 2.45-4.70) and reducing earnings by 10.7-42.9%. The effect appeared across AI presentations and decision contexts and remained detectable even when predictions repeatedly failed. When people perceive AI as capable of predicting their personal behavior, the mere presence of AI predictions may shape their decision-making, narrowing the futures they consider.",
+                    "authors": [
+                      "Aoi Naito",
+                      "Hirokazu Shirado"
+                    ],
+                    "published": "2026-03-30T19:36:10Z",
+                    "updated": "2026-07-03T09:41:30Z",
+                    "url": "http://arxiv.org/abs/2603.28944v2",
+                    "pdf_url": "https://arxiv.org/pdf/2603.28944v2",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.HC",
+                    "categories": [
+                      "cs.HC"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2501.02842v1",
+                    "title": "Foundations of GenIR",
+                    "summary": "The chapter discusses the foundational impact of modern generative AI models on information access (IA) systems. In contrast to traditional AI, the large-scale training and superior data modeling of generative AI models enable them to produce high-quality, human-like responses, which brings brand new opportunities for the development of IA paradigms. In this chapter, we identify and introduce two of them in details, i.e., information generation and information synthesis. Information generation allows AI to create tailored content addressing user needs directly, enhancing user experience with immediate, relevant outputs. Information synthesis leverages the ability of generative AI to integrate and reorganize existing information, providing grounded responses and mitigating issues like model hallucination, which is particularly valuable in scenarios requiring precision and external knowledge. This chapter delves into the foundational aspects of generative models, including architecture, scaling, and training, and discusses their applications in multi-modal scenarios. Additionally, it examines the retrieval-augmented generation paradigm and other methods for corpus modeling and understanding, demonstrating how generative AI can enhance information access systems. It also summarizes potential challenges and fruitful directions for future studies.",
+                    "authors": [
+                      "Qingyao Ai",
+                      "Jingtao Zhan",
+                      "Yiqun Liu"
+                    ],
+                    "published": "2025-01-06T08:38:29Z",
+                    "updated": "2025-01-06T08:38:29Z",
+                    "url": "http://arxiv.org/abs/2501.02842v1",
+                    "pdf_url": "https://arxiv.org/pdf/2501.02842v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.IR",
+                    "categories": [
+                      "cs.IR",
+                      "cs.LG"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2601.16513v1",
+                    "title": "Competing Visions of Ethical AI: A Case Study of OpenAI",
+                    "summary": "Introduction. AI Ethics is framed distinctly across actors and stakeholder groups. We report results from a case study of OpenAI analysing ethical AI discourse. Method. Research addressed: How has OpenAI's public discourse leveraged 'ethics', 'safety', 'alignment' and adjacent related concepts over time, and what does discourse signal about framing in practice? A structured corpus, differentiating between communication for a general audience and communication with an academic audience, was assembled from public documentation. Analysis. Qualitative content analysis of ethical themes combined inductively derived and deductively applied codes. Quantitative analysis leveraged computational content analysis methods via NLP to model topics and quantify changes in rhetoric over time. Visualizations report aggregate results. For reproducible results, we have released our code at https://github.com/famous-blue-raincoat/AI_Ethics_Discourse. Results. Results indicate that safety and risk discourse dominate OpenAI's public communication and documentation, without applying academic and advocacy ethics frameworks or vocabularies. Conclusions. Implications for governance are presented, along with discussion of ethics-washing practices in industry.",
+                    "authors": [
+                      "Melissa Wilfley",
+                      "Mengting Ai",
+                      "Madelyn Rose Sanfilippo"
+                    ],
+                    "published": "2026-01-23T07:26:45Z",
+                    "updated": "2026-01-23T07:26:45Z",
+                    "url": "http://arxiv.org/abs/2601.16513v1",
+                    "pdf_url": "https://arxiv.org/pdf/2601.16513v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.CY",
+                    "categories": [
+                      "cs.CY"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2308.12400v1",
+                    "title": "Towards The Ultimate Brain: Exploring Scientific Discovery with ChatGPT AI",
+                    "summary": "This paper presents a novel approach to scientific discovery using an artificial intelligence (AI) environment known as ChatGPT, developed by OpenAI. This is the first paper entirely generated with outputs from ChatGPT. We demonstrate how ChatGPT can be instructed through a gamification environment to define and benchmark hypothetical physical theories. Through this environment, ChatGPT successfully simulates the creation of a new improved model, called GPT$^4$, which combines the concepts of GPT in AI (generative pretrained transformer) and GPT in physics (generalized probabilistic theory). We show that GPT$^4$ can use its built-in mathematical and statistical capabilities to simulate and analyze physical laws and phenomena. As a demonstration of its language capabilities, GPT$^4$ also generates a limerick about itself. Overall, our results demonstrate the promising potential for human-AI collaboration in scientific discovery, as well as the importance of designing systems that effectively integrate AI's capabilities with human intelligence.",
+                    "authors": [
+                      "Gerardo Adesso"
+                    ],
+                    "published": "2023-07-08T09:59:22Z",
+                    "updated": "2023-07-08T09:59:22Z",
+                    "url": "http://arxiv.org/abs/2308.12400v1",
+                    "pdf_url": "https://arxiv.org/pdf/2308.12400v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.OH",
+                    "categories": [
+                      "cs.OH"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2112.01298v2",
+                    "title": "Meaningful human control: actionable properties for AI system development",
+                    "summary": "How can humans remain in control of artificial intelligence (AI)-based systems designed to perform tasks autonomously? Such systems are increasingly ubiquitous, creating benefits - but also undesirable situations where moral responsibility for their actions cannot be properly attributed to any particular person or group. The concept of meaningful human control has been proposed to address responsibility gaps and mitigate them by establishing conditions that enable a proper attribution of responsibility for humans; however, clear requirements for researchers, designers, and engineers are yet inexistent, making the development of AI-based systems that remain under meaningful human control challenging. In this paper, we address the gap between philosophical theory and engineering practice by identifying, through an iterative process of abductive thinking, four actionable properties for AI-based systems under meaningful human control, which we discuss making use of two applications scenarios: automated vehicles and AI-based hiring. First, a system in which humans and AI algorithms interact should have an explicitly defined domain of morally loaded situations within which the system ought to operate. Second, humans and AI agents within the system should have appropriate and mutually compatible representations. Third, responsibility attributed to a human should be commensurate with that human's ability and authority to control the system. Fourth, there should be explicit links between the actions of the AI agents and actions of humans who are aware of their moral responsibility. We argue that these four properties will support practically-minded professionals to take concrete steps toward designing and engineering for AI systems that facilitate meaningful human control.",
+                    "authors": [
+                      "Luciano Cavalcante Siebert",
+                      "Maria Luce Lupetti",
+                      "Evgeni Aizenberg",
+                      "Niek Beckers",
+                      "Arkady Zgonnikov",
+                      "Herman Veluwenkamp",
+                      "David Abbink",
+                      "Elisa Giaccardi",
+                      "Geert-Jan Houben",
+                      "Catholijn M. Jonker",
+                      "Jeroen van den Hoven",
+                      "Deborah Forster",
+                      "Reginald L. Lagendijk"
+                    ],
+                    "published": "2021-11-25T11:05:37Z",
+                    "updated": "2022-05-19T15:28:01Z",
+                    "url": "http://arxiv.org/abs/2112.01298v2",
+                    "pdf_url": "https://arxiv.org/pdf/2112.01298v2",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.CY",
+                    "categories": [
+                      "cs.CY",
+                      "cs.AI"
+                    ]
+                  }
+                ],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "Dưới đây là 5 bài báo khoa học gần đây liên quan đến trí tuệ nhân tạo (AI) mà tôi tìm được trên arXiv:\n\n| # | Tiêu đề | Tác giả | Ngày công bố | Link PDF |\n|---|--------|---------|---------------|----------|\n| 1 | **Faith in AI can narrow the futures individuals consider** | Aoi Naito, Hirokazu Shirado | 30 Mar 2026 | [PDF](https://arxiv.org/pdf/2603.28944v2) |\n| 2 | **Foundations of GenIR** | Qingyao Ai, Jingtao Zhan, Yiqun Liu | 6 Jan 2025 | [PDF](https://arxiv.org/pdf/2501.02842v1) |\n| 3 | **Competing Visions of Ethical AI: A Case Study of OpenAI** | Melissa Wilfley, Mengting Ai, Madelyn Rose Sanfilippo | 23 Jan 2026 | [PDF](https://arxiv.org/pdf/2601.16513v1) |\n| 4 | **Towards The Ultimate Brain: Exploring Scientific Discovery with ChatGPT AI** | Gerardo Adesso | 8 Jul 2023 | [PDF](https://arxiv.org/pdf/2308.12400v1) |\n| 5 | **Meaningful human control: actionable properties for AI system development** | Luciano Cavalcante Siebert *et al.* | 25 Nov 2021 (cập nhật 19 May 2022) | [PDF](https://arxiv.org/pdf/2112.01298v2) |\n\nBạn có thể tải các PDF qua các liên kết ở cột “Link PDF”. Nếu cần thêm bài báo hoặc muốn lọc theo tiêu chí khác (ví dụ: mới nhất, theo lĩnh vực cụ thể), hãy cho tôi biết!",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "AI",
+            "max_results": 5,
+            "sort_by": "relevance"
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "AI",
+            "api_query": "all:AI",
+            "total_results": 62313,
+            "items": [
+              {
+                "arxiv_id": "2603.28944v2",
+                "title": "Faith in AI can narrow the futures individuals consider",
+                "summary": "Artificial intelligence (AI) predictions are increasingly used to inform human decisions. Here, using a behavioral implementation of the classic Newcomb's paradox in 1,305 participants, we show that AI predictions can also shape the reasoning people use to make a decision. In this paradigm, perceived predictive authority can alter how people reason about their future actions, leading them to forgo a guaranteed reward. Over 40% of participants treated AI as such a predictive authority about their own behavior, significantly increasing the odds of forgoing the guaranteed reward by a factor of 3.39 (95% CI: 2.45-4.70) and reducing earnings by 10.7-42.9%. The effect appeared across AI presentations and decision contexts and remained detectable even when predictions repeatedly failed. When people perceive AI as capable of predicting their personal behavior, the mere presence of AI predictions may shape their decision-making, narrowing the futures they consider.",
+                "authors": [
+                  "Aoi Naito",
+                  "Hirokazu Shirado"
+                ],
+                "published": "2026-03-30T19:36:10Z",
+                "updated": "2026-07-03T09:41:30Z",
+                "url": "http://arxiv.org/abs/2603.28944v2",
+                "pdf_url": "https://arxiv.org/pdf/2603.28944v2",
+                "source": "arxiv.org",
+                "primary_category": "cs.HC",
+                "categories": [
+                  "cs.HC"
+                ]
+              },
+              {
+                "arxiv_id": "2501.02842v1",
+                "title": "Foundations of GenIR",
+                "summary": "The chapter discusses the foundational impact of modern generative AI models on information access (IA) systems. In contrast to traditional AI, the large-scale training and superior data modeling of generative AI models enable them to produce high-quality, human-like responses, which brings brand new opportunities for the development of IA paradigms. In this chapter, we identify and introduce two of them in details, i.e., information generation and information synthesis. Information generation allows AI to create tailored content addressing user needs directly, enhancing user experience with immediate, relevant outputs. Information synthesis leverages the ability of generative AI to integrate and reorganize existing information, providing grounded responses and mitigating issues like model hallucination, which is particularly valuable in scenarios requiring precision and external knowledge. This chapter delves into the foundational aspects of generative models, including architecture, scaling, and training, and discusses their applications in multi-modal scenarios. Additionally, it examines the retrieval-augmented generation paradigm and other methods for corpus modeling and understanding, demonstrating how generative AI can enhance information access systems. It also summarizes potential challenges and fruitful directions for future studies.",
+                "authors": [
+                  "Qingyao Ai",
+                  "Jingtao Zhan",
+                  "Yiqun Liu"
+                ],
+                "published": "2025-01-06T08:38:29Z",
+                "updated": "2025-01-06T08:38:29Z",
+                "url": "http://arxiv.org/abs/2501.02842v1",
+                "pdf_url": "https://arxiv.org/pdf/2501.02842v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.IR",
+                "categories": [
+                  "cs.IR",
+                  "cs.LG"
+                ]
+              },
+              {
+                "arxiv_id": "2601.16513v1",
+                "title": "Competing Visions of Ethical AI: A Case Study of OpenAI",
+                "summary": "Introduction. AI Ethics is framed distinctly across actors and stakeholder groups. We report results from a case study of OpenAI analysing ethical AI discourse. Method. Research addressed: How has OpenAI's public discourse leveraged 'ethics', 'safety', 'alignment' and adjacent related concepts over time, and what does discourse signal about framing in practice? A structured corpus, differentiating between communication for a general audience and communication with an academic audience, was assembled from public documentation. Analysis. Qualitative content analysis of ethical themes combined inductively derived and deductively applied codes. Quantitative analysis leveraged computational content analysis methods via NLP to model topics and quantify changes in rhetoric over time. Visualizations report aggregate results. For reproducible results, we have released our code at https://github.com/famous-blue-raincoat/AI_Ethics_Discourse. Results. Results indicate that safety and risk discourse dominate OpenAI's public communication and documentation, without applying academic and advocacy ethics frameworks or vocabularies. Conclusions. Implications for governance are presented, along with discussion of ethics-washing practices in industry.",
+                "authors": [
+                  "Melissa Wilfley",
+                  "Mengting Ai",
+                  "Madelyn Rose Sanfilippo"
+                ],
+                "published": "2026-01-23T07:26:45Z",
+                "updated": "2026-01-23T07:26:45Z",
+                "url": "http://arxiv.org/abs/2601.16513v1",
+                "pdf_url": "https://arxiv.org/pdf/2601.16513v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.CY",
+                "categories": [
+                  "cs.CY"
+                ]
+              },
+              {
+                "arxiv_id": "2308.12400v1",
+                "title": "Towards The Ultimate Brain: Exploring Scientific Discovery with ChatGPT AI",
+                "summary": "This paper presents a novel approach to scientific discovery using an artificial intelligence (AI) environment known as ChatGPT, developed by OpenAI. This is the first paper entirely generated with outputs from ChatGPT. We demonstrate how ChatGPT can be instructed through a gamification environment to define and benchmark hypothetical physical theories. Through this environment, ChatGPT successfully simulates the creation of a new improved model, called GPT$^4$, which combines the concepts of GPT in AI (generative pretrained transformer) and GPT in physics (generalized probabilistic theory). We show that GPT$^4$ can use its built-in mathematical and statistical capabilities to simulate and analyze physical laws and phenomena. As a demonstration of its language capabilities, GPT$^4$ also generates a limerick about itself. Overall, our results demonstrate the promising potential for human-AI collaboration in scientific discovery, as well as the importance of designing systems that effectively integrate AI's capabilities with human intelligence.",
+                "authors": [
+                  "Gerardo Adesso"
+                ],
+                "published": "2023-07-08T09:59:22Z",
+                "updated": "2023-07-08T09:59:22Z",
+                "url": "http://arxiv.org/abs/2308.12400v1",
+                "pdf_url": "https://arxiv.org/pdf/2308.12400v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.OH",
+                "categories": [
+                  "cs.OH"
+                ]
+              },
+              {
+                "arxiv_id": "2112.01298v2",
+                "title": "Meaningful human control: actionable properties for AI system development",
+                "summary": "How can humans remain in control of artificial intelligence (AI)-based systems designed to perform tasks autonomously? Such systems are increasingly ubiquitous, creating benefits - but also undesirable situations where moral responsibility for their actions cannot be properly attributed to any particular person or group. The concept of meaningful human control has been proposed to address responsibility gaps and mitigate them by establishing conditions that enable a proper attribution of responsibility for humans; however, clear requirements for researchers, designers, and engineers are yet inexistent, making the development of AI-based systems that remain under meaningful human control challenging. In this paper, we address the gap between philosophical theory and engineering practice by identifying, through an iterative process of abductive thinking, four actionable properties for AI-based systems under meaningful human control, which we discuss making use of two applications scenarios: automated vehicles and AI-based hiring. First, a system in which humans and AI algorithms interact should have an explicitly defined domain of morally loaded situations within which the system ought to operate. Second, humans and AI agents within the system should have appropriate and mutually compatible representations. Third, responsibility attributed to a human should be commensurate with that human's ability and authority to control the system. Fourth, there should be explicit links between the actions of the AI agents and actions of humans who are aware of their moral responsibility. We argue that these four properties will support practically-minded professionals to take concrete steps toward designing and engineering for AI systems that facilitate meaningful human control.",
+                "authors": [
+                  "Luciano Cavalcante Siebert",
+                  "Maria Luce Lupetti",
+                  "Evgeni Aizenberg",
+                  "Niek Beckers",
+                  "Arkady Zgonnikov",
+                  "Herman Veluwenkamp",
+                  "David Abbink",
+                  "Elisa Giaccardi",
+                  "Geert-Jan Houben",
+                  "Catholijn M. Jonker",
+                  "Jeroen van den Hoven",
+                  "Deborah Forster",
+                  "Reginald L. Lagendijk"
+                ],
+                "published": "2021-11-25T11:05:37Z",
+                "updated": "2022-05-19T15:28:01Z",
+                "url": "http://arxiv.org/abs/2112.01298v2",
+                "pdf_url": "https://arxiv.org/pdf/2112.01298v2",
+                "source": "arxiv.org",
+                "primary_category": "cs.CY",
+                "categories": [
+                  "cs.CY",
+                  "cs.AI"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        }
+      ],
+      "version": "current",
+      "artifact_version": "current+pd749a31bc1bd+t6576e6fd32a0",
+      "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+      "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+      "prompt_file": "system_prompt.md",
+      "tools_file": "tools.yaml",
+      "provider": "nvidia",
+      "model": null,
+      "transcript": "current_ui_nvidia_20260729T165439060425.transcript.json"
+    },
+    {
+      "turn_index": 3,
+      "user": "thử tóm tắt bài báo thứ nhất cho mình",
+      "status": "answered",
+      "assistant_text": "**Tóm tắt “Faith in AI can narrow the futures individuals consider” (Aoi Naito & Hirokazu Shirado, 2026)**  \n\n- Nghiên cứu sử dụng một phiên bản hành vi của **paradox Newcomb** với 1.305 người tham gia để kiểm tra ảnh hưởng của dự đoán AI lên quyết định cá nhân.  \n- Khi người tham gia tin rằng AI có khả năng dự đoán hành vi của họ, họ **có xu hướng bỏ qua phần thưởng chắc chắn** và chấp nhận rủi ro, dẫn đến **giảm thu nhập từ 10,7 % đến 42,9 %**.  \n- Khoảng **40 %** người tham gia coi AI như một “độ tin cậy dự đoán” về hành vi cá nhân, làm tăng khả năng từ chối phần thưởng an toàn lên **gấp 3,39 lần** (95 % CI: 2,45–4,70).  \n- Hiệu ứng này **không phụ thuộc vào cách AI được trình bày** (ví dụ: giao diện, ngôn ngữ) hay ngữ cảnh quyết định, và vẫn tồn tại ngay cả khi dự đoán của AI **liên tục sai**.  \n- Kết luận: **Niềm tin vào AI có thể làm thu hẹp “tương lai” mà cá nhân cân nhắc**, vì sự hiện diện của dự đoán AI tự nó thay đổi cách con người suy nghĩ về hành động tương lai của mình.  \n\n*Nguồn: arXiv, “Faith in AI can narrow the futures individuals consider”, 2026 – https://arxiv.org/abs/2603.28944v2*",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "paper_text",
+              "args": {
+                "arxiv_url": "https://arxiv.org/pdf/2603.28944v2",
+                "max_pages": 5,
+                "max_chars": 2000
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "paper_text",
+              "args": {
+                "arxiv_url": "https://arxiv.org/pdf/2603.28944v2",
+                "max_pages": 5,
+                "max_chars": 2000
+              },
+              "result": {
+                "tool": "get_arxiv_paper_text",
+                "arxiv_id": "2603.28944v2",
+                "url": "https://arxiv.org/abs/2603.28944v2",
+                "pdf_url": "https://arxiv.org/pdf/2603.28944v2.pdf",
+                "pdf_path": "C:\\AI20K\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student-k3-main\\starter_v0\\arxiv_papers\\2603.28944v2.pdf",
+                "txt_path": "C:\\AI20K\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student-k3-main\\starter_v0\\arxiv_papers\\2603.28944v2.txt",
+                "page_count": 66,
+                "pages_read": 5,
+                "chars_returned": 2000,
+                "items": [
+                  {
+                    "title": "arXiv paper 2603.28944v2",
+                    "url": "https://arxiv.org/abs/2603.28944v2",
+                    "source": "arxiv.org",
+                    "summary": "Faith in AI can narrow the futures individuals consider\nAoi Naito1,2 and Hirokazu Shirado1,∗\n1Human-Computer Interaction Institute, Carnegie Mellon University, Pittsburgh, 15213, USA.\n2School of Environment and Society, Institute of Science Tokyo, Tokyo, 108-0023, Japan.\n∗Corresponding author. E-mail: shirado@cmu.edu\nArtificial intelligence (AI) predictions are increasingly used to inform human decisions1,2.\nHere, using a behavioral implementation of the classic Newcomb’s paradox3 in 1,305 par-\nticipants, we show that AI predictions can also shape the reasoning people use to make\na decision. In this paradigm, perceived predictive authority can alter how people reason\nabout their future actions, leading them to forgo a guaranteed reward. Over 40% of\nparticipants treated AI as such a predictive authority about their own behavior, signifi-\ncantly increasing the odds of forgoing the guaranteed reward by a factor of 3.39 (95% CI:\n2.45–4.70) and reducing earnings by 10.7–42.9%. The effect appeared across AI presen-\ntations and decision contexts and remained detectable even when predictions repeatedly\nfailed. When people perceive AI as capable of predicting their personal behavior, the mere\npresence of AI predictions may shape their decision-making, narrowing the futures they\nconsider4.\nArtificial intelligence is increasingly used to predict human behavior, and people are directly\ninteracting with such systems1,2. From recommendation algorithms to large language models,\nAI routinely predicts what people will choose, say, and do5,6. In most applications, AI predic-\ntions are used to inform decisions, helping individuals and organizations perform tasks more\neffectively7–10. However, AI predictions about people’s own actions may become part of the\ndecision environment itself, influencing the very behaviors they are intended to support 3,11,12.\nSuch predictions may alter how people reason about their own future actions and, in some cases,\neven narrow the set of futures they co"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": "**Tóm tắt “Faith in AI can narrow the futures individuals consider” (Aoi Naito & Hirokazu Shirado, 2026)**  \n\n- Nghiên cứu sử dụng một phiên bản hành vi của **paradox Newcomb** với 1.305 người tham gia để kiểm tra ảnh hưởng của dự đoán AI lên quyết định cá nhân.  \n- Khi người tham gia tin rằng AI có khả năng dự đoán hành vi của họ, họ **có xu hướng bỏ qua phần thưởng chắc chắn** và chấp nhận rủi ro, dẫn đến **giảm thu nhập từ 10,7 % đến 42,9 %**.  \n- Khoảng **40 %** người tham gia coi AI như một “độ tin cậy dự đoán” về hành vi cá nhân, làm tăng khả năng từ chối phần thưởng an toàn lên **gấp 3,39 lần** (95 % CI: 2,45–4,70).  \n- Hiệu ứng này **không phụ thuộc vào cách AI được trình bày** (ví dụ: giao diện, ngôn ngữ) hay ngữ cảnh quyết định, và vẫn tồn tại ngay cả khi dự đoán của AI **liên tục sai**.  \n- Kết luận: **Niềm tin vào AI có thể làm thu hẹp “tương lai” mà cá nhân cân nhắc**, vì sự hiện diện của dự đoán AI tự nó thay đổi cách con người suy nghĩ về hành động tương lai của mình.  \n\n*Nguồn: arXiv, “Faith in AI can narrow the futures individuals consider”, 2026 – https://arxiv.org/abs/2603.28944v2*",
+          "tool_calls": [],
+          "tool_results": []
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "paper_text",
+          "args": {
+            "arxiv_url": "https://arxiv.org/pdf/2603.28944v2",
+            "max_pages": 5,
+            "max_chars": 2000
+          },
+          "result": {
+            "tool": "get_arxiv_paper_text",
+            "arxiv_id": "2603.28944v2",
+            "url": "https://arxiv.org/abs/2603.28944v2",
+            "pdf_url": "https://arxiv.org/pdf/2603.28944v2.pdf",
+            "pdf_path": "C:\\AI20K\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student-k3-main\\starter_v0\\arxiv_papers\\2603.28944v2.pdf",
+            "txt_path": "C:\\AI20K\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student-k3-main\\starter_v0\\arxiv_papers\\2603.28944v2.txt",
+            "page_count": 66,
+            "pages_read": 5,
+            "chars_returned": 2000,
+            "items": [
+              {
+                "title": "arXiv paper 2603.28944v2",
+                "url": "https://arxiv.org/abs/2603.28944v2",
+                "source": "arxiv.org",
+                "summary": "Faith in AI can narrow the futures individuals consider\nAoi Naito1,2 and Hirokazu Shirado1,∗\n1Human-Computer Interaction Institute, Carnegie Mellon University, Pittsburgh, 15213, USA.\n2School of Environment and Society, Institute of Science Tokyo, Tokyo, 108-0023, Japan.\n∗Corresponding author. E-mail: shirado@cmu.edu\nArtificial intelligence (AI) predictions are increasingly used to inform human decisions1,2.\nHere, using a behavioral implementation of the classic Newcomb’s paradox3 in 1,305 par-\nticipants, we show that AI predictions can also shape the reasoning people use to make\na decision. In this paradigm, perceived predictive authority can alter how people reason\nabout their future actions, leading them to forgo a guaranteed reward. Over 40% of\nparticipants treated AI as such a predictive authority about their own behavior, signifi-\ncantly increasing the odds of forgoing the guaranteed reward by a factor of 3.39 (95% CI:\n2.45–4.70) and reducing earnings by 10.7–42.9%. The effect appeared across AI presen-\ntations and decision contexts and remained detectable even when predictions repeatedly\nfailed. When people perceive AI as capable of predicting their personal behavior, the mere\npresence of AI predictions may shape their decision-making, narrowing the futures they\nconsider4.\nArtificial intelligence is increasingly used to predict human behavior, and people are directly\ninteracting with such systems1,2. From recommendation algorithms to large language models,\nAI routinely predicts what people will choose, say, and do5,6. In most applications, AI predic-\ntions are used to inform decisions, helping individuals and organizations perform tasks more\neffectively7–10. However, AI predictions about people’s own actions may become part of the\ndecision environment itself, influencing the very behaviors they are intended to support 3,11,12.\nSuch predictions may alter how people reason about their own future actions and, in some cases,\neven narrow the set of futures they co"
+              }
+            ]
+          }
+        }
+      ],
+      "version": "current",
+      "artifact_version": "current+pd749a31bc1bd+t6576e6fd32a0",
+      "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+      "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+      "prompt_file": "system_prompt.md",
+      "tools_file": "tools.yaml",
+      "provider": "nvidia",
+      "model": null,
+      "transcript": "current_ui_nvidia_20260729T165439060425.transcript.json"
+    },
+    {
+      "turn_index": 4,
+      "user": "cho tôi nguồn tham khảo 5 bài báo về tim mạch",
+      "status": "waiting_for_user",
+      "assistant_text": "Tôi không thể lấy được kết quả từ arXiv do lỗi thời gian chờ. Bạn có muốn tôi thử lại tìm 5 bài báo về tim mạch không?",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "cardiology",
+                "max_results": 5,
+                "sort_by": "relevance"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "cardiology",
+                "max_results": 5,
+                "sort_by": "relevance"
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "error": "ReadTimeout",
+                "message": "HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)"
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "clarify",
+              "args": {
+                "question": "Tôi không thể lấy được kết quả từ arXiv do lỗi thời gian chờ. Bạn có muốn tôi thử lại tìm 5 bài báo về tim mạch không?",
+                "response_type": "yes_no"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "clarify",
+              "args": {
+                "question": "Tôi không thể lấy được kết quả từ arXiv do lỗi thời gian chờ. Bạn có muốn tôi thử lại tìm 5 bài báo về tim mạch không?",
+                "response_type": "yes_no"
+              },
+              "result": {
+                "tool": "ask_user",
+                "question": "Tôi không thể lấy được kết quả từ arXiv do lỗi thời gian chờ. Bạn có muốn tôi thử lại tìm 5 bài báo về tim mạch không?",
+                "response_type": "yes_no",
+                "options": [],
+                "awaiting_user": true
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "cardiology",
+            "max_results": 5,
+            "sort_by": "relevance"
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "error": "ReadTimeout",
+            "message": "HTTPSConnectionPool(host='export.arxiv.org', port=443): Read timed out. (read timeout=30)"
+          }
+        },
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Tôi không thể lấy được kết quả từ arXiv do lỗi thời gian chờ. Bạn có muốn tôi thử lại tìm 5 bài báo về tim mạch không?",
+            "response_type": "yes_no"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Tôi không thể lấy được kết quả từ arXiv do lỗi thời gian chờ. Bạn có muốn tôi thử lại tìm 5 bài báo về tim mạch không?",
+            "response_type": "yes_no",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ],
+      "version": "current",
+      "artifact_version": "current+pd749a31bc1bd+t6576e6fd32a0",
+      "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+      "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+      "prompt_file": "system_prompt.md",
+      "tools_file": "tools.yaml",
+      "provider": "nvidia",
+      "model": null,
+      "transcript": "current_ui_nvidia_20260729T165439060425.transcript.json"
+    }
+  ],
+  "comparisons": [],
+  "updated_at": "2026-07-29T17:08:58"
+}

@@ -1,0 +1,435 @@
+{
+  "transcript_id": "current_ui_nvidia_20260729T165131565028",
+  "version": "current",
+  "artifact_version": "current+pd749a31bc1bd+t6576e6fd32a0",
+  "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+  "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+  "surface": "streamlit_ui",
+  "provider": "nvidia",
+  "model": null,
+  "created_at": "2026-07-29T16:51:31",
+  "turns": [
+    {
+      "turn_index": 1,
+      "user": "bài báo ai trên arv hôm nay",
+      "status": "max_tool_rounds",
+      "assistant_text": "Stopped after 2 tool rounds. Inspect the transcript for details.",
+      "rounds": [
+        {
+          "round": 1,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "papers",
+              "args": {
+                "query": "artificial intelligence",
+                "max_results": 5,
+                "sort_by": "submittedDate"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "papers",
+              "args": {
+                "query": "artificial intelligence",
+                "max_results": 5,
+                "sort_by": "submittedDate"
+              },
+              "result": {
+                "tool": "arxiv_search",
+                "query": "artificial intelligence",
+                "api_query": "all:artificial AND all:intelligence",
+                "total_results": 209697,
+                "items": [
+                  {
+                    "arxiv_id": "2607.26057v1",
+                    "title": "Pass the Baton: Trajectory-Relayed On-Policy Distillation",
+                    "summary": "On-policy distillation (OPD) grounds token-level supervision in the student's own trajectory, yet suffers from prefix failure: once the student commits to a wrong reasoning direction, all subsequent generation builds on this deviation, producing misdirected continuations that elicit unreliable supervision and waste compute. We identify a teacher-student continuation asymmetry on failed prefixes, where the teacher tends to redirect while the student continues along the original direction, and convert it into a label-free handoff trigger in Relay On-Policy Distillation (Relay-OPD). During training, Relay-OPD constructs relay trajectories by letting the teacher briefly take over at detected trigger points to produce a teacher leg, after which the student resumes and is optimized on the resulting trajectory. A limited relay budget concentrates intervention on critical early positions while limiting departure from the student policy. With a Qwen3-4B-Instruct-2507 teacher and Qwen3-0.6B/1.7B-Non-Thinking students on eight mathematical reasoning benchmarks, Relay-OPD achieves the best or second-best results on every benchmark, outperforming standard OPD by +5.73% and the strongest baseline FastOPD by +1.49% on average for 1.7B, with consistent gains at 0.6B. Training trajectory length is reduced by over 50%.",
+                    "authors": [
+                      "Haolei Xu",
+                      "Xiaowen Xu",
+                      "Haiwen Hong",
+                      "Zixuan Ni",
+                      "Hongxing Li",
+                      "Yiwen Qiu",
+                      "Weiming Lu",
+                      "Yongliang Shen"
+                    ],
+                    "published": "2026-07-28T17:59:46Z",
+                    "updated": "2026-07-28T17:59:46Z",
+                    "url": "http://arxiv.org/abs/2607.26057v1",
+                    "pdf_url": "https://arxiv.org/pdf/2607.26057v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.CL",
+                    "categories": [
+                      "cs.CL",
+                      "cs.AI"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2607.26055v1",
+                    "title": "$π\\mathbf{R}^2$: Reactive Real-time Flow Policies",
+                    "summary": "Generalist manipulation policies increasingly take the form of action-chunking flow policies built on large pretrained backbones. Such chunks run open-loop, so the policy cannot react to sensory input arriving mid-execution, sacrificing \\emph{reactivity}. Replanning more often would restore it, but the perception-to-action pipeline (a large backbone plus multiple denoising steps) is too slow: this \\emph{latency} forbids frequent replanning and leaves committed actions stale, making such policies ill-suited for dynamic, closed-loop control. We present $π\\mathbf{R}^2$, which makes these policies reactive and real-time while retaining large backbones, expressive multi-modal policies, and multi-action prediction. Built on the per-position noise schedule of diffusion forcing, $π\\mathbf{R}^2$ contributes two ideas. First, it splits conditioning into a fast channel (proprioception, fresh every tick) and an asynchronously updated slow channel (vision-language features), so the policy reacts to proprioception within a chunk while tolerating stale vision. Second, a latency-adaptive flow schedule treats in-flight actions as inpainting conditioning and emits actions in one denoising step per call, letting one trained model adapt to varying hardware latency. Requiring minimal modification to existing architectures, $π\\mathbf{R}^2$ can be finetuned from a pretrained policy: applied to GR00T-N1.7 on a real xArm6+XHand platform, it replans closed-loop roughly $4\\times$ faster than the base policy (~$25$Hz on an A5000 GPU), acting on a fresh observation every $40$ms. Across simulation and real-world manipulation tasks, $π\\mathbf{R}^2$ improves the success rate by up to $23\\%$ in simulation and $30\\%$ in the real world over the strongest baseline. Project page: https://pi-r2-flow.github.io/",
+                    "authors": [
+                      "Sungjae Park",
+                      "Shubham Tulsiani"
+                    ],
+                    "published": "2026-07-28T17:59:31Z",
+                    "updated": "2026-07-28T17:59:31Z",
+                    "url": "http://arxiv.org/abs/2607.26055v1",
+                    "pdf_url": "https://arxiv.org/pdf/2607.26055v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.RO",
+                    "categories": [
+                      "cs.RO",
+                      "cs.AI",
+                      "cs.LG"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2607.26041v1",
+                    "title": "Desktop-Delta Bench: Do Computer-Use Models Understand Desktop GUI Transitions?",
+                    "summary": "Computer-use agents (CUAs) increasingly act through desktop GUIs to complete long-horizon tasks. Current benchmarks primarily measure end-task success or single-frame grounding. Neither isolates whether a model can reconstruct the causal, task-relevant transition produced by an action- crucial for rejecting stale observations, verifying progress, and recovering from failure. This is difficult because inference, remote input, app rendering, and screenshot capture are asynchronous: the next observation may be delayed, occluded, transient, or unrelated, then misread as progress and carried into subsequent planning. We introduce Desktop-Delta Bench (DDB), an offline step-level benchmark with 2,013 human-verified instances from novel, multi-app Linux trajectories across ~15 applications and 50 task domains. DDB trajectories targets 3 failure dimensions- state verification, source tracking, and context-aware control- through 2 complementary tasks: 463 3-frame temporal-ordering instances, including 105 with a cross-trajectory decoy, and 1,550 before-after pairs labeled from 5 actions + its payload. We evaluate 8 closed and open-source model families across 32 ordering and 16 single-action settings, observing consistent gaps. Ordering remains unsaturated: best non-decoy and decoy exact-match rates are 65.1% and 65.7%. Task context improves decoy identification by 6.9 percentage points but reduces non-decoy exact match by 2.2 points; error analysis reveals systematic copying of the presented A-B-C order. Single-action results show that inferring the action family is harder than locating it: click F1 is 0.96 vs, 0.76 for drag, while recognized drags are generally localized well. DDB, thus, complements end-to-end benchmarks by filling the missing diagnostic layer between GUI grounding and final task success, enabling targeted improvements to desktop CUA verification, reliability, and recovery.",
+                    "authors": [
+                      "Abhishek Pillai",
+                      "Samir Kumar Nayak",
+                      "Yuan Chen"
+                    ],
+                    "published": "2026-07-28T17:49:51Z",
+                    "updated": "2026-07-28T17:49:51Z",
+                    "url": "http://arxiv.org/abs/2607.26041v1",
+                    "pdf_url": "https://arxiv.org/pdf/2607.26041v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.AI",
+                    "categories": [
+                      "cs.AI",
+                      "cs.CV"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2607.26034v1",
+                    "title": "Falling Behind Drives Unsafe Development in an Idealised AI Race Experiment",
+                    "summary": "Technological races create tension between speed and safety: actors may gain by moving faster than competitors, even when risky development is harmful. This is prominent in debates about artificial intelligence (AI), where competitive pressure is often argued to incentivise riskier, less safety-conscious development. We study this using a framed behavioural experiment based on an idealised AI race, in which paired participants repeatedly chose between Safe and Unsafe development under an uncertain time horizon. Unsafe development gave faster progress and higher immediate payoffs but accumulated private risk up to a treatment-specific maximum of 10\\%, 60\\%, or 90\\%; the race's competitive structure was held constant, and only this maximum risk varied. Neither the pre-registered comparison between risk levels nor the role of elicited risk preferences was supported by the data. Instead, exploratory analyses motivated by the task's repeated structure show that Unsafe behaviour is shaped less by risk preferences than by the evolving strategic state of the race: participants are more likely to choose Unsafe after their opponent does so, being ahead reduces Unsafe play while falling behind increases it, and first-round choices predict later behaviour. To interpret these effects we introduce a reduced evolutionary model with four strategies -- Always Safe, Always Unsafe, Conditionally Safe, and Conditionally Antisocial Safe -- which reproduces the treatment effect and shows how conditional Unsafe behaviour can be favoured by competitive race dynamics. Together, the experiment and model show that unsafe development can emerge from early behavioural momentum, opponent behaviour, and fear of falling behind, rather than from risk preferences alone, suggesting policy should focus on reducing competitive pressure and promoting cooperation in AI development rather than only individual risk.",
+                    "authors": [
+                      "Elias Fernández Domingos",
+                      "The Anh Han"
+                    ],
+                    "published": "2026-07-28T17:44:03Z",
+                    "updated": "2026-07-28T17:44:03Z",
+                    "url": "http://arxiv.org/abs/2607.26034v1",
+                    "pdf_url": "https://arxiv.org/pdf/2607.26034v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.AI",
+                    "categories": [
+                      "cs.AI",
+                      "cs.CY",
+                      "cs.GT",
+                      "econ.GN"
+                    ]
+                  },
+                  {
+                    "arxiv_id": "2607.26023v1",
+                    "title": "CHARM: A Multimodal Graph Foundation Model with Hierarchical Context Modeling for Zero-Shot Transfer",
+                    "summary": "Graph foundation models (GFMs) have emerged as a promising paradigm for transferring knowledge across graph domains and tasks. Real-world graphs associate nodes with text, images, and other modalities, making multimodal graphs essential for representing complex entities and relations. Moreover, collecting labels and adapting models for every new graph domain is costly and often infeasible, motivating zero-shot transfer. Unfortunately, zero-shot transfer on multimodal graphs remains underexplored. Existing GNN-based graph foundation models typically require downstream adaptation, whereas LLM-based graph methods mainly address unimodal graphs or tasks within a single domain. This setting presents two key challenges. First, models must generalize knowledge from individual modalities while capturing transferable cross-modal relations. Second, without target-domain fine-tuning, node representations remain entangled with domain-specific structures and modality-specific characteristics, obscuring shared concepts in unseen domains. To address these challenges, we propose CHARM, a multimodal graph foundation model with hierarchical context modeling for zero-shot transfer. CHARM replaces isolated raw nodes with hierarchical graph contexts that capture multimodal semantics and cross-modal relations. These contexts map domain-specific node patterns to shared high-level concepts, reducing reliance on target-domain supervision or adaptation. A modality-aware graph context encoder integrates multimodal information with graph structure and converts the resulting representations into graph tokens for a large language model . Experiments show consistent improvements on zero-shot multimodal graph tasks.",
+                    "authors": [
+                      "Ankang Yang",
+                      "Jitao Zhao",
+                      "Di Jin",
+                      "Yuxiao Huang",
+                      "Dongxiao He"
+                    ],
+                    "published": "2026-07-28T17:35:26Z",
+                    "updated": "2026-07-28T17:35:26Z",
+                    "url": "http://arxiv.org/abs/2607.26023v1",
+                    "pdf_url": "https://arxiv.org/pdf/2607.26023v1",
+                    "source": "arxiv.org",
+                    "primary_category": "cs.AI",
+                    "categories": [
+                      "cs.AI"
+                    ]
+                  }
+                ],
+                "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+              }
+            }
+          ]
+        },
+        {
+          "round": 2,
+          "assistant_text": null,
+          "tool_calls": [
+            {
+              "name": "format",
+              "args": {
+                "items": [
+                  {
+                    "title": "Pass the Baton: Trajectory-Relayed On-Policy Distillation",
+                    "url": "http://arxiv.org/abs/2607.26057v1",
+                    "source": "arxiv.org",
+                    "summary": "On-policy distillation suffers from prefix failure; Relay-OPD introduces teacher relays at trigger points, improving performance on math reasoning benchmarks."
+                  },
+                  {
+                    "title": "$π\\mathbf{R}^2$: Reactive Real-time Flow Policies",
+                    "url": "http://arxiv.org/abs/2607.26055v1",
+                    "source": "arxiv.org",
+                    "summary": "Introduces a reactive, real-time flow policy that splits conditioning into fast proprioception and slower vision-language channels, achieving faster replanning."
+                  },
+                  {
+                    "title": "Desktop-Delta Bench: Do Computer-Use Models Understand Desktop GUI Transitions?",
+                    "url": "http://arxiv.org/abs/2607.26041v1",
+                    "source": "arxiv.org",
+                    "summary": "Presents a benchmark for evaluating step-level understanding of GUI transitions, revealing gaps in current models."
+                  },
+                  {
+                    "title": "Falling Behind Drives Unsafe Development in an Idealised AI Race Experiment",
+                    "url": "http://arxiv.org/abs/2607.26034v1",
+                    "source": "arxiv.org",
+                    "summary": "Experimental study showing competitive pressure leads to unsafe AI development, emphasizing need for cooperation."
+                  },
+                  {
+                    "title": "CHARM: A Multimodal Graph Foundation Model with Hierarchical Context Modeling for Zero-Shot Transfer",
+                    "url": "http://arxiv.org/abs/2607.26023v1",
+                    "source": "arxiv.org",
+                    "summary": "Proposes a multimodal graph foundation model enabling zero-shot transfer across domains via hierarchical context modeling."
+                  }
+                ],
+                "template": "brief",
+                "headline": "AI‑related arXiv papers published today (28 July 2026)"
+              }
+            }
+          ],
+          "tool_results": [
+            {
+              "tool": "format",
+              "args": {
+                "items": [
+                  {
+                    "title": "Pass the Baton: Trajectory-Relayed On-Policy Distillation",
+                    "url": "http://arxiv.org/abs/2607.26057v1",
+                    "source": "arxiv.org",
+                    "summary": "On-policy distillation suffers from prefix failure; Relay-OPD introduces teacher relays at trigger points, improving performance on math reasoning benchmarks."
+                  },
+                  {
+                    "title": "$π\\mathbf{R}^2$: Reactive Real-time Flow Policies",
+                    "url": "http://arxiv.org/abs/2607.26055v1",
+                    "source": "arxiv.org",
+                    "summary": "Introduces a reactive, real-time flow policy that splits conditioning into fast proprioception and slower vision-language channels, achieving faster replanning."
+                  },
+                  {
+                    "title": "Desktop-Delta Bench: Do Computer-Use Models Understand Desktop GUI Transitions?",
+                    "url": "http://arxiv.org/abs/2607.26041v1",
+                    "source": "arxiv.org",
+                    "summary": "Presents a benchmark for evaluating step-level understanding of GUI transitions, revealing gaps in current models."
+                  },
+                  {
+                    "title": "Falling Behind Drives Unsafe Development in an Idealised AI Race Experiment",
+                    "url": "http://arxiv.org/abs/2607.26034v1",
+                    "source": "arxiv.org",
+                    "summary": "Experimental study showing competitive pressure leads to unsafe AI development, emphasizing need for cooperation."
+                  },
+                  {
+                    "title": "CHARM: A Multimodal Graph Foundation Model with Hierarchical Context Modeling for Zero-Shot Transfer",
+                    "url": "http://arxiv.org/abs/2607.26023v1",
+                    "source": "arxiv.org",
+                    "summary": "Proposes a multimodal graph foundation model enabling zero-shot transfer across domains via hierarchical context modeling."
+                  }
+                ],
+                "template": "brief",
+                "headline": "AI‑related arXiv papers published today (28 July 2026)"
+              },
+              "result": {
+                "tool": "render_digest",
+                "template": "brief",
+                "markdown": "**AI‑related arXiv papers published today (28 July 2026)**\n\n- On-policy distillation suffers from prefix failure; Relay-OPD introduces teacher relays at trigger points, improving performance on math reasoning benchmarks. - [arxiv.org](http://arxiv.org/abs/2607.26057v1)\n- Introduces a reactive, real-time flow policy that splits conditioning into fast proprioception and slower vision-language channels, achieving faster replanning. - [arxiv.org](http://arxiv.org/abs/2607.26055v1)\n- Presents a benchmark for evaluating step-level understanding of GUI transitions, revealing gaps in current models. - [arxiv.org](http://arxiv.org/abs/2607.26041v1)\n- Experimental study showing competitive pressure leads to unsafe AI development, emphasizing need for cooperation. - [arxiv.org](http://arxiv.org/abs/2607.26034v1)\n- Proposes a multimodal graph foundation model enabling zero-shot transfer across domains via hierarchical context modeling. - [arxiv.org](http://arxiv.org/abs/2607.26023v1)",
+                "item_count": 5
+              }
+            }
+          ]
+        }
+      ],
+      "tool_events": [
+        {
+          "tool": "papers",
+          "args": {
+            "query": "artificial intelligence",
+            "max_results": 5,
+            "sort_by": "submittedDate"
+          },
+          "result": {
+            "tool": "arxiv_search",
+            "query": "artificial intelligence",
+            "api_query": "all:artificial AND all:intelligence",
+            "total_results": 209697,
+            "items": [
+              {
+                "arxiv_id": "2607.26057v1",
+                "title": "Pass the Baton: Trajectory-Relayed On-Policy Distillation",
+                "summary": "On-policy distillation (OPD) grounds token-level supervision in the student's own trajectory, yet suffers from prefix failure: once the student commits to a wrong reasoning direction, all subsequent generation builds on this deviation, producing misdirected continuations that elicit unreliable supervision and waste compute. We identify a teacher-student continuation asymmetry on failed prefixes, where the teacher tends to redirect while the student continues along the original direction, and convert it into a label-free handoff trigger in Relay On-Policy Distillation (Relay-OPD). During training, Relay-OPD constructs relay trajectories by letting the teacher briefly take over at detected trigger points to produce a teacher leg, after which the student resumes and is optimized on the resulting trajectory. A limited relay budget concentrates intervention on critical early positions while limiting departure from the student policy. With a Qwen3-4B-Instruct-2507 teacher and Qwen3-0.6B/1.7B-Non-Thinking students on eight mathematical reasoning benchmarks, Relay-OPD achieves the best or second-best results on every benchmark, outperforming standard OPD by +5.73% and the strongest baseline FastOPD by +1.49% on average for 1.7B, with consistent gains at 0.6B. Training trajectory length is reduced by over 50%.",
+                "authors": [
+                  "Haolei Xu",
+                  "Xiaowen Xu",
+                  "Haiwen Hong",
+                  "Zixuan Ni",
+                  "Hongxing Li",
+                  "Yiwen Qiu",
+                  "Weiming Lu",
+                  "Yongliang Shen"
+                ],
+                "published": "2026-07-28T17:59:46Z",
+                "updated": "2026-07-28T17:59:46Z",
+                "url": "http://arxiv.org/abs/2607.26057v1",
+                "pdf_url": "https://arxiv.org/pdf/2607.26057v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.CL",
+                "categories": [
+                  "cs.CL",
+                  "cs.AI"
+                ]
+              },
+              {
+                "arxiv_id": "2607.26055v1",
+                "title": "$π\\mathbf{R}^2$: Reactive Real-time Flow Policies",
+                "summary": "Generalist manipulation policies increasingly take the form of action-chunking flow policies built on large pretrained backbones. Such chunks run open-loop, so the policy cannot react to sensory input arriving mid-execution, sacrificing \\emph{reactivity}. Replanning more often would restore it, but the perception-to-action pipeline (a large backbone plus multiple denoising steps) is too slow: this \\emph{latency} forbids frequent replanning and leaves committed actions stale, making such policies ill-suited for dynamic, closed-loop control. We present $π\\mathbf{R}^2$, which makes these policies reactive and real-time while retaining large backbones, expressive multi-modal policies, and multi-action prediction. Built on the per-position noise schedule of diffusion forcing, $π\\mathbf{R}^2$ contributes two ideas. First, it splits conditioning into a fast channel (proprioception, fresh every tick) and an asynchronously updated slow channel (vision-language features), so the policy reacts to proprioception within a chunk while tolerating stale vision. Second, a latency-adaptive flow schedule treats in-flight actions as inpainting conditioning and emits actions in one denoising step per call, letting one trained model adapt to varying hardware latency. Requiring minimal modification to existing architectures, $π\\mathbf{R}^2$ can be finetuned from a pretrained policy: applied to GR00T-N1.7 on a real xArm6+XHand platform, it replans closed-loop roughly $4\\times$ faster than the base policy (~$25$Hz on an A5000 GPU), acting on a fresh observation every $40$ms. Across simulation and real-world manipulation tasks, $π\\mathbf{R}^2$ improves the success rate by up to $23\\%$ in simulation and $30\\%$ in the real world over the strongest baseline. Project page: https://pi-r2-flow.github.io/",
+                "authors": [
+                  "Sungjae Park",
+                  "Shubham Tulsiani"
+                ],
+                "published": "2026-07-28T17:59:31Z",
+                "updated": "2026-07-28T17:59:31Z",
+                "url": "http://arxiv.org/abs/2607.26055v1",
+                "pdf_url": "https://arxiv.org/pdf/2607.26055v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.RO",
+                "categories": [
+                  "cs.RO",
+                  "cs.AI",
+                  "cs.LG"
+                ]
+              },
+              {
+                "arxiv_id": "2607.26041v1",
+                "title": "Desktop-Delta Bench: Do Computer-Use Models Understand Desktop GUI Transitions?",
+                "summary": "Computer-use agents (CUAs) increasingly act through desktop GUIs to complete long-horizon tasks. Current benchmarks primarily measure end-task success or single-frame grounding. Neither isolates whether a model can reconstruct the causal, task-relevant transition produced by an action- crucial for rejecting stale observations, verifying progress, and recovering from failure. This is difficult because inference, remote input, app rendering, and screenshot capture are asynchronous: the next observation may be delayed, occluded, transient, or unrelated, then misread as progress and carried into subsequent planning. We introduce Desktop-Delta Bench (DDB), an offline step-level benchmark with 2,013 human-verified instances from novel, multi-app Linux trajectories across ~15 applications and 50 task domains. DDB trajectories targets 3 failure dimensions- state verification, source tracking, and context-aware control- through 2 complementary tasks: 463 3-frame temporal-ordering instances, including 105 with a cross-trajectory decoy, and 1,550 before-after pairs labeled from 5 actions + its payload. We evaluate 8 closed and open-source model families across 32 ordering and 16 single-action settings, observing consistent gaps. Ordering remains unsaturated: best non-decoy and decoy exact-match rates are 65.1% and 65.7%. Task context improves decoy identification by 6.9 percentage points but reduces non-decoy exact match by 2.2 points; error analysis reveals systematic copying of the presented A-B-C order. Single-action results show that inferring the action family is harder than locating it: click F1 is 0.96 vs, 0.76 for drag, while recognized drags are generally localized well. DDB, thus, complements end-to-end benchmarks by filling the missing diagnostic layer between GUI grounding and final task success, enabling targeted improvements to desktop CUA verification, reliability, and recovery.",
+                "authors": [
+                  "Abhishek Pillai",
+                  "Samir Kumar Nayak",
+                  "Yuan Chen"
+                ],
+                "published": "2026-07-28T17:49:51Z",
+                "updated": "2026-07-28T17:49:51Z",
+                "url": "http://arxiv.org/abs/2607.26041v1",
+                "pdf_url": "https://arxiv.org/pdf/2607.26041v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI",
+                  "cs.CV"
+                ]
+              },
+              {
+                "arxiv_id": "2607.26034v1",
+                "title": "Falling Behind Drives Unsafe Development in an Idealised AI Race Experiment",
+                "summary": "Technological races create tension between speed and safety: actors may gain by moving faster than competitors, even when risky development is harmful. This is prominent in debates about artificial intelligence (AI), where competitive pressure is often argued to incentivise riskier, less safety-conscious development. We study this using a framed behavioural experiment based on an idealised AI race, in which paired participants repeatedly chose between Safe and Unsafe development under an uncertain time horizon. Unsafe development gave faster progress and higher immediate payoffs but accumulated private risk up to a treatment-specific maximum of 10\\%, 60\\%, or 90\\%; the race's competitive structure was held constant, and only this maximum risk varied. Neither the pre-registered comparison between risk levels nor the role of elicited risk preferences was supported by the data. Instead, exploratory analyses motivated by the task's repeated structure show that Unsafe behaviour is shaped less by risk preferences than by the evolving strategic state of the race: participants are more likely to choose Unsafe after their opponent does so, being ahead reduces Unsafe play while falling behind increases it, and first-round choices predict later behaviour. To interpret these effects we introduce a reduced evolutionary model with four strategies -- Always Safe, Always Unsafe, Conditionally Safe, and Conditionally Antisocial Safe -- which reproduces the treatment effect and shows how conditional Unsafe behaviour can be favoured by competitive race dynamics. Together, the experiment and model show that unsafe development can emerge from early behavioural momentum, opponent behaviour, and fear of falling behind, rather than from risk preferences alone, suggesting policy should focus on reducing competitive pressure and promoting cooperation in AI development rather than only individual risk.",
+                "authors": [
+                  "Elias Fernández Domingos",
+                  "The Anh Han"
+                ],
+                "published": "2026-07-28T17:44:03Z",
+                "updated": "2026-07-28T17:44:03Z",
+                "url": "http://arxiv.org/abs/2607.26034v1",
+                "pdf_url": "https://arxiv.org/pdf/2607.26034v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI",
+                  "cs.CY",
+                  "cs.GT",
+                  "econ.GN"
+                ]
+              },
+              {
+                "arxiv_id": "2607.26023v1",
+                "title": "CHARM: A Multimodal Graph Foundation Model with Hierarchical Context Modeling for Zero-Shot Transfer",
+                "summary": "Graph foundation models (GFMs) have emerged as a promising paradigm for transferring knowledge across graph domains and tasks. Real-world graphs associate nodes with text, images, and other modalities, making multimodal graphs essential for representing complex entities and relations. Moreover, collecting labels and adapting models for every new graph domain is costly and often infeasible, motivating zero-shot transfer. Unfortunately, zero-shot transfer on multimodal graphs remains underexplored. Existing GNN-based graph foundation models typically require downstream adaptation, whereas LLM-based graph methods mainly address unimodal graphs or tasks within a single domain. This setting presents two key challenges. First, models must generalize knowledge from individual modalities while capturing transferable cross-modal relations. Second, without target-domain fine-tuning, node representations remain entangled with domain-specific structures and modality-specific characteristics, obscuring shared concepts in unseen domains. To address these challenges, we propose CHARM, a multimodal graph foundation model with hierarchical context modeling for zero-shot transfer. CHARM replaces isolated raw nodes with hierarchical graph contexts that capture multimodal semantics and cross-modal relations. These contexts map domain-specific node patterns to shared high-level concepts, reducing reliance on target-domain supervision or adaptation. A modality-aware graph context encoder integrates multimodal information with graph structure and converts the resulting representations into graph tokens for a large language model . Experiments show consistent improvements on zero-shot multimodal graph tasks.",
+                "authors": [
+                  "Ankang Yang",
+                  "Jitao Zhao",
+                  "Di Jin",
+                  "Yuxiao Huang",
+                  "Dongxiao He"
+                ],
+                "published": "2026-07-28T17:35:26Z",
+                "updated": "2026-07-28T17:35:26Z",
+                "url": "http://arxiv.org/abs/2607.26023v1",
+                "pdf_url": "https://arxiv.org/pdf/2607.26023v1",
+                "source": "arxiv.org",
+                "primary_category": "cs.AI",
+                "categories": [
+                  "cs.AI"
+                ]
+              }
+            ],
+            "rate_limit_note": "arXiv may return 429 if called too frequently; this tool waits at least 3 seconds between requests in-process."
+          }
+        },
+        {
+          "tool": "format",
+          "args": {
+            "items": [
+              {
+                "title": "Pass the Baton: Trajectory-Relayed On-Policy Distillation",
+                "url": "http://arxiv.org/abs/2607.26057v1",
+                "source": "arxiv.org",
+                "summary": "On-policy distillation suffers from prefix failure; Relay-OPD introduces teacher relays at trigger points, improving performance on math reasoning benchmarks."
+              },
+              {
+                "title": "$π\\mathbf{R}^2$: Reactive Real-time Flow Policies",
+                "url": "http://arxiv.org/abs/2607.26055v1",
+                "source": "arxiv.org",
+                "summary": "Introduces a reactive, real-time flow policy that splits conditioning into fast proprioception and slower vision-language channels, achieving faster replanning."
+              },
+              {
+                "title": "Desktop-Delta Bench: Do Computer-Use Models Understand Desktop GUI Transitions?",
+                "url": "http://arxiv.org/abs/2607.26041v1",
+                "source": "arxiv.org",
+                "summary": "Presents a benchmark for evaluating step-level understanding of GUI transitions, revealing gaps in current models."
+              },
+              {
+                "title": "Falling Behind Drives Unsafe Development in an Idealised AI Race Experiment",
+                "url": "http://arxiv.org/abs/2607.26034v1",
+                "source": "arxiv.org",
+                "summary": "Experimental study showing competitive pressure leads to unsafe AI development, emphasizing need for cooperation."
+              },
+              {
+                "title": "CHARM: A Multimodal Graph Foundation Model with Hierarchical Context Modeling for Zero-Shot Transfer",
+                "url": "http://arxiv.org/abs/2607.26023v1",
+                "source": "arxiv.org",
+                "summary": "Proposes a multimodal graph foundation model enabling zero-shot transfer across domains via hierarchical context modeling."
+              }
+            ],
+            "template": "brief",
+            "headline": "AI‑related arXiv papers published today (28 July 2026)"
+          },
+          "result": {
+            "tool": "render_digest",
+            "template": "brief",
+            "markdown": "**AI‑related arXiv papers published today (28 July 2026)**\n\n- On-policy distillation suffers from prefix failure; Relay-OPD introduces teacher relays at trigger points, improving performance on math reasoning benchmarks. - [arxiv.org](http://arxiv.org/abs/2607.26057v1)\n- Introduces a reactive, real-time flow policy that splits conditioning into fast proprioception and slower vision-language channels, achieving faster replanning. - [arxiv.org](http://arxiv.org/abs/2607.26055v1)\n- Presents a benchmark for evaluating step-level understanding of GUI transitions, revealing gaps in current models. - [arxiv.org](http://arxiv.org/abs/2607.26041v1)\n- Experimental study showing competitive pressure leads to unsafe AI development, emphasizing need for cooperation. - [arxiv.org](http://arxiv.org/abs/2607.26034v1)\n- Proposes a multimodal graph foundation model enabling zero-shot transfer across domains via hierarchical context modeling. - [arxiv.org](http://arxiv.org/abs/2607.26023v1)",
+            "item_count": 5
+          }
+        }
+      ],
+      "version": "current",
+      "artifact_version": "current+pd749a31bc1bd+t6576e6fd32a0",
+      "prompt_hash": "d749a31bc1bd510e7aceedd57021d96036090af17520b2d2001550005bfe2986",
+      "tools_hash": "6576e6fd32a0e239a05083459786f1c1a7420f3d8cc6f0153fc77e0d31ebab07",
+      "prompt_file": "system_prompt.md",
+      "tools_file": "tools.yaml",
+      "provider": "nvidia",
+      "model": null,
+      "transcript": "current_ui_nvidia_20260729T165131565028.transcript.json"
+    }
+  ],
+  "comparisons": [],
+  "updated_at": "2026-07-29T16:51:42"
+}
